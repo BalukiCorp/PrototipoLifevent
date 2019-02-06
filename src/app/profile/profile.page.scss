@@ -2,3 +2,121 @@
   --background: #222428;
 
 }
+//Avatar
+.profile{
+  width: 90px;
+  height: 90px;
+  margin: left;
+  background-image: grey;
+
+}
+
+//label de Puntacion
+.Puntacion{
+
+  color: white; 
+  font-weight: bold;
+  margin-inline-start: 11px;
+  
+}
+
+.divpunta{
+  align-content: flex-end;
+  float:left;
+  margin-left:4px;
+
+}
+
+.Eventos{
+   
+  color: white; 
+  font-weight: bold; 
+
+}
+
+//Card Categorias Niveles
+
+.grid-full ion-col {
+  flex: 5 0 50%;
+  max-width: 100%;
+  padding: 3px 5px;
+}
+.cardNiveles {
+  margin: 0 0 0 0px;
+  padding: 0px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  border-radius: 7px;
+  background-color: black;
+  
+}
+
+.colortitulo{
+  color: white;
+  text-align: center;
+}
+
+
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    border-style:solid;
+    border:60px;
+    border-radius:30px;
+    
+  }
+}
+
+.cardcat{
+  width: 70px;
+}
+
+.progress{
+  border: 4px inset rgb(107, 194, 90);
+  background-color:rgb(2, 39, 250);
+  border-radius : 20px ;
+  width: 80px;
+  margin-right:auto;
+  margin-inline-start: 19.5px;
+}
+
+.img{
+  width: 60px;
+  height: 60px;
+  border-radius:150px;
+  margin-inline-start: 27px;
+  margin-block-end: 5px;
+  
+}
+
+.boton{
+  border-radius:5px;
+}
+
+.welcome-card{
+  border-radius:20px;
+  background-color: #FFFFFF;
+}
+
+//Eventos Asistidos
+
+.event_asist{
+  border-radius: 50px
+}
+
+ion-slide {
+  height: 100vh;
+  flex-direction: column;
+}
+
+ion-img {
+  max-width: 120vw;
+  max-height: 100vh;
+  overflow: hidden;
+}
