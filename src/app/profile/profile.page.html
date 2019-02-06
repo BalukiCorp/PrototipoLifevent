@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color= "ion-app-bar-dark-theme">
+    <ion-title  color="light" text-center >Perfil</ion-title>
+    <ion-buttons slot="start" >
+      <ion-button (click)="calendarButtonClicked()">
+        <ion-icon slot="icon-only" name="calendar" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="settingsButtonClicked()">
+        <ion-icon  slot="icon-only" name="settings" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!--Pagina-->
+  <ion-row>
+
+    <!--Imagen de Perfil-->
+    <ion-avatar class="profile">
+      <img src="../../assets/img/IMG-20160313-WA005.jpg">
+    </ion-avatar>
+
+
+
+
+    <div>
+      <!--Muestra de tu puntaje-->
+      <div class="divpunta">
+        <ion-col col-4 text-center >
+          <h6 class="Puntacion">Puntacion</h6>
+          <p no-padding no-margin>565 pt</p>
+        </ion-col>
+      </div>
+      <!--Muestra los eventos asistidos-->
+      <div class="divpunta">
+        <ion-col col-4 text-center>
+          <h6 class="Eventos"> Eventos</h6>
+          <p no-paddin no-margin>5</p>
+        </ion-col>
+      </div>
+    </div>
+
+
+
+
+
+    <!--Nombre de la Cuenta-->
+    <div>
+      <ion-col col-4 text-left >
+        <h4 class="Eventos"> Josue Vargas</h4>
+      </ion-col>
+    </div>
+
+
+    <!--Niveles en cada Categoria-->
+    <div class="scrolling-wrapper">
+      <div class="card"><h6>Festivales</h6><img class="img" src="../../assets/img/icono_beer.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Educacion</h6><img class="img" src="../../assets/img/icono_libro.jpg"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Conciertos</h6><img class="img" src="../../assets/img/icono_ticket.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Emprendimiento</h6><img class="img" src="../../assets/img/icono_emprendimiento.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Gastronomia</h6><img class="img" src="../../assets/img/icono_gastronomia.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Cultura</h6><img class="img" src="../../assets/img/icono_cultura.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Fiestas</h6><img class="img" src="../../assets/img/icono_fiesta.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Arte</h6><img class="img" src="../../assets/img/icono_arte.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Deporte</h6><img class="img" src="../../assets/img/icono_deporte.jpg"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+      <div class="card"><h6>Promociones</h6><img class="img" src="../../assets/img/icono_promociones.png"/>
+        <div class="progress">
+        </div><h6>Nivel 1</h6></div>
+    </div>
+
+
+
+  </ion-row>
+
+  <div>
+    <h2><b>Eventos Asistidos</b></h2>
+  </div>
+
+
+  <ion-card class="welcome-card">
+    <img src="../../assets/img/foto_prueba.jpg"/>
+    <ion-card-header>
+      <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+      <ion-card-title>Proyecto X</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>
