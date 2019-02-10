@@ -5,10 +5,11 @@ import { map } from 'rxjs/operators';
 import { Time } from '@angular/common';
 import { IonDatetime } from '@ionic/angular';
 import { DatetimeOptions } from '@ionic/core';
+import {AngularFireStorage} from '@angular/fire/storage';
  
+
 export interface Todo {
   id?: string;
-  createdAt: number;
   event_name: string;
   manager_name: string;
   category: string;

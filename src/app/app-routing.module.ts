@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
-
+//{path: ''}
 ];
 
 @NgModule({
