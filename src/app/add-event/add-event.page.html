@@ -1,10 +1,16 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="ion-status-bar-dark-theme">
   
-    <ion-title>Details</ion-title>
+    <ion-title color="light" text-center>
+      Details
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+
 <ion-content padding>
+  
   <ion-list lines="full">
     <ion-item>
       <ion-input required type="text" placeholder="nombre del evento" [(ngModel)]="todo.event_name"></ion-input>
@@ -13,17 +19,16 @@
       <ion-input required type="text" placeholder="organizador" [(ngModel)]="todo.manager_name"></ion-input>
     </ion-item>
    
-    <ion-item color="dark">
-      <ion-icon name="locate" item-start color="light"></ion-icon>
-
-      <ion-input formControlName="ubication" type="text"  placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
+    <ion-item>
+        <ion-icon name="locate" item-start ></ion-icon>
+        <ion-input required type="text" placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
     </ion-item>
 
-    <ion-item color="dark">
-      <ion-icon name="clipboard" item-start color="light"></ion-icon>
+    <ion-item >
+      <ion-icon name="clipboard" item-start ></ion-icon>
 
       <ion-label>Categoría</ion-label>
-      <ion-select formControlName="category" value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="todo.category">
+      <ion-select value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="todo.category">
         <ion-select-option value="PARTY">PARTY</ion-select-option>
         <ion-select-option value="FESTIVITIES">FESTIVITIES</ion-select-option>
         <ion-select-option value="SPORTS">SPORTS</ion-select-option>
@@ -33,42 +38,42 @@
       </ion-select>
     </ion-item>
 
-    <ion-item color="dark">
-      <ion-icon name="calendar" item-start color="light"></ion-icon>
+    <ion-item >
+      <ion-icon name="calendar" item-start ></ion-icon>
       <ion-label>Fecha de inicio</ion-label>
-      <ion-datetime formControlName="date" display-format="MMMM DD" [(ngModel)]="todo.date"></ion-datetime>
+      <ion-datetime  [(ngModel)]="todo.date"></ion-datetime>
     </ion-item>
 
-    <ion-item color="dark">
-      <ion-icon name="calendar" item-start color="light"></ion-icon>
+    <ion-item >
+      <ion-icon name="calendar" item-start ></ion-icon>
       <ion-label>Fecha de finalización</ion-label>
-      <ion-datetime formControlName="final_date" display-format="MMMM DD" [(ngModel)]="todo.final_date"></ion-datetime>
+      <ion-datetime [(ngModel)]="todo.final_date"></ion-datetime>
     </ion-item>
 
-    <ion-item color="dark">
-      <ion-icon name="time" item-start color="light"></ion-icon>
+    <ion-item >
+      <ion-icon name="time" item-start ></ion-icon>
 
       <ion-label>Hora de inicio</ion-label>
-      <ion-datetime formControlName="hour" display-format="HH:m a" [(ngModel)]="todo.hour"></ion-datetime>
+      <ion-datetime  display-format="HH:m a" [(ngModel)]="todo.hour"></ion-datetime>
     </ion-item>
 
-    <ion-item color="dark">
-      <ion-icon name="time" item-start color="light"></ion-icon>
+    <ion-item >
+      <ion-icon name="time" item-start ></ion-icon>
 
       <ion-label>Hora de finalización</ion-label>
-      <ion-datetime formControlName="final_hour" display-format="HH:m a" [(ngModel)]="todo.final_hour"></ion-datetime>
+      <ion-datetime  display-format="HH:m a" [(ngModel)]="todo.final_hour"></ion-datetime>
     </ion-item>
 
-    <ion-item color="dark">
-      <ion-icon name="book" item-start color="light"></ion-icon>
-
-      <ion-textarea formControlName="decription" placeholder="Descripción..." [(ngModel)]="todo.description"></ion-textarea>
+    <ion-item>
+        <ion-icon name="book" item-start ></ion-icon>
+        <ion-input required type="text" placeholder="Descripción..." [(ngModel)]="todo.description"></ion-input>
     </ion-item>
 
 
-    <ion-item color="dark">
-      <ion-icon name="cash" item-start color="light"></ion-icon>
-      <ion-input formControlName="value" type="number" placeholder="Costo: $" value="" [(ngModel)]="todo.value"></ion-input>
+
+    <ion-item >
+      <ion-icon name="cash" item-start ></ion-icon>
+      <ion-input  type="number" placeholder="Costo: $" value="" [(ngModel)]="todo.value"></ion-input>
     </ion-item>
 
 

@@ -8,6 +8,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {ActivatedRoute} from 'node_modules/@angular/router';
 import { getLocaleDateTimeFormat } from '@angular/common';
 
+
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.page.html',
