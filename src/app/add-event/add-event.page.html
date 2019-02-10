@@ -1,39 +1,29 @@
 <ion-header>
-  <ion-toolbar color="ion-app-bar-dark-theme">
-    <ion-title text-center class="title" color="light">
-      Añadir evento
-    </ion-title>
+  <ion-toolbar color="primary">
+  
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content color="dark" >
-
-  <form>
-    <ion-item color="dark">
-
-      <ion-icon name="contact" item-start color="light"></ion-icon>
-
-      <ion-input type="text" name = "name" placeholder="nombre" color="light"  [(ngModel)]="event_name"></ion-input>
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-input required type="text" placeholder="nombre del evento" [(ngModel)]="todo.event_name"></ion-input>
     </ion-item>
-
-    <ion-item color="dark">
-      <ion-icon name="person" item-start color="light"></ion-icon>
-      <ion-input type="text" placeholder="organizador" [(ngModel)]="manager_name"></ion-input>
+    <ion-item>
+      <ion-input required type="text" placeholder="organizador" [(ngModel)]="todo.manager_name"></ion-input>
     </ion-item>
-
-
-
+   
     <ion-item color="dark">
       <ion-icon name="locate" item-start color="light"></ion-icon>
 
-      <ion-input clearInput type="text"  placeholder="ubicación" [(ngModel)]="ubication"></ion-input>
+      <ion-input formControlName="ubication" type="text"  placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
     </ion-item>
 
     <ion-item color="dark">
       <ion-icon name="clipboard" item-start color="light"></ion-icon>
 
       <ion-label>Categoría</ion-label>
-      <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+      <ion-select formControlName="category" value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="todo.category">
         <ion-select-option value="PARTY">PARTY</ion-select-option>
         <ion-select-option value="FESTIVITIES">FESTIVITIES</ion-select-option>
         <ion-select-option value="SPORTS">SPORTS</ion-select-option>
@@ -46,39 +36,39 @@
     <ion-item color="dark">
       <ion-icon name="calendar" item-start color="light"></ion-icon>
       <ion-label>Fecha de inicio</ion-label>
-      <ion-datetime display-format="MMMM DD"></ion-datetime>
+      <ion-datetime formControlName="date" display-format="MMMM DD" [(ngModel)]="todo.date"></ion-datetime>
     </ion-item>
 
     <ion-item color="dark">
       <ion-icon name="calendar" item-start color="light"></ion-icon>
       <ion-label>Fecha de finalización</ion-label>
-      <ion-datetime display-format="MMMM DD"></ion-datetime>
+      <ion-datetime formControlName="final_date" display-format="MMMM DD" [(ngModel)]="todo.final_date"></ion-datetime>
     </ion-item>
 
     <ion-item color="dark">
       <ion-icon name="time" item-start color="light"></ion-icon>
 
       <ion-label>Hora de inicio</ion-label>
-      <ion-datetime display-format="HH:m a"></ion-datetime>
+      <ion-datetime formControlName="hour" display-format="HH:m a" [(ngModel)]="todo.hour"></ion-datetime>
     </ion-item>
 
     <ion-item color="dark">
       <ion-icon name="time" item-start color="light"></ion-icon>
 
       <ion-label>Hora de finalización</ion-label>
-      <ion-datetime display-format="HH:m a"></ion-datetime>
+      <ion-datetime formControlName="final_hour" display-format="HH:m a" [(ngModel)]="todo.final_hour"></ion-datetime>
     </ion-item>
 
     <ion-item color="dark">
       <ion-icon name="book" item-start color="light"></ion-icon>
 
-      <ion-textarea placeholder="Descripción..."></ion-textarea>
+      <ion-textarea formControlName="decription" placeholder="Descripción..." [(ngModel)]="todo.description"></ion-textarea>
     </ion-item>
 
 
     <ion-item color="dark">
       <ion-icon name="cash" item-start color="light"></ion-icon>
-      <ion-input type="number" placeholder="Costo: $" value=""></ion-input>
+      <ion-input formControlName="value" type="number" placeholder="Costo: $" value="" [(ngModel)]="todo.value"></ion-input>
     </ion-item>
 
 
@@ -86,12 +76,6 @@
       <ion-input background  class="custom-file-input"  type="file" accept=".png, .jpg" (change)="onUpload($event)"></ion-input>
     </ion-item>
     <input id="imageUser" type="hidden" [value]="urlImage | async">
-
-
-    <ion-button class="button" shape="round" expand="full" color="danger">
-      <ion-icon name="send" color="light"></ion-icon>
-      Añadir</ion-button>
-
-  </form>
-
+  </ion-list>
+  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
 </ion-content>
