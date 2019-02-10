@@ -12,11 +12,21 @@
 }
 
 //label de Puntacion
-.Puntacion{
+.Punta_Event{
 
-  color: white; 
+  color: rgb(0, 0, 0);
   font-weight: bold;
   margin-inline-start: 11px;
+  font-size: 0.35cm;
+  
+}
+
+.Puntacion{
+
+  color: rgb(0, 0, 0); 
+  font-weight: bold;
+  margin-inline-start: 11px;
+  
   
 }
 
@@ -29,7 +39,7 @@
 
 .Eventos{
    
-  color: white; 
+  color: rgb(0, 0, 0); 
   font-weight: bold; 
 
 }
@@ -46,12 +56,24 @@
   padding: 0px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   border-radius: 7px;
-  background-color: black;
+  background-color: rgb(248, 245, 245);
   
 }
 
+img{
+  border: 2px solid grey;
+  margin: 10px auto;
+  padding: 0;
+  border-radius: 800px;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
+  
+}
+
+
 .colortitulo{
-  color: white;
+  color: rgb(2, 2, 2);
   text-align: center;
 }
 
@@ -101,7 +123,7 @@
 
 .welcome-card{
   border-radius:20px;
-  background-color: black;
+  background-color: rgb(255, 254, 254);
 }
 
 //Eventos Asistidos

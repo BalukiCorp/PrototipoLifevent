@@ -4,7 +4,8 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  //--ion-color-primary: rgb(229%, 36%, 33%);
+  --ion-color-primary: rgb(229%, 36%, 33%);
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -52,7 +53,7 @@
   --ion-color-danger-tint: #f25454;
 
   /** dark **/
-  --ion-color-dark: #222428;
+  --ion-color-dark: #ffffff; //Background Color
   --ion-color-dark-rgb: 34, 34, 34;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
@@ -81,4 +82,8 @@
   --ion-app-bar-dark-theme: #212121;
   --ion-background-dark-theme: #303030;
   --ion-card-dark-theme: #424242;
+
+  /* Red Theme */
+  --ion-status-bar-dark-theme-red:  rgb(229%, 36%, 33%);
+  --ion-card-dark-theme-red: #ffffff;
 }

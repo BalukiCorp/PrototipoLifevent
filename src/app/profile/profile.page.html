@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color= "ion-app-bar-dark-theme">
+  <ion-toolbar color= "ion-status-bar-dark-theme">
     <ion-title  color="light" text-center >Perfil</ion-title>
     <ion-buttons slot="start" >
       <ion-button (click)="calendarButtonClicked()">
@@ -31,20 +31,23 @@
     <div>
       <div class="divpunta">
         <ion-col col-4 text-center >
-          <h6 class="Puntacion">Puntacion</h6>
-          <p no-padding no-margin>565 pt</p>
+          <p class="Punta_Event">Puntacion</p>
+          <p no-padding no-margin class="Puntacion" >565 pt</p>
         </ion-col>
       </div>
       <!--Muestra los eventos asistidos-->
       <div class="divpunta">
         <ion-col col-4 text-center>
-          <h6 class="Eventos"> Eventos</h6>
-          <p no-paddin no-margin>5</p>
+          <p class="Punta_Event">Eventos</p>
+          <p no-paddin no-margin class="Puntacion">5</p>
         </ion-col>
       </div>
     </div>
 
 
+    <div>
+      <h2 class="Puntacion">Josue Vargas</h2>
+    </div>
 
     <!--Niveles en cada Categoria-->
 
@@ -52,8 +55,11 @@
       <div class="grid-full">
         <ion-row>
           <ion-col>
+              
               <ion-card class="cardNiveles">
-                  <h6 class="colortitulo">Festivales</h6><img class="img" src="../../assets/img/icono_beer.png"/>
+                  <h6 class="colortitulo">Festivales</h6>
+                  <a href="" ><img src="../../assets/img/icono_beer.png" /></a>
+                  <!--<img class="img" src="../../assets/img/icono_beer.png"/>-->
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -61,7 +67,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                  <h6 class="colortitulo">Educacion</h6><img class="img" src="../../assets/img/icono_libro.jpg"/>
+                  <h6 class="colortitulo">Educacion</h6>
+                  <a href="" ><img src="../../assets/img/icono_libro.jpg" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -69,7 +76,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                  <h6 class="colortitulo">Conciertos</h6><img class="img" src="../../assets/img/icono_ticket.png"/>
+                  <h6 class="colortitulo">Conciertos</h6>
+                  <a href="" ><img src="../../assets/img/icono_ticket.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -77,7 +85,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Gastronomia</h6><img class="img" src="../../assets/img/icono_gastronomia.png"/>
+                   <h6 class="colortitulo">Gastronomia</h6>
+                   <a href="" ><img src="../../assets/img/icono_gastronomia.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -85,7 +94,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Negocios</h6><img class="img" src="../../assets/img/icono_emprendimiento.png"/>
+                   <h6 class="colortitulo">Negocios</h6>
+                   <a href="" ><img src="../../assets/img/icono_emprendimiento.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -93,7 +103,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Arte</h6><img class="img" src="../../assets/img/icono_arte.png"/>
+                   <h6 class="colortitulo">Arte</h6>
+                   <a href="" ><img src="../../assets/img/icono_arte.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -101,7 +112,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Cultura</h6><img class="img" src="../../assets/img/icono_cultura.png"/>
+                   <h6 class="colortitulo">Cultura</h6>
+                   <a href="" ><img src="../../assets/img/icono_cultura.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -109,7 +121,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Fiestas</h6><img class="img" src="../../assets/img/icono_fiesta.png"/>
+                   <h6 class="colortitulo">Fiestas</h6>
+                   <a href="" ><img src="../../assets/img/icono_fiesta.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -117,7 +130,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Deporte</h6><img class="img" src="../../assets/img/icono_deporte.jpg"/>
+                   <h6 class="colortitulo">Deporte</h6>
+                   <a href="" ><img src="../../assets/img/icono_deporte.jpg" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -125,7 +139,8 @@
 
           <ion-col>
               <ion-card class="cardNiveles">
-                   <h6 class="colortitulo">Promociones</h6><img class="img" src="../../assets/img/promociones.jpg"/>
+                   <h6 class="colortitulo">Promociones</h6>
+                   <a href="" ><img src="../../assets/img/icono_promociones.png" /></a>
                   <div class="progress">
                   </div><h6 class="colortitulo">Nivel 1</h6>
               </ion-card>
@@ -136,9 +151,9 @@
   </ion-row>
 
 
-  <div>
-    <h2><b>Eventos Asistidos</b></h2>
-  </div>
+  <a>
+    <h2><b class="Puntacion">Eventos Asistidos</b></h2>
+  </a>
 
   
 <!--Card de Historial de Eventos Asistidos-->
