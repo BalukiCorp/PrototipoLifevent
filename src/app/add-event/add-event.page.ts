@@ -17,6 +17,9 @@ import {Observable} from 'rxjs';
   styleUrls: ['./add-event.page.scss'],
 })
 export class AddEventPage implements OnInit {
+   public textInput = document.querySelector("#imageUser");
+   urlImage: Observable<string>;
+
   todo: Todo = {
     
     
@@ -32,11 +35,28 @@ export class AddEventPage implements OnInit {
     value: '',
     photoURL: '',
   };
- 
+  public orderForm:any;
   todoId = null;
-  private storage: AngularFireStorage; 
+  ; 
   
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController,
+    private storage: AngularFireStorage, public formBuilder: FormBuilder) {
+
+      this.orderForm = this.formBuilder.group({
+        event_name: ['', Validators.required],
+      manager_name: ['', Validators.required],
+      category: ['', Validators.required],
+      ubication: ['', Validators.required],
+      date: ['', Validators.required],
+      final_date: ['', Validators.required],
+      hour: ['', Validators.required],
+      final_hour: ['', Validators.required],
+      description: ['', Validators.required],
+      value: ['', Validators.required],
+      
+      });
+      this.orderForm.reset()
+     }
  
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];
@@ -45,7 +65,6 @@ export class AddEventPage implements OnInit {
     }
   }
   uploadPercent: Observable<number>;
-  urlImage: Observable<string>;
   @ViewChild('imageUser') inputImageUser: ElementRef;
  
   async loadTodo() {
@@ -69,19 +88,22 @@ export class AddEventPage implements OnInit {
  
     if (this.todoId) {
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
+        let textInput = document.querySelector("#imageUser");
+
         loading.dismiss();
       //  this.nav.goBack('home');
       });
     } else {
       this.todoService.addTodo(this.todo).then(() => {
         loading.dismiss();
+        
        // this.nav.goBack('home');
       });
     }
   }
 
   onUpload(e){
-    //  console.log('subir', e);
+      console.log('subir', e);
    const id = Math.random().toString(36).substring(2);
    const file = e.target.files[0];
    const filePath = `event_image/event_${id}`;

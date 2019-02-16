@@ -10,13 +10,18 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), 
-  AngularFirestoreModule],
+  AngularFirestoreModule, AngularFireStorageModule],
   providers: [
     StatusBar,
     SplashScreen,

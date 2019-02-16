@@ -10,7 +10,7 @@
 
 
 <ion-content padding>
-  
+
   <ion-list lines="full">
     <ion-item>
         <ion-icon name="contact"></ion-icon>
@@ -43,13 +43,13 @@
     <ion-item >
       <ion-icon name="calendar" item-start ></ion-icon>
       <ion-label>Fecha de inicio</ion-label>
-      <ion-datetime display-format="MMMM D" [(ngModel)]="todo.date"></ion-datetime>
+      <ion-datetime [(ngModel)]="todo.date"></ion-datetime>
     </ion-item>
 
     <ion-item >
       <ion-icon name="calendar" item-start ></ion-icon>
       <ion-label>Fecha de finalización</ion-label>
-      <ion-datetime display-format="MMMM D" [(ngModel)]="todo.final_date"></ion-datetime>
+      <ion-datetime [(ngModel)]="todo.final_date"></ion-datetime>
     </ion-item>
 
     <ion-item >
@@ -80,12 +80,13 @@
 
 
     <ion-item color="dark">
-      <ion-input background  class="custom-file-input"  type="file" accept=".png, .jpg" (change)="onUpload($event)"></ion-input>
+      <ion-input id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" accept=".png, .jpg" (change)="onUpload($event)" [(ngModel)]="todo.urlImage"></ion-input>
     </ion-item>
     <input id="imageUser" type="hidden" [value]="urlImage | async">
   </ion-list>
-  <ion-button shape="round" expand="full" (click)="saveTodo()">
+  <ion-button  shape="round" expand="full" (click)="saveTodo()">
       <ion-icon name="send"></ion-icon>
       Subir evento
     </ion-button>
+  
 </ion-content>

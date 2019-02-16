@@ -9,7 +9,7 @@
 <ion-content padding color="dark">
   <a href="" >
   <ion-card class="welcome-card" *ngFor="let todos of todos" >
-    <img  src="../../assets/img/foto_prueba.jpg"/>
+    <img  src="{{todos.urlImage}}">
     <ion-card-header>
       <ion-card-subtitle class="colortitulo">{{todos.manager_name}}</ion-card-subtitle>
       <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
