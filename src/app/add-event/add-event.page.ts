@@ -36,13 +36,14 @@ export class AddEventPage implements OnInit {
     photoURL: '',
   };
   public orderForm:any;
+  formRegister: FormGroup;
   todoId = null;
   ; 
   
   constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController,
     private storage: AngularFireStorage, public formBuilder: FormBuilder) {
 
-      this.orderForm = this.formBuilder.group({
+      this.formRegister = this.formBuilder.group({
         event_name: ['', Validators.required],
       manager_name: ['', Validators.required],
       category: ['', Validators.required],
@@ -53,9 +54,8 @@ export class AddEventPage implements OnInit {
       final_hour: ['', Validators.required],
       description: ['', Validators.required],
       value: ['', Validators.required],
-      
       });
-      this.orderForm.reset()
+      this.formRegister.reset()
      }
  
   ngOnInit() {

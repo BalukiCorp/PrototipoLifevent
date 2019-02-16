@@ -8,6 +8,7 @@ import { DatetimeOptions } from '@ionic/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 
+
 export interface Todo {
   id?: string;
   event_name: string;
@@ -27,8 +28,8 @@ export interface Todo {
   providedIn: 'root'
 })
 export class TodoService {
-   uploadPercent: Observable<number>;
-  urlImage: Observable<string>;
+  uploadPercent: Observable<number>;
+
   private todosCollection: AngularFirestoreCollection<Todo>;
  
   private todos: Observable<Todo[]>;
@@ -67,5 +68,5 @@ export class TodoService {
     return this.todosCollection.doc(id).delete();
   }
 
-  
+ 
 }
