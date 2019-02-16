@@ -7,29 +7,25 @@
 </ion-header>
 
 <ion-content padding color="dark">
+
+
   <a href="" >
-  <ion-card class="welcome-card" *ngFor="let todos of todos" >
+
+  <ion-card class="cardHome" *ngFor="let todos of todos" >
     <img  src="{{todos.urlImage}}">
+    <div class="divCardDate">
+      {{todos.date}}
+    </div>
+    <div class="divCardHome">
     <ion-card-header>
-      <ion-card-subtitle class="colortitulo">{{todos.manager_name}}</ion-card-subtitle>
+      <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
       <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p class="colortitulo">{{todos.description}}</p>
     </ion-card-content>
+    </div>
   </ion-card>
   </a>
   
-  <a href="" >
-  <ion-card class="welcome-card">
-    <img  src="../../assets/img/foto_prueba.jpg"/>
-    <ion-card-header>
-      <ion-card-subtitle class="colortitulo">Josue Vargas</ion-card-subtitle>
-      <ion-card-title class="colortitulo">Proyecto X</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p class="colortitulo">Now that your app has been created, you'll want to start building out features and components.</p>
-    </ion-card-content>
-  </ion-card>
-  </a>
 </ion-content>
