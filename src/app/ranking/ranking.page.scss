@@ -1,13 +1,92 @@
 
-table {
-  border-collapse: collapse;
-  color: rgb(0, 0, 0);
-  border: 1px solid #aaa;
+//Card Profile
+
+.cardRankingUser{
+  width: 310px;
+  height: 100px;;
+  border-radius: 5px;
+  background-color: rgb(229%, 36%, 33%);
 }
 
-th,td {
-  border: 1px solid #aaa;
-  padding: 10px;
-  text-align: center;
-  width: 150px;
+
+
+.cardRankingPosition{
+  float:left;
+  margin-left:6px;
+  font-weight:900;
+  padding-left: 15px;
+  padding-top: 27px;
 }
+
+.numRankingAvatar{
+  float:left;
+  margin-left: 4.4rem;
+  margin-top: 10px;
+  
+}
+
+.numRankingPuntosUser{
+  
+  float:right;
+  margin-right: 19px;
+  font-weight:900;
+  padding-top: 27px;
+  float: right;
+  
+  
+  
+}
+
+//Card user in list
+.cardRankingUserProfile{
+  width: 310px;
+  height: 50px;;
+  border-radius: 5px;
+  background-color: rgb(229%, 36%, 33%);
+
+  background-repeat: no-repeat;
+  background-position:left top;
+}
+
+//Demas de la lista
+.cardRanking{
+  width: 310px;
+  height: 50px;;
+  border-radius: 5px;
+  
+}
+
+
+.numRankingPuntos{
+  
+  margin-left:5px;
+  font-weight: bolder;
+  float: right;
+  margin-right: 7px;
+}
+
+.numRanking{
+  float:left;
+  margin-left:6px;
+  font-weight:900;
+  
+}
+
+.avatarUser{
+  width: 70px;
+  height: 70px;
+  margin: 7px auto;
+  
+}
+
+.avatar{
+  width: 45px;
+  height: 45px;
+  margin:3px 10px 0 0 10px;
+  border-inline-start-width: 10%;
+  border-block-start-width: 10em;
+  margin-top: 3px;
+}
+
+
+

@@ -2,13 +2,63 @@
   --background: #222428;
 
 }
+
+//Div Profile contiene avatar y nombre de usuario
+
+
+.header {
+  transition: all 0.6s ease;
+  display:inline-flex;
+  width:135%;
+  height:100px;   
+  background-color: rgb(229%, 36%, 33%);
+  border-radius: 5px;
+  h4{
+    width:100%;
+  } 
+}
+
+//img avatar
+.img_avatar{
+  width: 120px;
+  height: 120px;
+  margin: left;
+  filter: drop-shadow(5px 5px 8px rgb(121, 120, 120));
+}
+
 //Avatar
 .profile{
-  width: 90px;
-  height: 90px;
-  margin: left;
-  background-image: grey;
+  position: absolute;
+  height:120px;
+  width:120px;
+  left: 50%;
+  top: 40px;
+  z-index: 1001;
+  transform: translateX(-50%);
+  box-shadow: 5px 5px 25px #222 inset;
+}
 
+//Div Nombre de Usuario
+.divNombreUsuario{
+  margin-top: 6rem;
+  margin-left: 6rem;
+}
+
+
+//Label h2 Nombre de Usuario
+.h2NombreUsuario{
+  color: #2D354A;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+//Div de Puntacion y Eventos
+.divNumProfile{
+  margin-right: auto;
+  display: block;
+  margin-top: 0.3rem;
+  margin-left: 4.3rem;
 }
 
 //label de Puntacion
@@ -17,7 +67,7 @@
   color: rgb(0, 0, 0);
   font-weight: bold;
   margin-inline-start: 11px;
-  font-size: 0.35cm;
+  font-size: 0.50cm;
   
 }
 
@@ -57,18 +107,27 @@
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   border-radius: 7px;
   background-color: rgb(248, 245, 245);
-  
+  -webkit-box-shadow: -12px 13px 13px 2px rgba(237,236,230,1);
+  -moz-box-shadow: -12px 13px 13px 2px rgba(237,236,230,1);
+  box-shadow: -12px 13px 13px 2px rgba(237,236,230,1);
 }
 
-img{
+.img_icono{
   border: 2px solid grey;
-  margin: 10px auto;
-  padding: 0;
   border-radius: 800px;
   overflow: hidden;
   width: 70px;
   height: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   
+}
+
+.div_imagen{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 
@@ -103,8 +162,9 @@ img{
   border: 4px inset rgb(107, 194, 90);
   background-color:rgb(2, 39, 250);
   border-radius : 20px ;
-  width: 80px;
+  width: 120px;
   margin-right:auto;
+  margin-top: 5px;
   margin-inline-start: 19.5px;
 }
 
@@ -128,9 +188,18 @@ img{
 
 //Eventos Asistidos
 
+.h2HistorialEvento{
+  color: rgb(0, 0, 0); 
+  font-weight: bold;
+  margin-inline-start: 11px;
+  margin-top: 40px;
+}
+
 .event_asist{
   border-radius: 50px
 }
+
+
 
 ion-slide {
   height: 100vh;

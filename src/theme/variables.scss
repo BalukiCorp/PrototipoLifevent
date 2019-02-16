@@ -4,7 +4,7 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  //--ion-color-primary: rgb(229%, 36%, 33%);
+  //--ion-color-primary: linear-gradient(rgb(0%, 60%, 100%), rgb(0%, 30%, 70%));
   --ion-color-primary: rgb(229%, 36%, 33%);
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
@@ -84,6 +84,6 @@
   --ion-card-dark-theme: #424242;
 
   /* Red Theme */
-  --ion-status-bar-dark-theme-red:  rgb(229%, 36%, 33%);
+  --ion-status-bar-dark-theme-red: rgb(229%, 36%, 33%);
   --ion-card-dark-theme-red: #ffffff;
 }
