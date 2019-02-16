@@ -13,16 +13,30 @@
 
   <ion-card class="cardHome" *ngFor="let todos of todos" >
     <img  src="{{todos.urlImage}}">
-    <div class="divCardDate">
-      {{todos.date}}
-    </div>
     <div class="divCardHome">
     <ion-card-header>
       <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
       <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
+      <h6>Día: {{todos.date}}</h6>
+      <h6>Hora: {{todos.hour}}</h6>
+      <h6>Ubicación: {{todos.ubication}}</h6>
+      <h6>Costo: ${{todos.value}}</h6>    
     </ion-card-header>
     <ion-card-content>
-      <p class="colortitulo">{{todos.description}}</p>
+        <ion-row no-padding>
+            <ion-col text-right>
+              <ion-button ion-button clear item-start small color="primary" icon-start>
+                  <ion-icon name="heart"></ion-icon>
+                Favorite
+              </ion-button>
+            </ion-col>
+            <ion-col text-right>
+              <ion-button end ion-button clear item-end small color="primary" icon-start>
+                <ion-icon  name='share-alt'></ion-icon>
+                Share
+              </ion-button>
+            </ion-col>
+        </ion-row>  
     </ion-card-content>
     </div>
   </ion-card>
