@@ -10,7 +10,7 @@
 
 
 <ion-content padding>
-<form [formGroup]="formRegister">
+<form [formGroup]="formRegister" (ngSubmit)="submit();">
   <ion-list lines="full">
     <ion-item>
         <ion-icon name="contact"></ion-icon>
@@ -84,7 +84,7 @@
     </ion-item>
     <input id="imageUser" type="hidden" [value]="urlImage | async">
   </ion-list>
-  <ion-button [disabled]="!formRegister.valid" formControlName="photo" shape="round" expand="full" (click)="saveTodo()">
+  <ion-button type="submit" [disabled]="!formRegister.valid" formControlName="photo" shape="round" expand="full" (click)="saveTodo()">
       <ion-icon name="send"></ion-icon>
       Subir evento
     </ion-button>

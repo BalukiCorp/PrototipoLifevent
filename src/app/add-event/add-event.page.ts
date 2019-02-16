@@ -114,5 +114,10 @@ task.snapshotChanges().pipe(finalize(()=>this.urlImage = ref.getDownloadURL())).
 
 }
 
-
+submit() {
+  //this.orderForm["event_name"].reset();
+  this.formRegister.reset()
+  console.log(this.formRegister.value);
+  
+}
 }
