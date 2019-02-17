@@ -54,8 +54,9 @@ export class AddEventPage implements OnInit {
       final_hour: ['', Validators.required],
       description: ['', Validators.required],
       value: ['', Validators.required],
+      photo: ['', Validators.required],
       });
-      this.formRegister.reset()
+    //  this.formRegister.reset()
      }
  
   ngOnInit() {
@@ -89,7 +90,7 @@ export class AddEventPage implements OnInit {
     if (this.todoId) {
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         let textInput = document.querySelector("#imageUser");
-
+        
         loading.dismiss();
       //  this.nav.goBack('home');
       });
@@ -115,8 +116,9 @@ task.snapshotChanges().pipe(finalize(()=>this.urlImage = ref.getDownloadURL())).
 }
 
 submit() {
+  //this.formRegister.reset()
   //this.orderForm["event_name"].reset();
-  this.formRegister.reset()
+  //this.formRegister.reset()
   console.log(this.formRegister.value);
   
 }

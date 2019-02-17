@@ -80,11 +80,11 @@
 
 
     <ion-item color="dark">
-      <ion-input id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" accept=".png, .jpg" (change)="onUpload($event)" [(ngModel)]="todo.urlImage"></ion-input>
+      <ion-input formControlName="photo" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" accept=".png, .jpg" (change)="onUpload($event)" [(ngModel)]="todo.urlImage"></ion-input>
     </ion-item>
     <input id="imageUser" type="hidden" [value]="urlImage | async">
   </ion-list>
-  <ion-button type="submit" [disabled]="!formRegister.valid" formControlName="photo" shape="round" expand="full" (click)="saveTodo()">
+  <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
       <ion-icon name="send"></ion-icon>
       Subir evento
     </ion-button>
