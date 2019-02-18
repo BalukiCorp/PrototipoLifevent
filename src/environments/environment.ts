@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase:{
-    apiKey: "AIzaSyBBECXBEGBARJcjc2a__r13GkRA4R8H6a4",
-    authDomain: "prototipogithub2.firebaseapp.com",
-    databaseURL: "https://prototipogithub2.firebaseio.com",
-    projectId: "prototipogithub2",
-    storageBucket: "prototipogithub2.appspot.com",
-    messagingSenderId: "440066836453"
+    apiKey: "AIzaSyCiVEgIBMY3HmW50dY3-pkMCfAFDy5EKB4",
+    authDomain: "lifevent-41711.firebaseapp.com",
+    databaseURL: "https://lifevent-41711.firebaseio.com",
+    projectId: "lifevent-41711",
+    storageBucket: "lifevent-41711.appspot.com",
+    messagingSenderId: "739448741835"
   }
 };
 
