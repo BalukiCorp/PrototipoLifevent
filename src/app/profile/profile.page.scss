@@ -103,11 +103,12 @@
   padding: 3px 5px;
 }
 .cardNiveles {
+  width: 90%;
   margin: 0 0 0 0px;
   padding: 0px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   border-radius: 7px;
-  background-color: rgb(248, 245, 245);
+  background-color:  rgb(229%, 36%, 33%);
   box-shadow: 1px 8px 11px rgba(131, 131, 131, 0.25), 0 8px 8px rgba(124, 124, 124, 0.22);
 }
 
@@ -131,8 +132,9 @@
 
 
 .colortitulo{
-  color: rgb(2, 2, 2);
+  color: rgb(255, 255, 255);
   text-align: center;
+  font-weight: bold;
 }
 
 
@@ -161,10 +163,9 @@
   border: 4px inset rgb(107, 194, 90);
   background-color:rgb(2, 39, 250);
   border-radius : 20px ;
-  width: 120px;
-  margin-right:auto;
+  width: 130px;
   margin-top: 5px;
-  margin-inline-start: 19.5px;
+  margin-inline-start: 45px;
 }
 
 .img{
@@ -209,4 +210,23 @@ ion-img {
   max-width: 120vw;
   max-height: 100vh;
   overflow: hidden;
+}
+
+
+//Scroll
+
+#outer_wrapper {  
+  overflow: scroll;  
+  width:120%;
+  margin-top: 3rem;
+}
+#outer_wrapper #inner_wrapper {
+  width:6000px; /* If you have more elements, increase the width accordingly */
+}
+#outer_wrapper #inner_wrapper div.box { /* Define the properties of inner block */
+  width: 250px;
+  height:300px;
+  float: left;
+  margin: 0 1px 0 0;
+  
 }
