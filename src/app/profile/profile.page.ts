@@ -9,6 +9,8 @@ import {NavController} from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
+ 
+
   constructor(public navCtrl: NavController) { }
 
   ngOnInit() {

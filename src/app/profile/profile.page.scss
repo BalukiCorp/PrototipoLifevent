@@ -137,6 +137,11 @@
   font-weight: bold;
 }
 
+.colortituloHistorial{
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-weight: bold;
+}
 
 
 .scrolling-wrapper {
@@ -192,7 +197,7 @@
   color: rgb(0, 0, 0); 
   font-weight: bold;
   margin-inline-start: 11px;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .event_asist{
@@ -216,7 +221,7 @@ ion-img {
 //Scroll
 
 #outer_wrapper {  
-  overflow: scroll;  
+  overflow: auto;  
   width:120%;
   margin-top: 3rem;
 }
