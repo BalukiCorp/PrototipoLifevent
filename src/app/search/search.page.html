@@ -1,30 +1,43 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title text-center  color="light">
-      <ion-searchbar color="light"></ion-searchbar>
+      Busqueda
     </ion-title>
   </ion-toolbar>
+  <ion-searchbar color="light"></ion-searchbar>
 </ion-header>
 
 <ion-content padding class="card-background-page" color="dark">
 
-  
+  <div class="divFiltros">
+    <ion-card class="cardfiltroHoy">
+      <h6 class="filtroFecha">Hoy</h6>
+    </ion-card>
+    <ion-card class="cardfiltroSemana">
+      <h6 class="filtroFecha">Mañana</h6>
+    </ion-card>
+    <ion-card class="cardfiltroMes">
+      <h6 class="filtroFecha">Este semana</h6>
+    </ion-card>
+  </div>
+
+
+
+<div class="divPopulares">
   <a>
     <h3 class="titulo" color="white">Populares</h3>
   </a>
-
-  
 
   <ion-slides pager="true">
     <ion-slide class="step-one">
       <ion-card class="welcome-card">
         <img  src="../../assets/img/foto_prueba.jpg"/>
         <ion-card-header>
-          <ion-card-subtitle class="colortitulo">Josue Vargas</ion-card-subtitle>
-          <ion-card-title class="colortitulo">Proyecto X</ion-card-title>
+          <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+          <ion-card-title>Proyecto X</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p class="colortitulo">Now that your app has been created, you'll want</p>
+          <p>Santa Maria</p>
         </ion-card-content>
       </ion-card>
   </ion-slide>
@@ -32,25 +45,30 @@
   
     <ion-slide class="step-one">
       <ion-card class="welcome-card">
-        <img  src="../../assets/img/foto_prueba.jpg"/>
+        <img src="../../assets/img/foto_prueba.jpg"/>
         <ion-card-header>
-          <ion-card-subtitle class="colortitulo">Josue Vargas</ion-card-subtitle>
-          <ion-card-title class="colortitulo">Proyecto X</ion-card-title>
+          <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+          <ion-card-title>Proyecto X</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p class="colortitulo">Now that your app has been created,.</p>
+          <p>Salinas, Ecuador</p>
         </ion-card-content>
       </ion-card>
   </ion-slide>
   </ion-slides>
+</div>
+
 
   <a>
     <h3 class="titulo" color="white">Categorias</h3>
   </a>
 
+
+  
+
   <div cards>
-    <div class="grid-full">
-      <ion-row>
+    <div class="gridfull">
+      <ion-row class="grid">
         
         <ion-col>
           <a routerLink="/cate-party">
@@ -63,92 +81,92 @@
         
         <ion-col>
           <a routerLink="/cate-concert">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/conciertos.jpg"/>
-            <div class="card-title">Conciertos</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/conciertos.jpg"/>
+              <div class="card-title">Conciertos</div>
+            </ion-card>
           </a>
         </ion-col>
         
 
         <ion-col>
           <a routerLink="/cate-food">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/gastronomia.jpg"/>
-            <div class="card-title">Comida</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/gastronomia.jpg"/>
+              <div class="card-title">Comida</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-festivals">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/fiestas.jpg"/>
-            <div class="card-title">Festivales</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/fiestas.jpg"/>
+              <div class="card-title">Festivales</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-culture">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/cultura.jpg"/>
-            <div class="card-title">Cultura</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/cultura.jpg"/>
+              <div class="card-title">Cultura</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-education">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/educacion.jpg"/>
-            <div class="card-title">Educacion</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/educacion.jpg"/>
+              <div class="card-title">Educacion</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-business">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/empresarial.jpg\"/>
-            <div class="card-title">Empresarial</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/empresarial.jpg\"/>
+              <div class="card-title">Empresarial</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-sports">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/deportes.jpg"/>
-            <div class="card-title">Deportes</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/deportes.jpg"/>
+              <div class="card-title">Deportes</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-Arte">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/arte.jpg"/>
-            <div class="card-title">Arte</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/arte.jpg"/>
+              <div class="card-title">Arte</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
           <a routerLink="/cate-technologies">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/tecnologia.jpg"/>
-            <div class="card-title">Tecnologia</div>
-          </ion-card>
+            <ion-card class="card_categorias">
+              <img src="../../assets/img/tecnologia.jpg"/>
+              <div class="card-title">Tecnologia</div>
+            </ion-card>
           </a>
         </ion-col>
 
         <ion-col>
             <a routerLink="/cate-promotions">
-            <ion-card class="card_promociones">
-              <img src="../../assets/img/promociones.jpg"/>
-              <div class="card-title-promociones">Promociones</div>
-            </ion-card>
+              <ion-card class="card_promociones">
+                <img src="../../assets/img/promociones.jpg"/>
+                <div class="card-title-promociones">Promociones</div>
+              </ion-card>
             </a>
           </ion-col>
   
