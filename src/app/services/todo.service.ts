@@ -32,12 +32,12 @@ export class TodoService {
 
   private todosCollection: AngularFirestoreCollection<Todo>;
  
-  private todos: Observable<Todo[]>;
+  private event_register: Observable<Todo[]>;
  
   constructor(db: AngularFirestore, private storage: AngularFireStorage) {
-    this.todosCollection = db.collection<Todo>('todos');
+    this.todosCollection = db.collection<Todo>('event_register');
  
-    this.todos = this.todosCollection.snapshotChanges().pipe(
+    this.event_register = this.todosCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -49,7 +49,7 @@ export class TodoService {
   }
  
   getTodos() {
-    return this.todos;
+    return this.event_register;
   }
  
   getTodo(id) {
