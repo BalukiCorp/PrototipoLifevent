@@ -9,10 +9,6 @@
   }
 
 
-  .divCardDate{
-    margin-left: 10px;
-    
-  }
 
   .cardHome{
     border-radius:20px;
@@ -26,6 +22,7 @@
   .colortitulo{
     color: rgb(0, 0, 0);
     text-align: center;
+    font-size: 25px;
   }
 
   .costo{
@@ -43,4 +40,24 @@
     text-align: right;
     color: black; 
     font-size: 10px;
+  }
+
+  ion-card{
+    width: 310px;
+    height: 590px;
+  }
+
+
+  ion-card > ion-fab{
+    margin-top: 0px;
+  }
+
+  .ionFabHeart{
+    margin-left: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .ionCardHeader{
+    padding-top: 40px;
+    padding-left: 10px;
   }

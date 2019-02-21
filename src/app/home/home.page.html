@@ -9,11 +9,33 @@
 <ion-content padding color="dark">
 
 
-  <a href="" >
+  <a>
   <ion-card class="cardHome" *ngFor="let todos of todos" >
     <img  src="{{todos.urlImage}}">
-    <div class="divCardHome">
-    <ion-card-header>
+
+    <ion-fab class="ionFabHeart" vertical="center" horizontal="center" slot="fixed">
+        <ion-fab-button >
+          <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+          </ion-fab-list>
+          <ion-fab-list side="start">
+            <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
+          </ion-fab-list>
+          <ion-fab-list side="bottom">
+            <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+          </ion-fab-list>
+    </ion-fab>
+    
+    <ion-fab  vertical="center" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <div>
+    <ion-card-header class="ionCardHeader">
       <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
       <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
       <h6>Día: {{todos.date}}</h6>
@@ -22,20 +44,6 @@
       <h6>Costo: ${{todos.value}}</h6>    
     </ion-card-header>
     <ion-card-content>
-        <ion-row no-padding>
-            <ion-col text-right>
-              <ion-button size="default" fill="clear" color="primary">
-                  <ion-icon name="heart"></ion-icon>
-                Favorite
-              </ion-button>
-            </ion-col>
-            <ion-col text-right>
-              <ion-button size="default" fill="clear" color="primary">
-                <ion-icon  name='share-alt'></ion-icon>
-                Share
-              </ion-button>
-            </ion-col>
-        </ion-row>  
     </ion-card-content>
     </div>
   </ion-card>
