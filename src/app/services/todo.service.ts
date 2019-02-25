@@ -22,6 +22,7 @@ export interface Todo {
   final_hour: string;
   value: string;
   photoURL: string;
+  imageRef:string;
 }
  
 @Injectable({

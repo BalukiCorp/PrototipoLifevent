@@ -14,6 +14,12 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import {FirebaseService} from '../app/services/firebase.service';
 
 
 @NgModule({
@@ -23,8 +29,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   AngularFireModule.initializeApp(environment.firebase), 
   AngularFirestoreModule, AngularFireStorageModule],
   providers: [
+    Camera,
+    WebView,
+    File,
+    FirebaseService,
+    ImagePicker,
+    FileTransfer,
     StatusBar,
     SplashScreen,
+    File,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
