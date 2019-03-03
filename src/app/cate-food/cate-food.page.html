@@ -8,5 +8,97 @@
 </ion-header>
 
 <ion-content padding>
-
+  <form [formGroup]="formRegister" (ngSubmit)="submit();">
+    <ion-list lines="full">
+      <ion-item>
+          <ion-icon name="contact"></ion-icon>
+        <ion-input formControlName="event_name" required type="text" placeholder="nombre del evento" [(ngModel)]="todo.event_name"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-icon name="person"></ion-icon>
+        <ion-input formControlName="manager_name" required type="text" placeholder="organizador" [(ngModel)]="todo.manager_name"></ion-input>
+      </ion-item>
+     
+      <ion-item>
+          <ion-icon name="locate" item-start ></ion-icon>
+          <ion-input formControlName="ubication" required type="text" placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
+      </ion-item>
+  
+      <ion-item >
+        <ion-icon name="clipboard" item-start ></ion-icon>
+  
+        <ion-label>Categoría</ion-label>
+        <ion-select formControlName="category" value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="todo.category">
+          <ion-select-option value="PARTY">PARTY</ion-select-option>
+          <ion-select-option value="FESTIVITIES">FESTIVITIES</ion-select-option>
+          <ion-select-option value="SPORTS">SPORTS</ion-select-option>
+          <ion-select-option value="GASTRONOMY">GASTRONOMY</ion-select-option>
+          <ion-select-option value="CULTURE">CULTURE</ion-select-option>
+          <ion-select-option value="CONCERTS">CONCERTS</ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item >
+        <ion-icon name="calendar" item-start ></ion-icon>
+        <ion-label>Fecha de inicio</ion-label>
+        <ion-datetime formControlName="date" [(ngModel)]="todo.date"></ion-datetime>
+      </ion-item>
+  
+      <ion-item >
+        <ion-icon name="calendar" item-start ></ion-icon>
+        <ion-label>Fecha de finalización</ion-label>
+        <ion-datetime formControlName="final_date" [(ngModel)]="todo.final_date"></ion-datetime>
+      </ion-item>
+  
+      <ion-item >
+        <ion-icon name="time" item-start ></ion-icon>
+  
+        <ion-label>Hora de inicio</ion-label>
+        <ion-datetime formControlName="hour" display-format="HH:m a" [(ngModel)]="todo.hour"></ion-datetime>
+      </ion-item>
+  
+      <ion-item >
+        <ion-icon name="time" item-start ></ion-icon>
+  
+        <ion-label>Hora de finalización</ion-label>
+        <ion-datetime formControlName="final_hour" display-format="HH:m a" [(ngModel)]="todo.final_hour"></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+          <ion-icon name="book" item-start ></ion-icon>
+          <ion-input formControlName="description" required type="text" placeholder="Descripción..." [(ngModel)]="todo.description"></ion-input>
+      </ion-item>
+  
+  
+  
+      <ion-item >
+        <ion-icon name="cash" item-start ></ion-icon>
+        <ion-input formControlName="value" type="number" placeholder="Costo: $" value="" [(ngModel)]="todo.value"></ion-input>
+      </ion-item>
+  
+  
+      <ion-item>
+        <ion-input formControlName="urlImage" id="file-input" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
+      </ion-item>
+  
+      <input id="imageUser" type="hidden" [value]="urlImage | async">
+    
+    <!--
+  <div  [(ngModel)]="todo.myphoto">
+      <ion-button  (click)="openImagePicker()"  color="primary">Primary</ion-button>
+    </div>
+    -->
+    <!--
+  <ion-item>
+    <ion-segment formControlName="urlImage" [(ngModel)]="todo.urlImage" (click)="getImage()"   >
+      <ion-segment-button value="urlImage"> SUBIR IMAGEN </ion-segment-button> 
+    </ion-segment> 
+  </ion-item>
+  -->
+    </ion-list>
+    <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
+        <ion-icon name="send"></ion-icon>
+        Subir evento
+      </ion-button>
+    </form>
 </ion-content>

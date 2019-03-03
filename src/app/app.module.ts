@@ -19,20 +19,20 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import {FirebaseService} from '../app/services/firebase.service';
-
+//import {FirebaseService} from '../app/services/firebase.service';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), 
-  AngularFirestoreModule, AngularFireStorageModule],
+  AngularFirestoreModule, AngularFireStorageModule, IonicStorageModule.forRoot(), HttpClientModule],
   providers: [
     Camera,
     WebView,
     File,
-    FirebaseService,
+    //FirebaseService,
     ImagePicker,
     FileTransfer,
     StatusBar,

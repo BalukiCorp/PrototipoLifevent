@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
+import {NavController, NavParams, LoadingController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Todo, TodoService } from '../services/todo.service';
 export class HomePage {
   todos: Todo[];
  
-  constructor(private todoService: TodoService) { }
+  constructor(public navCtrl: NavController, private todoService: TodoService) { }
  
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
@@ -17,4 +18,7 @@ export class HomePage {
     });
   }
  
+add_event(){
+  this.navCtrl.navigateForward(['/tabs/calendar']);
+}
 }
