@@ -40,7 +40,7 @@ export class CateFoodPage implements OnInit {
    final_date: '',
    final_hour: '',
    value: '',
- //  urlImage: '',
+   urlImage: '',
  //  imageRef:'',
  };
 

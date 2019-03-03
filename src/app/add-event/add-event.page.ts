@@ -15,7 +15,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import {FirebaseService} from '../services/firebase.service';
+//import {FirebaseService} from '../services/firebase.service';
 //import {AngularFireStorage} from '@angular/fire/storage';
 
 
@@ -44,15 +44,14 @@ export class AddEventPage implements OnInit {
     final_date: '',
     final_hour: '',
     value: '',
-    photoURL: '',
-    imageRef:'',
+    urlImage:'',
   };
   public orderForm:any;
   formRegister: FormGroup;
   todoId = null;
   ; 
   
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public imagePicker: ImagePicker,     public firebaseService: FirebaseService,
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public imagePicker: ImagePicker,     
         private webView: WebView, private route: ActivatedRoute,  private camera: Camera, private transfer: FileTransfer, private file: File, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController,
  public formBuilder: FormBuilder, private storage: AngularFireStorage) {
 // FORMULARIO DE VALIDACIÓN DE CAMPOS
