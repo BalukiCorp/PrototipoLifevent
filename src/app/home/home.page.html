@@ -7,15 +7,26 @@
 </ion-header>
 
 <ion-content padding color="dark">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/idea">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  
 
   <a>
-  <ion-card class="cardHome" *ngFor="let todos of todos" >
+  <div *ngFor="let todos of todos">
+  <ion-card class="cardHome" *ngIf="todos.final_date >= today ">
     <img  src="{{todos.urlImage}}">
+    <div>
+        <ion-card-header class="ionCardHeader" >
+          
+          <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
+          <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
+          <h6>Empieza: {{todos.date}}</h6>
+          <h6>Termina: {{todos.final_date}}</h6>
+          <h6>Hora: {{todos.final_hour}}</h6>
+          <h6>Costo: ${{todos.value}}</h6>
+          <h6>{{today}}</h6>
+        </ion-card-header>
+        <ion-card-content>
+        </ion-card-content>
+    </div>
 
     <ion-fab class="ionFabHeart" vertical="center" horizontal="center" slot="fixed">
         <ion-fab-button >
@@ -38,19 +49,9 @@
         </ion-fab-button>
     </ion-fab>
 
-    <div>
-    <ion-card-header class="ionCardHeader">
-      <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
-      <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
-      <h6>Día: {{todos.date}}</h6>
-      <h6>Hora: {{todos.hour}}</h6>
-      <h6>Ubicación: {{todos.ubication}}</h6>
-      <h6>Costo: ${{todos.value}}</h6>    
-    </ion-card-header>
-    <ion-card-content>
-    </ion-card-content>
-    </div>
-  </ion-card>
-  </a>
   
+  </ion-card>
+</div>
+  </a>
+
 </ion-content>

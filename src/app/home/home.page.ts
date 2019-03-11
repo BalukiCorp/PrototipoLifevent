@@ -21,4 +21,10 @@ export class HomePage {
 add_event(){
   this.navCtrl.navigateForward(['/tabs/calendar']);
 }
+
+
+today = new Date().toISOString();
+hourToday = new Date().getHours();
+today3 = new Date().toDateString();
+
 }
