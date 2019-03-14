@@ -23,8 +23,9 @@ add_event(){
 }
 
 
-today = new Date().toISOString();
-hourToday = new Date().getHours();
-today3 = new Date().toDateString();
+fecha1 = new Date();
+  //  fecha2='2018-12-01';
+
+f = new Date(this.fecha1).toISOString().split('T')[0];
 
 }
