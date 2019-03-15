@@ -52,6 +52,10 @@ export class TodoService {
     return this.event_register;
   }
  
+  getTodosTechnology(id){
+    return this.event_register;
+  }
+
   getTodo(id) {
     return this.todosCollection.doc<Todo>(id).valueChanges();
   }

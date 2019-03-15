@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'cate-education', loadChildren: './cate-education/cate-education.module#CateEducationPageModule' },
   { path: 'cate-business', loadChildren: './cate-business/cate-business.module#CateBusinessPageModule' },
   { path: 'cate-sports', loadChildren: './cate-sports/cate-sports.module#CateSportsPageModule' },
-  { path: 'cate-arte', loadChildren: './cate-arte/cate-arte.module#CateArtePageModule' },
+  { path: 'cate-arte/:id', loadChildren: './cate-arte/cate-arte.module#CateArtePageModule' },
   { path: 'cate-technologies', loadChildren: './cate-technologies/cate-technologies.module#CateTechnologiesPageModule' },
   { path: 'cate-promotions', loadChildren: './cate-promotions/cate-promotions.module#CatePromotionsPageModule' },
 

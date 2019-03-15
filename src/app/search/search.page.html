@@ -8,7 +8,19 @@
 </ion-header>
 
 <ion-content padding class="card-background-page" color="dark">
+    <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="today">
+      <ion-label>Hoy</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tomorrow week">
+      <ion-label>Mañana</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="this week">
+      <ion-label>Esta semana</ion-label>
+    </ion-segment-button>
+  </ion-segment>
   
+  <!--
   <div class="divFiltros">
     <ion-card class="cardfiltroHoy">
       <h6 class="filtroFecha">Hoy</h6>
@@ -20,7 +32,7 @@
       <h6 class="filtroFecha">Este semana</h6>
     </ion-card>
   </div>
-
+-->
 
 
   <div class="divPopulares">
@@ -144,7 +156,7 @@
         </ion-col>
 
         <ion-col>
-          <a routerLink="/cate-Arte">
+          <a routerLink="/cate-arte">
             <ion-card class="card_categorias">
               <img src="../../assets/img/arte.jpg"/>
               <div class="card-title">Arte</div>

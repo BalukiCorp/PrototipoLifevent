@@ -10,18 +10,20 @@
   
 
   <a>
-  <div *ngFor="let toditos of todos">
-  <ion-card class="cardHome" *ngIf="toditos.final_date >= f ">
-    <img  src="{{toditos.urlImage}}">
+  <div *ngFor="let todos of todos">
+  <ion-card class="cardHome" *ngIf="todos.final_date >= f" [routerLink]="['/', 'cate-arte', 
+    todos.id]">
+    <img  src="{{todos.urlImage}}" *ngIf="todos.urlImage != 'N/A'">
     <div>
         <ion-card-header class="ionCardHeader" >
           
-          <ion-card-subtitle class="colorsubtitulo">{{toditos.manager_name}}</ion-card-subtitle>
-          <ion-card-title class="colortitulo">{{toditos.event_name}}</ion-card-title>
-          <h6>Empieza: {{toditos.date}}</h6>
-          <h6>Termina: {{toditos.final_date}}</h6>
-          <h6>Hora: {{toditos.final_hour}}</h6>
-          <h6>Costo: ${{toditos.value}}</h6>
+          <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
+          <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
+          <h6>Empieza: {{todos.date}}</h6>
+          <h6>Termina: {{todos.final_date}}</h6>
+          <h6>Hora: {{todos.final_hour}}</h6>
+          <h6>Costo: ${{todos.value}}</h6>
+          <h6>{{f}}</h6>
         </ion-card-header>
         <ion-card-content>
         </ion-card-content>
