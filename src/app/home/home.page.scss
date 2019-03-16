@@ -5,7 +5,7 @@
 
   img{
     width: 100%;
-    height: 20rem;
+    height: 50%;
   }
 
 
@@ -43,8 +43,8 @@
   }
 
   ion-card{
-    width: 310px;
-    height: 590px;
+    width: 91%;
+    height: 50%;;
   }
 
 
@@ -52,12 +52,19 @@
     margin-top: 0px;
   }
 
-  .ionFabHeart{
-    margin-left: 30px;
-    margin-bottom: 40px;
+  .ionFabShare{
+    margin-left: 10%;
+    margin-bottom: 66%;
   }
-  
+
+  .ionFabHeart{
+    margin-left: 20%;
+    margin-bottom: 66%;
+  }
+
   .ionCardHeader{
-    padding-top: 40px;
+    padding-top: 30px;
     padding-left: 10px;
   }
+
+
