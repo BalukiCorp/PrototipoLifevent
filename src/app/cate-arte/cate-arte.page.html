@@ -5,7 +5,9 @@
         </ion-buttons>
         <ion-title color="light">Detalle del evento</ion-title>
       </ion-toolbar>
+      
 </ion-header>
+
 
 <ion-content padding>
 
@@ -15,7 +17,7 @@
 
       <div class="styleTitulo">{{content?.event_name}}</div>
       <ion-button class="styleButton">Guardar</ion-button>
-      <div class="stylePromotor">Por {{content.manager_name}}</div>
+  </div>
 
       
     </div>
@@ -35,8 +37,10 @@
         <ion-label text-wrap> {{content.final_date}}
         </ion-label>
    </ion-item>
-  </div>
+  
 
+
+  <div class="stylePromotor">Por {{content.manager_name}}</div>
 
     <!--<ion-card *ngIf="content">
         <ion-card-header text-center>
