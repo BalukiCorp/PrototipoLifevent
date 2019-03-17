@@ -8,14 +8,15 @@
 </ion-header>
 
 <ion-content padding class="card-background-page" color="dark">
+
     <ion-segment (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="today">
+    <ion-segment-button value="today" class="segmentStyle">
       <ion-label>Hoy</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="tomorrow week">
+    <ion-segment-button value="tomorrow week" class="segmentStyle">
       <ion-label>Mañana</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="this week">
+    <ion-segment-button value="this week" class="segmentStyle">
       <ion-label>Esta semana</ion-label>
     </ion-segment-button>
   </ion-segment>
@@ -35,50 +36,154 @@
 -->
 
 
-  <div class="divPopulares">
+<div class="divPopulares">
   <a>
     <h3 class="titulo" color="white">Populares</h3>
   </a>
-
-  <ion-slides pager="true">
-    <ion-slide class="step-one">
-      <ion-card class="welcome-card">
-        <img  src="../../assets/img/foto_prueba.jpg"/>
-        <ion-card-header>
-          <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
-          <ion-card-title>Proyecto X</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>Santa Maria</p>
-        </ion-card-content>
-      </ion-card>
-  </ion-slide>
-
-  
-    <ion-slide class="step-one">
-      <ion-card class="welcome-card">
-        <img src="../../assets/img/foto_prueba.jpg"/>
-        <ion-card-header>
-          <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
-          <ion-card-title>Proyecto X</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>Salinas, Ecuador</p>
-        </ion-card-content>
-      </ion-card>
-  </ion-slide>
-  </ion-slides>
 </div>
 
+<div id="outer_wrapper">
+  <div id="inner_wrapper">
+      <div class="box">
+        <ion-card class="welcome-card">
+          <img  src="../../assets/img/foto_prueba.jpg"/>
+          <ion-card-header>
+            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+            <ion-card-title>Proyecto X</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Santa Maria</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    
+      <div class="box">
+        <ion-card class="welcome-card">
+          <img  src="../../assets/img/foto_prueba.jpg"/>
+          <ion-card-header>
+            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+            <ion-card-title>Proyecto X</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Santa Maria</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div class="box">
+        <ion-card class="welcome-card">
+          <img  src="../../assets/img/foto_prueba.jpg"/>
+          <ion-card-header>
+            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+            <ion-card-title>Proyecto X</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Santa Maria</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+  </div>
+</div>
 
   <a>
-    <h3 class="titulo" color="white">Categorias</h3>
+    <h3 class="tituloCategorias" color="white">Categorias</h3>
   </a>
 
 
-  
+  <ion-grid class="gridCategorias">
+    <ion-row>
+      <ion-col size="6">
+        <a routerLink="/cate-party">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/nuevafiesta.jpg"/>
+            <div class="card-title">Fiestas</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-concert">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/conciertos.jpg"/>
+            <div class="card-title">Conciertos</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-food">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/gastronomia.jpg"/>
+            <div class="card-title">Comida</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-festivals">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/fiestas.jpg"/>
+            <div class="card-title">Festivales</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-culture">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/cultura.jpg"/>
+            <div class="card-title">Cultura</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-education">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/educacion.jpg"/>
+            <div class="card-title">Educacion</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-business">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/empresarial.jpg\"/>
+            <div class="card-title">Empresarial</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-sports">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/deportes.jpg"/>
+            <div class="card-title">Deportes</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-arte">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/arte.jpg"/>
+            <div class="card-title">Arte</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col size="6">
+        <a routerLink="/cate-technologies">
+          <ion-card class="card_categorias">
+            <img src="../../assets/img/tecnologia.jpg"/>
+            <div class="card-title">Tecnologia</div>
+          </ion-card>
+        </a>
+      </ion-col>
+      <ion-col>
+          <a routerLink="/cate-promotions">
+            <ion-card class="card_promociones">
+              <img src="../../assets/img/promociones.jpg"/>
+              <div class="card-title-promociones">Promociones</div>
+            </ion-card>
+          </a>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <div cards>
+  
+<!--<div cards>
     <div class="gridfull">
       <ion-row class="grid">
         
@@ -185,13 +290,9 @@
 
       </ion-row>
     </div>
-  </div>
+  </div>-->
+  
 
-
-
-
-
-    
   <!--Prueba de Card Dinamica-->
   
 
