@@ -1,24 +1,23 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title text-center  color="light">
-      Busqueda
-    </ion-title>
+    
+    <ion-searchbar color="light"></ion-searchbar>
   </ion-toolbar>
-  <ion-searchbar color="light"></ion-searchbar>
 </ion-header>
 
 <ion-content padding class="card-background-page" color="dark">
 
     <ion-segment (ionChange)="segmentChanged($event)">
     <ion-segment-button value="today" class="segmentStyle">
-      <ion-label>Hoy</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="tomorrow week" class="segmentStyle">
-      <ion-label>Mañana</ion-label>
+      <ion-label class="labelStyle">Hoy</ion-label>
     </ion-segment-button>
     <ion-segment-button value="this week" class="segmentStyle">
-      <ion-label>Esta semana</ion-label>
+      <ion-label class="labelStyle">Esta semana</ion-label>
     </ion-segment-button>
+    <ion-segment-button value="tomorrow week" class="segmentStyle">
+      <ion-label class="labelStyle">Mañana</ion-label>
+    </ion-segment-button>
+    
   </ion-segment>
   
   <!--

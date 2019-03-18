@@ -1,6 +1,5 @@
-  ion-title{
-  font-weight: bold;
-  
+  .title{
+    font-family: Georgia, Serif;
   }
 
   img{
@@ -13,6 +12,8 @@
   .cardHome{
     border-radius:20px;
     box-shadow: 1px 8px 11px rgba(131, 131, 131, 0.25), 0 8px 8px rgba(124, 124, 124, 0.22);
+    width: 94%;
+    height: 100%;
   }
 
   .colorsubtitulo{
@@ -42,12 +43,6 @@
     font-size: 10px;
   }
 
-  ion-card{
-    width: 91%;
-    height: 50%;;
-  }
-
-
   ion-card > ion-fab{
     margin-top: 0px;
   }
@@ -66,5 +61,6 @@
     padding-top: 30px;
     padding-left: 10px;
   }
+
 
 

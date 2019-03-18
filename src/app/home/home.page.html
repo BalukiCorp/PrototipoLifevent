@@ -8,8 +8,7 @@
 
 <ion-content padding color="dark">
   
-
-  <a>
+  
   <div *ngFor="let todos of todos">
   <ion-card class="cardHome" *ngIf="todos.final_date >= f" [routerLink]="['/', 'cate-arte', 
     todos.id]">
@@ -51,7 +50,6 @@
   
   </ion-card>
 </div>
-</a>
 
 
 <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
