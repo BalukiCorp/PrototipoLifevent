@@ -32,7 +32,8 @@
           <div class="row login_box">
               <div class="col-md-12 col-xs-12" align="center">
                     <div class="line"><h3>12 : 30 AM</h3></div>
-                    <ion-avatar class="outter"><img src="../../assets/img/IMG-20160313-WA005.jpg" class="image-circle"/></ion-avatar> 
+                    <ion-avatar class="outter"><img src="{{urlImage}}" class="image-circle"/></ion-avatar> 
+                      <ion-input class="SubirFoto" type="file" accept=".png, .jpg" (change)="getImage($event)"></ion-input>
                     <h1>Josue Vargas</h1>  
                     <span>ECUADOR</span>
               </div>
