@@ -15,6 +15,12 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { load } from '@angular/core/src/render3';
+
+
+declare var google;
+
 
 @Component({
   selector: 'app-cate-food',
@@ -22,6 +28,9 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
   styleUrls: ['./cate-food.page.scss'],
 })
 export class CateFoodPage implements OnInit {
+
+  mapRef = null;
+
   public textInput = document.querySelector("#imageUser");
   urlImage: Observable<string>;
   myphoto:any;
@@ -47,9 +56,12 @@ export class CateFoodPage implements OnInit {
  public orderForm:any;
  formRegister: FormGroup;
  todoId = null;
-  constructor(private actionSheetController: ActionSheetController, public navCtrl: NavController, public toastCtrl: ToastController, public imagePicker: ImagePicker,    
+  constructor(
+    private actionSheetController: ActionSheetController, public navCtrl: NavController, public toastCtrl: ToastController, public imagePicker: ImagePicker,    
     private webView: WebView, private route: ActivatedRoute,  private camera: Camera, private transfer: FileTransfer, private file: File, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController,
-public formBuilder: FormBuilder, private storage: AngularFireStorage) {
+    public formBuilder: FormBuilder, private storage: AngularFireStorage, 
+    private geolocation: Geolocation,
+    private loadingCtrl: LoadingController) {
   this.formRegister = this.formBuilder.group({
     event_name: ['', Validators.required],
   manager_name: ['', Validators.required],
@@ -66,11 +78,56 @@ public formBuilder: FormBuilder, private storage: AngularFireStorage) {
  }
 
   ngOnInit() {
+
+    this.loadMap();
+
     this.todoId = this.route.snapshot.params['id'];
     if (this.todoId)  {
       this.loadTodo();
     }
+
+    
   }
+
+  //Agregar Google Maps -------------------------------------------------
+
+  async loadMap() {
+    const loading = await this.loadingCtrl.create();
+    loading.present();
+    const myLatLng = await this.getLocation();
+    const mapEle: HTMLElement = document.getElementById('map');
+    this.mapRef = new google.maps.Map(mapEle, {
+      center: myLatLng,
+      zoom: 12
+    });
+    google.maps.event
+    .addListenerOnce(this.mapRef, 'idle', () => {
+      loading.dismiss();
+      this.addMarket(myLatLng.lat, myLatLng.lng);
+    });
+  }
+
+
+  private addMarket(lat: number, lng: number){
+    const marker = new google.maps.Marker({
+      position: {
+        lat: lat,
+        lng: lng
+      },
+      map: this.mapRef,
+      tittle: 'Hello World!'
+    });
+  }
+
+  private async getLocation(){
+    const rta = await this.geolocation.getCurrentPosition();
+    return {
+      lat: rta.coords.latitude,
+      lng: rta.coords.longitude
+    };
+  }
+
+//---------------------------------------------------------
 
 
   uploadPercent: Observable<number>;

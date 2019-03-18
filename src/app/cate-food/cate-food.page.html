@@ -76,13 +76,13 @@
         <ion-input formControlName="value" type="number" placeholder="Costo: $" value="" [(ngModel)]="todo.value"></ion-input>
       </ion-item>
   
-  <div class="fileUpload">
+  
       <ion-item>
-        <ion-input accept="image/*" formControlName="urlImage" id="file-input" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
+        <ion-input formControlName="urlImage" id="file-input" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
       </ion-item>
   
       <input id="imageUser" type="hidden" [value]="urlImage | async">
-    </div>
+    
     <!--
   <div  [(ngModel)]="todo.myphoto">
       <ion-button  (click)="openImagePicker()"  color="primary">Primary</ion-button>
@@ -96,9 +96,14 @@
   </ion-item>
   -->
     </ion-list>
-    <ion-button  type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
+    <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
         <ion-icon name="send"></ion-icon>
         Subir evento
       </ion-button>
     </form>
+
+
+    <div id="map"></div>
+
+
 </ion-content>

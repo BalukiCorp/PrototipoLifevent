@@ -19,6 +19,7 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
 //import {FirebaseService} from '../app/services/firebase.service';
 //import {IonicStorageModule} from '@ionic/storage';
 
@@ -38,6 +39,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
     StatusBar,
     SplashScreen,
     File,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
