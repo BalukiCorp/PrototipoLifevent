@@ -90,194 +90,16 @@
 
 
   <ion-grid class="gridCategorias">
-    <ion-row>
-      <ion-col size="6">
-        <a routerLink="/cate-party">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/nuevafiesta.jpg"/>
-            <div class="card-title">Fiestas</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-concert">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/conciertos.jpg"/>
-            <div class="card-title">Conciertos</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-food">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/gastronomia.jpg"/>
-            <div class="card-title">Comida</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-festivals">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/fiestas.jpg"/>
-            <div class="card-title">Festivales</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-culture">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/cultura.jpg"/>
-            <div class="card-title">Cultura</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-education">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/educacion.jpg"/>
-            <div class="card-title">Educacion</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-business">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/empresarial.jpg\"/>
-            <div class="card-title">Empresarial</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-sports">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/deportes.jpg"/>
-            <div class="card-title">Deportes</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-arte">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/arte.jpg"/>
-            <div class="card-title">Arte</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col size="6">
-        <a routerLink="/cate-technologies">
-          <ion-card class="card_categorias">
-            <img src="../../assets/img/tecnologia.jpg"/>
-            <div class="card-title">Tecnologia</div>
-          </ion-card>
-        </a>
-      </ion-col>
-      <ion-col>
-          <a routerLink="/cate-promotions">
-            <ion-card class="card_promociones">
-              <img src="../../assets/img/promociones.jpg"/>
-              <div class="card-title-promociones">Promociones</div>
-            </ion-card>
-          </a>
-        </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  
-<!--<div cards>
-    <div class="gridfull">
-      <ion-row class="grid">
-        
-        <ion-col>
-          <a routerLink="/cate-party">
+      <ion-row>
+        <ion-col size="6" *ngFor="let categoria of categorias">
+            <a [routerLink]="categoria.navegation">
             <ion-card class="card_categorias">
-              <img src="../../assets/img/fiestas.jpg"/>
-              <div class="card-title">Fiestas</div>
+              <ion-img class="styleImages" [src]="categoria.imagen"></ion-img>
+              <div class="card-title">{{categoria.nombre}}</div>
             </ion-card>
           </a>
         </ion-col>
         
-        <ion-col>
-          <a routerLink="/cate-concert">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/conciertos.jpg"/>
-              <div class="card-title">Conciertos</div>
-            </ion-card>
-          </a>
-        </ion-col>
-        
-
-        <ion-col>
-          <a routerLink="/cate-food">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/gastronomia.jpg"/>
-              <div class="card-title">Comida</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-festivals">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/fiestas.jpg"/>
-              <div class="card-title">Festivales</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-culture">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/cultura.jpg"/>
-              <div class="card-title">Cultura</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-education">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/educacion.jpg"/>
-              <div class="card-title">Educacion</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-business">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/empresarial.jpg\"/>
-              <div class="card-title">Empresarial</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-sports">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/deportes.jpg"/>
-              <div class="card-title">Deportes</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-arte">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/arte.jpg"/>
-              <div class="card-title">Arte</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
-        <ion-col>
-          <a routerLink="/cate-technologies">
-            <ion-card class="card_categorias">
-              <img src="../../assets/img/tecnologia.jpg"/>
-              <div class="card-title">Tecnologia</div>
-            </ion-card>
-          </a>
-        </ion-col>
-
         <ion-col>
             <a routerLink="/cate-promotions">
               <ion-card class="card_promociones">
@@ -285,16 +107,9 @@
                 <div class="card-title-promociones">Promociones</div>
               </ion-card>
             </a>
-          </ion-col>
-  
-
+        </ion-col>
       </ion-row>
-    </div>
-  </div>-->
-  
-
-  <!--Prueba de Card Dinamica-->
-  
+  </ion-grid>
 
 
 </ion-content>
