@@ -4,6 +4,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {NologinGuard} from "./guards/nologin.guard";
 
 const routes: Routes = [
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [AuthGuard]},
   { path: 'search', loadChildren: './search/search.module#SearchPageModule', canActivate : [AuthGuard]},
@@ -20,10 +21,8 @@ const routes: Routes = [
   { path: 'cate-arte/:id', loadChildren: './cate-arte/cate-arte.module#CateArtePageModule' },
   { path: 'cate-technologies', loadChildren: './cate-technologies/cate-technologies.module#CateTechnologiesPageModule' },
   { path: 'cate-promotions', loadChildren: './cate-promotions/cate-promotions.module#CatePromotionsPageModule' },
-  { path: 'login', loadChildren: './user/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
+  { path: 'login', loadChildren: './user/login/login.module#LoginPageModule', canActivate : [NologinGuard] },  { path: 'register', loadChildren: './user/register/register.module#RegisterPageModule' },
 
-
-//{path: ''}
 ];
 
 @NgModule({

@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -32,8 +32,8 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
   declarations: [AppComponent],
   entryComponents: [],
   imports: [HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-  AngularFireModule.initializeApp(environment.firebase), 
-  AngularFirestoreModule, AngularFireStorageModule, HttpClientModule,AngularFireAuthModule],
+  AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule,
+  AngularFirestoreModule, AngularFireStorageModule, HttpClientModule, AngularFireAuthModule],
   providers: [
     Camera,
     WebView,
