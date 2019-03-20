@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
+import {TodoService} from "../services/todo.service"
 
 @Component({
   selector: 'app-settings',
@@ -8,7 +9,7 @@ import {NavController} from '@ionic/angular';
 })
 export class SettingsPage implements OnInit {
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController,public authservice : TodoService) { }
 
 
   
@@ -18,4 +19,9 @@ export class SettingsPage implements OnInit {
   backClicked() {
     this.navCtrl.pop();
   }
+
+  Onlogout(){
+    this.authservice.logout();
+  }
+
 }

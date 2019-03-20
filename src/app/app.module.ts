@@ -7,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {AngularFireModule} from 'angularfire2';
 import {environment} from '../environments/environment'; 
-import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFirestoreModule, FirestoreSettingsToken} from 'angularfire2/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
@@ -20,6 +20,11 @@ import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+
+import {AngularFireAuthModule} from "@angular/fire/auth";
+
+
+
 //import {FirebaseService} from '../app/services/firebase.service';
 //import {IonicStorageModule} from '@ionic/storage';
 
@@ -28,7 +33,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
   entryComponents: [],
   imports: [HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), 
-  AngularFirestoreModule, AngularFireStorageModule, HttpClientModule],
+  AngularFirestoreModule, AngularFireStorageModule, HttpClientModule,AngularFireAuthModule],
   providers: [
     Camera,
     WebView,
@@ -40,7 +45,8 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
     SplashScreen,
     File,
     Geolocation,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: FirestoreSettingsToken, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })

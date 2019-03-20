@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
+import {AuthGuard} from "./guards/auth.guard";
+import {NologinGuard} from "./guards/nologin.guard";
 
 const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [AuthGuard]},
+  { path: 'search', loadChildren: './search/search.module#SearchPageModule', canActivate : [AuthGuard]},
   { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'cate-party', loadChildren: './cate-party/cate-party.module#CatePartyPageModule' },
@@ -16,6 +20,8 @@ const routes: Routes = [
   { path: 'cate-arte/:id', loadChildren: './cate-arte/cate-arte.module#CateArtePageModule' },
   { path: 'cate-technologies', loadChildren: './cate-technologies/cate-technologies.module#CateTechnologiesPageModule' },
   { path: 'cate-promotions', loadChildren: './cate-promotions/cate-promotions.module#CatePromotionsPageModule' },
+  { path: 'login', loadChildren: './user/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
+
 
 //{path: ''}
 ];

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Time } from '@angular/common';
 import { IonDatetime } from '@ionic/angular';
 import { DatetimeOptions } from '@ionic/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+
+import {AngularFireAuth} from "@angular/fire/auth"
+import { promise } from 'protractor';
+import {Router} from "@angular/router"
+import { auth } from 'firebase';
 
 
 export interface Todo {
@@ -28,13 +33,16 @@ export interface Todo {
   providedIn: 'root'
 })
 export class TodoService {
+
+
+
   uploadPercent: Observable<number>;
 
   private todosCollection: AngularFirestoreCollection<Todo>;
  
   private event_register: Observable<Todo[]>;
  
-  constructor(db: AngularFirestore, private storage: AngularFireStorage) {
+  constructor(private router : Router ,private AFauth : AngularFireAuth ,private db: AngularFirestore, private storage: AngularFireStorage) {
     this.todosCollection = db.collection<Todo>('event_register');
  
     this.event_register = this.todosCollection.snapshotChanges().pipe(
@@ -46,6 +54,26 @@ export class TodoService {
         });
       })
     );
+  }
+
+  getImageProfile(){
+    return this.db.collection('imagenPerfil').snapshotChanges();
+  }
+
+  login(email:string, password:string){
+
+    return new Promise((resolve, rejected) => {
+      this.AFauth.auth.signInWithEmailAndPassword(email, password).then(user => {
+        resolve(user);
+      }).catch(err => rejected(err));
+    })
+  }
+
+
+  logout(){
+    this.AFauth.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    })
   }
  
   getTodos() {

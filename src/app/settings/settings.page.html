@@ -1,9 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
       <ion-buttons slot="start">
-        <ion-button (click)="backClicked()">
-        <ion-icon  name="arrow-back" color="light"></ion-icon>
-        </ion-button>
+          <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
     <ion-title color="light">Settings</ion-title>
   </ion-toolbar>
@@ -15,23 +13,23 @@
   <ion-list>
     <ion-item>
       <ion-label>Guardar Busqueda</ion-label>
-      <ion-toggle [(ngModel)]="pepperoni"></ion-toggle>
+      <ion-toggle></ion-toggle>
     </ion-item>
   
     <ion-item>
       <ion-label>Modo Nocturno</ion-label>
-      <ion-toggle [(ngModel)]="sausage"></ion-toggle>
+      <ion-toggle></ion-toggle>
     </ion-item>
   
     <ion-item>
       <ion-label>Recordar Eventos</ion-label>
-      <ion-toggle [(ngModel)]="mushrooms"></ion-toggle>
+      <ion-toggle></ion-toggle>
     </ion-item>
   </ion-list>
 
 
   
-  <ion-button class="StyleButtonClose">
+  <ion-button class="StyleButtonClose" expand="block" (click)="Onlogout()">
     <ion-icon slot="end" name="log-out"></ion-icon>
       Cerrar Sesion
   </ion-button>

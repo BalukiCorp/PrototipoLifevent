@@ -83,18 +83,6 @@
   
       <input id="imageUser" type="hidden" [value]="urlImage | async">
     
-    <!--
-  <div  [(ngModel)]="todo.myphoto">
-      <ion-button  (click)="openImagePicker()"  color="primary">Primary</ion-button>
-    </div>
-    -->
-    <!--
-  <ion-item>
-    <ion-segment formControlName="urlImage" [(ngModel)]="todo.urlImage" (click)="getImage()"   >
-      <ion-segment-button value="urlImage"> SUBIR IMAGEN </ion-segment-button> 
-    </ion-segment> 
-  </ion-item>
-  -->
     </ion-list>
     <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
         <ion-icon name="send"></ion-icon>
