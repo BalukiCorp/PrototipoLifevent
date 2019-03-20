@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TabsPage } from './tabs.page';
+import {AuthGuard} from "../guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -12,19 +13,19 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: '../home/home.module#HomePageModule'
+        loadChildren: '../home/home.module#HomePageModule',canActivate : [AuthGuard]
       },
       {
         path: 'search',
-        loadChildren: '../search/search.module#SearchPageModule'
+        loadChildren: '../search/search.module#SearchPageModule',canActivate : [AuthGuard]
       },
       {
         path: 'profile',
-        loadChildren: '../profile/profile.module#ProfilePageModule'
+        loadChildren: '../profile/profile.module#ProfilePageModule',canActivate : [AuthGuard]
       },
       {
         path: 'ranking',
-        loadChildren: '../ranking/ranking.module#RankingPageModule'
+        loadChildren: '../ranking/ranking.module#RankingPageModule',canActivate : [AuthGuard]
       },
       {
         path: 'add-event',

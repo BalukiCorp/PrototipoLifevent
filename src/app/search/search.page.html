@@ -92,15 +92,15 @@
       <ion-row>
         <ion-col size="6" *ngFor="let categoria of categorias">
             <a [routerLink]="categoria.navegation">
-            <ion-card class="card_categorias">
-              <ion-img class="styleImages" [src]="categoria.imagen"></ion-img>
-              <div class="card-title">{{categoria.nombre}}</div>
-            </ion-card>
-          </a>
+              <ion-card class="card_categorias">
+                <ion-img class="styleImages" [src]="categoria.imagen"></ion-img>
+                <div class="card-title">{{categoria.nombre}}</div>
+              </ion-card>
+            </a>
         </ion-col>
         
         <ion-col>
-            <a routerLink="/cate-promotions">
+            <a routerLink="../category/cate-promotions">
               <ion-card class="card_promociones">
                 <img src="../../assets/img/promociones.jpg"/>
                 <div class="card-title-promociones">Promociones</div>

@@ -26,7 +26,7 @@ export class SearchPage  {
       nombre: 'Conciertos',
     },
     {
-      navegation: '/cate-food',
+      navegation: '/cate-foods',
       imagen: '../../assets/img/gastronomia.jpg',
       nombre: 'Comida',
     },
@@ -36,7 +36,7 @@ export class SearchPage  {
       nombre: 'Festivales',
     },
     {
-      navegation: '/cate-culture',
+      navegation: '/cate-cultura',
       imagen: '../../assets/img/cultura.jpg',
       nombre: 'Cultura',
     },
