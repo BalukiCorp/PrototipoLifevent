@@ -78,7 +78,7 @@
   
   
       <ion-item>
-        <ion-input formControlName="urlImage" id="file-input" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
+        <ion-input accept="img/*" formControlName="urlImage" id="file-input" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
       </ion-item>
   
       <input id="imageUser" type="hidden" [value]="urlImage | async">

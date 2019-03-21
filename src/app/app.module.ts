@@ -20,7 +20,9 @@ import { File } from '@ionic-native/file/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
-
+import { LIBRARIES } from 'google-maps';
+import { AgmDirectionModule } from 'agm-direction'; 
+import {AgmCoreModule} from '@agm/core';
 import {AngularFireAuthModule} from "@angular/fire/auth";
 
 
@@ -31,7 +33,8 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [AgmDirectionModule, AgmCoreModule.forRoot({apiKey: "AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I",
+  libraries: ["places"]}), HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule,
   AngularFirestoreModule, AngularFireStorageModule, HttpClientModule, AngularFireAuthModule],
   providers: [
