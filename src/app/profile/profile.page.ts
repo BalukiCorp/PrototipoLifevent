@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {TodoService} from "../services/todo.service";
 import { AngularFireStorage} from "@angular/fire/storage";
-
-
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 interface image {
   id: string;
@@ -18,8 +18,9 @@ interface image {
 export class ProfilePage implements OnInit {
 
   public imageProfile :any = [];
+  myphoto:any;
 
-  constructor(private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { }
+  constructor(private webView: WebView,private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { }
 
   ngOnInit() {
     this.chatservice.getImageProfile().subscribe( images => {
@@ -44,6 +45,21 @@ export class ProfilePage implements OnInit {
     const filePath = 'upload/imagen';
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath,file);
+
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+     // mediaType: this.camera.MediaType.PICTURE,
+  
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum:true
+      
+    }
+    this.camera.getPicture(options).then((imageData) => {
+        this.myphoto = this.webView.convertFileSrc(imageData);
+    }, (err) => {
+    });
   }
 
   calendarButtonClicked() {

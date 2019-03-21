@@ -9,6 +9,18 @@
     <img class="icon" src="../../../assets/icon/iconoLogin.jpg" alt="">
     <br>
     <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" formControlName="apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" formControlName="usuario"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label position="floating"> Correo Electronico</ion-label>
       <ion-input type="text" formControlName="email"></ion-input>
     </ion-item>
@@ -33,11 +45,12 @@
         </div>
       </ng-container>
     </div>
-
+    <br>
     <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid"expand="block">Registrarse</ion-button>
     <label class="jasmine-errored"> {{errorMessage}}</label>
     <label>{{successMessage}}</label>
   </form>
-  <p>Ya tienes cuenta? <a (click)="goLoginPage()">Inicia Sesion</a></p>
+  <p text-center>Ya tienes cuenta? <a (click)="goLoginPage()">Inicia Sesion</a></p>
+
 </ion-content>
 

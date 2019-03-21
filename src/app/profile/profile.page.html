@@ -33,7 +33,7 @@
               <div class="col-md-12 col-xs-12" align="center">
                     <div class="line"><h3>12 : 30 AM</h3></div>
                     <ion-avatar *ngFor="let image of imageProfile" class="outter"><img src="{{image.img}}" class="image-circle"/></ion-avatar>
-                    <ion-input  type="file" accept=".png, .jpg" (change)="onUpload($event)"></ion-input> 
+                    <ion-input type="file" accept="img/*" (change)="onUpload($event)"></ion-input> 
                     <h1>Josue Vargas</h1>  
                     <span>ECUADOR</span>
               </div>
