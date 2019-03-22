@@ -10,19 +10,19 @@
     <br>
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" formControlName="nombre"></ion-input>
+      <ion-input type="text" formControlName="name" [(ngModel)]="user.name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" formControlName="apellido"></ion-input>
+      <ion-input type="text" formControlName="lastName" [(ngModel)]="user.lastName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" formControlName="usuario"></ion-input>
+      <ion-input type="text" formControlName="username" [(ngModel)]="user.username"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating"> Correo Electronico</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
+      <ion-input type="text" formControlName="email" [(ngModel)]="user.email"></ion-input>
     </ion-item>
     <!-- COLOCAR ESTILO AL DIV -->
     <div>
@@ -35,7 +35,7 @@
     </div>
     <ion-item>
       <ion-label position="floating"> Contraseña</ion-label>
-      <ion-input type="password" formControlName="password" class="form-control" required></ion-input>
+      <ion-input type="password" formControlName="password" [(ngModel)]="user.password" class="form-control" required></ion-input>
     </ion-item>
     <div>
       <ng-container *ngFor="let validation of validation_messages.password">
@@ -46,7 +46,7 @@
       </ng-container>
     </div>
     <br>
-    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid"expand="block">Registrarse</ion-button>
+    <ion-button (click)="saveTodo()" class="submit-btn" type="submit" [disabled]="!validations_form.valid"expand="block">Registrarse</ion-button>
     <label class="jasmine-errored"> {{errorMessage}}</label>
     <label>{{successMessage}}</label>
   </form>

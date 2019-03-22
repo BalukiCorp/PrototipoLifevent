@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import {finalize} from 'rxjs/operators';
 import {Todo, TodoService} from './../services/todo.service';
 import {pipe} from 'rxjs';
@@ -17,7 +17,16 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { load } from '@angular/core/src/render3';
-
+import {
+  GoogleMaps,
+  GoogleMap,
+  Geocoder,
+  BaseArrayClass,
+  GeocoderResult,
+  Marker
+} from '@ionic-native/google-maps';
+import {} from 'googlemaps';
+import { Platform } from '@ionic/angular';
 
 declare var google;
 
@@ -28,7 +37,10 @@ declare var google;
   styleUrls: ['./cate-food.page.scss'],
 })
 export class CateFoodPage implements OnInit {
-
+  map1: GoogleMap;
+  map2: GoogleMap;
+  loading: any;
+  @ViewChild('search_address') search_address: ElementRef;
   mapRef = null;
 
   public textInput = document.querySelector("#imageUser");
@@ -77,9 +89,10 @@ export class CateFoodPage implements OnInit {
   });
  }
 
-  ngOnInit() {
+ async ngOnInit() {
 
     this.loadMap();
+    await this.loadMap1();
 
     this.todoId = this.route.snapshot.params['id'];
     if (this.todoId)  {
@@ -88,8 +101,47 @@ export class CateFoodPage implements OnInit {
 
     
   }
+//----------------carga de mapa geocoder------------
+  loadMap1() {
+    console.log(this.search_address);
+    (this.search_address as any).value = '1600 Amphitheatre Parkway, Mountain View, CA 94043, United States';
+    this.map1 = GoogleMaps.create('map_canvas1');
+  }
 
-  //Agregar Google Maps -------------------------------------------------
+//---------------EVENTO DE BÚSQUEDA EN EL MAPA-----------  
+  async onButton1_click(event) {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    await this.loading.present();
+    this.map1.clear();
+
+    // Address -> latitude,longitude
+    Geocoder.geocode({
+      "address": (this.search_address as any).value
+    })
+    .then((results: GeocoderResult[]) => {
+      //console.log(results);
+      this.loading.dismiss();
+
+      if (results.length > 0) {
+        let marker: Marker = this.map1.addMarkerSync({
+          'position': results[0].position,
+          'title':  JSON.stringify(results[0].position)
+        });
+        this.map1.animateCamera({
+          'target': marker.getPosition(),
+          'zoom': 17
+        });
+
+        marker.showInfoWindow();
+      } else {
+        alert("Not found");
+      }
+    });
+  }
+
+  //Agregar Google Maps -------------------------------------
 
   async loadMap() {
     const loading = await this.loadingCtrl.create();
