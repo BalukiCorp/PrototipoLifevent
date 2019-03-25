@@ -8,5 +8,54 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="todo">
+    <div class="divEncabezado">
+      <div>
+        <img src="{{todo.urlImage}}" class="styleimg">
+        <br>
+        <br>
+        <div><h5 class="styleTitulo"><b><ion-input required type="text" [(ngModel)]="todo.event_name"></ion-input>
+              </b></h5>
+        <ion-button class="styleButton">Guardar</ion-button></div>
+      </div>
+    </div>
+  </div>
+
+
+  <ion-item lines="none" class="styleCategoria">
+    <ion-icon name="clipboard" slot="start"></ion-icon>
+    <ion-label text-left> <ion-input required type="text" [(ngModel)]="todo.category"></ion-input>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none" class="styleUbication">
+    <ion-icon name="pin" slot="start"></ion-icon>
+    <ion-label text-left>{{todo.ubication}}
+      <!--  <div id="map_canvas1">
+          
+        </div>
+        -->
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none" class="styleFinalDate">
+    <ion-icon name="calendar" slot="start"></ion-icon>
+    <ion-label><ion-datetime [(ngModel)]="todo.final_date"></ion-datetime>
+
+    </ion-label>
+  </ion-item>
+  <br>
+  <br>
+  <ion-item lines="none" class="styleDesciption">
+    <ion-icon name="book" slot="start"></ion-icon>
+    <ion-label> <ion-input required type="text" [(ngModel)]="todo.description"></ion-input>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <div class="stylePromotor">Organizado por: <ion-input required type="text" [(ngModel)]="todo.manager_name"></ion-input></div>
+  </ion-item>
+ 
+  <ion-button type="submit" shape="round" expand="full" (click)="saveTodo()">
+    <ion-icon name="send"></ion-icon>
+    Actualizar evento
+  </ion-button>
 
 </ion-content>

@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'cate-sports', loadChildren: './category/cate-sports/cate-sports.module#CateSportsPageModule' },
   { path: 'cate-promotions', loadChildren: './category/cate-promotions/cate-promotions.module#CatePromotionsPageModule' },
   { path: 'cate-party', loadChildren: './category/cate-party/cate-party.module#CatePartyPageModule' },
-  { path: 'cate-festivals', loadChildren: './category/cate-festivals/cate-festivals.module#CateFestivalsPageModule' },
+  { path: 'cate-festivals/:id', loadChildren: './category/cate-festivals/cate-festivals.module#CateFestivalsPageModule' },
   { path: 'cate-concert', loadChildren: './category/cate-concert/cate-concert.module#CateConcertPageModule' },
   { path: 'cate-education', loadChildren: './category/cate-education/cate-education.module#CateEducationPageModule' },
   { path: 'cate-foods', loadChildren: './category/cate-foods/cate-foods.module#CateFoodsPageModule' },

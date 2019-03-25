@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
-import {NavController, NavParams, LoadingController} from '@ionic/angular';
+import {NavController, NavParams, LoadingController, AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,8 @@ import {NavController, NavParams, LoadingController} from '@ionic/angular';
 export class HomePage {
   todos: Todo[];
  
-  constructor(public navCtrl: NavController, private todoService: TodoService) { }
+  constructor(public alertController: AlertController,
+     public navCtrl: NavController, private todoService: TodoService) { }
 
   //Refrescar la pagina
   doRefresh(event) {
@@ -37,5 +38,66 @@ fecha1 = new Date();
   //  fecha2='2018-12-01';
 
 f = new Date(this.fecha1).toISOString().split('T')[0];
+
+
+/*removEvent(item) {
+  // if(this.todoService)
+   this.todoService.removeTodo(item.id);
+ }
+*/
+ async removEvent(item) {
+  const alert = await this.alertController.create({
+    header: '¿Deseas eliminar el evento?',
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Si',
+        handler: () => {
+          console.log('Confirm Okay');
+          this.todoService.removeTodo(item.id);
+
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
+ 
+async editEvent(item) {
+  const alert = await this.alertController.create({
+    header: '¿Deseas editar el evento?',
+    buttons: [
+      {
+        text: 'No',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Si',
+        handler: () => {
+          console.log('Confirm Okay');
+          this.navCtrl.navigateForward(['cate-arte/:id']);
+
+
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
+
+
+
+
 
 }
