@@ -9,19 +9,19 @@
 <ion-content  color="dark">
   
   
-  <div *ngFor="let todos of todos">
-  <ion-card class="cardHome" *ngIf="todos.final_date >= f" [routerLink]="['/', 'cate-arte', 
-    todos.id]">
-    <img  src="{{todos.urlImage}}" *ngIf="todos.urlImage != 'N/A'">
+  <div *ngFor="let item of todos">
+  <ion-card class="cardHome" *ngIf="item.final_date >= f" >
+    <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', 
+    item.id]">
     <div>
         <ion-card-header class="ionCardHeader" >
           
-          <ion-card-subtitle class="colorsubtitulo">{{todos.manager_name}}</ion-card-subtitle>
-          <ion-card-title class="colortitulo">{{todos.event_name}}</ion-card-title>
-          <h6>Empieza: {{todos.date}}</h6>
-          <h6>Termina: {{todos.final_date}}</h6>
-          <h6>Hora: {{todos.final_hour}}</h6>
-          <h6>Costo: ${{todos.value}}</h6>
+          <ion-card-subtitle class="colorsubtitulo">{{item.manager_name}}</ion-card-subtitle>
+          <ion-card-title class="colortitulo">{{item.event_name}}</ion-card-title>
+          <h6>Empieza: {{item.date}}</h6>
+          <h6>Termina: {{item.final_date}}</h6>
+          <h6>Hora: {{item.final_hour}}</h6>
+          <h6>Costo: ${{item.value}}</h6>
         </ion-card-header>
 
     </div>
@@ -47,8 +47,19 @@
         </ion-fab-button>
     </ion-fab>
 
-  
+    <ion-button expand="block" fill="outline" color="danger" (click)="removEvent(item)">
+      <ion-icon name="trash" slot="start"></ion-icon>
+      ANULAR EVENTO
+    </ion-button>
+
+    <ion-button expand="block" fill="outline" color="danger" [routerLink]="['/', 'cate-festivals', 
+    item.id]">
+      <ion-icon name="trash" slot="start"></ion-icon>
+      EDITAR EVENTO
+    </ion-button>
   </ion-card>
+
+  
 </div>
 
 

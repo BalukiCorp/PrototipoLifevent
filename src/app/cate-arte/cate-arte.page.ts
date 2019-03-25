@@ -18,8 +18,25 @@ import { LoadingController, Platform } from '@ionic/angular';
   templateUrl: './cate-arte.page.html',
   styleUrls: ['./cate-arte.page.scss'],
 })
+
 export class CateArtePage implements OnInit {
 content: object= null;
+todo: Todo = {
+   
+   
+  event_name: '',
+  manager_name: '',
+  category: '',
+  hour: '',
+  ubication: '',
+  date: '', 
+  description: '',
+  final_date: '',
+  final_hour: '',
+  value: '',
+  urlImage: '',
+//  imageRef:'',
+};
 todos: Todo[];
 @ViewChild('search_address') search_address: ElementRef;
 map1: GoogleMap;
@@ -52,6 +69,8 @@ today3 = new Date().toDateString();
 
 fecha1 = new Date();    
 f = new Date(this.fecha1).toISOString().split('T')[0];
+
+
 
 }
 
