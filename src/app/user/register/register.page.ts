@@ -14,10 +14,10 @@ import {ActivatedRoute} from 'node_modules/@angular/router';
 export class RegisterPage implements OnInit {
   user: userList = {
    name: '',
-   lastName:'',
-   username:'',
-   email:'',
-   password:'',
+   lastName: '',
+   username: '',
+   email: '',
+   password: '',
   };
   userId = null;
   constructor(private route: ActivatedRoute, private userService: UserService, private loadingController: LoadingController, private authServices: UserService, public navCrl: NavController, private formBuilder: FormBuilder) {}
@@ -49,31 +49,31 @@ export class RegisterPage implements OnInit {
       username: ['', Validators.required],
     });
   }
-///****************carga de registro */
+/// ****************carga de registro */
   async loadTodo() {
     const loading = await this.loadingController.create({
       message: 'Loading Todo..'
     });
     await loading.present();
- 
+
     this.userService.getUserOnly(this.userId).subscribe(res => {
       loading.dismiss();
       this.user = res;
     });
   }
 
-//*****************GUARDAR REGISTRO */
+// *****************GUARDAR REGISTRO */
   async saveTodo() {
  console.log();
     const loading = await this.loadingController.create({
-      message: 'Añadiendo evento..'
+      message: 'Añadiendo usuario..'
     });
     await loading.present();
- 
+
     if (this.userId) {
       this.userService.updateUser(this.user, this.userId).then(() => {
-        let textInput = document.querySelector("#imageUser");
-        
+        let textInput = document.querySelector('#imageUser');
+
         loading.dismiss();
       //  this.nav.goBack('home');
       });

@@ -25,7 +25,7 @@ import {
   GeocoderResult,
   Marker
 } from '@ionic-native/google-maps';
-import {} from 'googlemaps';
+//import {} from 'googlemaps';
 import { Platform } from '@ionic/angular';
 
 declare var google;

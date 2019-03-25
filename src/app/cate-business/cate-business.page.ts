@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
-import {} from 'googlemaps';
+//import {} from 'googlemaps';
 //import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {
   GoogleMaps,

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
 import {NavController, NavParams} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router';
-import {} from 'googlemaps';
+//import {} from 'googlemaps';
 //import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {
   GoogleMaps,
