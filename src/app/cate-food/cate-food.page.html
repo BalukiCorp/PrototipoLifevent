@@ -10,6 +10,7 @@
 <ion-content padding>
   <form [formGroup]="formRegister" (ngSubmit)="submit();">
     <ion-list lines="full">
+       
       <ion-item>
           <ion-icon name="contact"></ion-icon>
         <ion-input formControlName="event_name" required type="text" placeholder="nombre del evento" [(ngModel)]="todo.event_name"></ion-input>
@@ -54,14 +55,14 @@
         <ion-icon name="time" item-start ></ion-icon>
   
         <ion-label>Hora de inicio</ion-label>
-        <ion-datetime formControlName="hour" display-format="HH:m a" [(ngModel)]="todo.hour"></ion-datetime>
+        <ion-datetime formControlName="hour" display-format="HH:mm a" [(ngModel)]="todo.hour"></ion-datetime>
       </ion-item>
   
       <ion-item >
         <ion-icon name="time" item-start ></ion-icon>
   
         <ion-label>Hora de finalización</ion-label>
-        <ion-datetime formControlName="final_hour" display-format="HH:m a" [(ngModel)]="todo.final_hour"></ion-datetime>
+        <ion-datetime formControlName="final_hour" display-format="HH:mm a" [(ngModel)]="todo.final_hour"></ion-datetime>
       </ion-item>
   
       <ion-item>
@@ -77,17 +78,18 @@
       </ion-item>
 
 <!--PRUEBA-->
+<!--
   <ion-item>
       
         <table class="smallPanel">
           <tr>
-            <td ><ion-input formControlName="ubication" [(ngModel)]="todo.ubication" type="text" id="search_address" #search_address style="ime-mode: disable"></ion-input></td>
+            <td ><ion-input  type="text" id="search_address" #search_address style="ime-mode: disable"></ion-input></td>
             <td><ion-button (click)="onButton1_click($event)">Search</ion-button></td>
           </tr>
         </table>
       
     </ion-item>
-      
+ -->     
     <div id="map_canvas1"></div>
     
     <ion-item>
@@ -103,8 +105,16 @@
       </ion-button>
     </form>
 
-
-    <div id="map"></div>
-
+    <div id="map_canvas1">
+      <table class="smallPanel">
+        <tr>
+          <td ><ion-input  type="text" id="search_address" #search_address style="ime-mode: disable"></ion-input></td>
+          <td><ion-button (click)="onButton1_click($event)">Search</ion-button></td>
+        </tr>
+      </table>
+    </div>
+ 
+    <!--  <div id="map"></div>
+-->
 
 </ion-content>

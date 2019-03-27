@@ -42,17 +42,28 @@
 
     </ion-label>
   </ion-item>
-  <br>
-  <br>
-  <ion-item lines="none" class="styleDesciption">
-    <ion-icon name="book" slot="start"></ion-icon>
-    <ion-label> <ion-input required type="text" [(ngModel)]="todo.description"></ion-input>
+  <ion-item lines="none" class="styleFinalDate">
+    <ion-icon name="time" item-start ></ion-icon>
+    <ion-label><ion-datetime display-format="HH:mm a" [(ngModel)]="todo.hour">
+
+    </ion-datetime>
+
+
     </ion-label>
   </ion-item>
+  
+  <ion-item>
+    <ion-icon name="book" slot="start"></ion-icon>
+    <ion-textarea [(ngModel)]="todo.description"></ion-textarea>
+  </ion-item>
+<BR>
+<BR>
   <ion-item lines="none">
     <div class="stylePromotor">Organizado por: <ion-input required type="text" [(ngModel)]="todo.manager_name"></ion-input></div>
   </ion-item>
  
+  
+
   <ion-button type="submit" shape="round" expand="full" (click)="saveTodo()">
     <ion-icon name="send"></ion-icon>
     Actualizar evento

@@ -18,8 +18,8 @@
           
           <ion-card-subtitle class="colorsubtitulo">{{item.manager_name}}</ion-card-subtitle>
           <ion-card-title class="colortitulo">{{item.event_name}}</ion-card-title>
-          <h6>Empieza: {{item.date}}</h6>
-          <h6>Termina: {{item.final_date}}</h6>
+          <h6>Empieza: {{item.date | date: 'MMMM d'}}</h6>
+          <h6>Termina: {{item.final_date | date: 'MMMM d'}}</h6>
           <h6>Hora: {{item.final_hour}}</h6>
           <h6>Costo: ${{item.value}}</h6>
         </ion-card-header>
@@ -54,8 +54,8 @@
 
     <ion-button expand="block" fill="outline" color="danger" [routerLink]="['/', 'cate-festivals', 
     item.id]">
-      <ion-icon name="trash" slot="start"></ion-icon>
-      EDITAR EVENTO
+    <ion-icon name="brush"></ion-icon>
+          EDITAR EVENTO
     </ion-button>
   </ion-card>
 
