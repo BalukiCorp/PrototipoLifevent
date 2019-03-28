@@ -94,12 +94,12 @@
 
     <div class="upload-btn-wrapper">
       <button class="btn">Upload a file</button>
-      <input accept="image/*" formControlName="urlImage" id="file-input" 
+      <ion-input accept="image/*" formControlName="urlImage" id="file-input" 
       id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
-      type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage" />
+      type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
     </div>
 
-    <input id="imageUser" type="hidden" [value]="urlImage | async">
+    <ion-input id="imageUser" type="hidden" [value]="urlImage | async"></ion-input>
     
     </ion-list>
     <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
