@@ -40,11 +40,12 @@ todo: Todo = {
 todos: Todo[];
 @ViewChild('search_address') search_address: ElementRef;
 map1: GoogleMap;
-
+contentId = null;
 constructor(private activatedRoute: ActivatedRoute,
   public navCtrl: NavController, private todoService: TodoService) { }
  
 ngOnInit() {
+  this.contentId = this.activatedRoute.snapshot.paramMap.get('id');
   let id = this.activatedRoute.snapshot.paramMap.get('id');
   this.todoService.getTodo(id).subscribe(res => {
     this.content = res;

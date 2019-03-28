@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
-import {NavController, AlertController} from '@ionic/angular';
+import {NavController, AlertController, LoadingController} from '@ionic/angular';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { formatDate } from '@angular/common';
+import {ActivatedRoute} from 'node_modules/@angular/router';
+import {Todo, TodoService} from '../services/todo.service';
 
 @Component({
   selector: 'app-calendar',
@@ -10,8 +12,25 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage implements OnInit{
+  contentCalendar: object= null;
+  todoId = null;
 
-
+  todo: Todo = {
+   
+   
+    event_name: '',
+    manager_name: '',
+    category: '',
+    hour: '',
+    ubication: '',
+    date: '', 
+    description: '',
+    final_date: '',
+    final_hour: '',
+    value: '',
+    urlImage: '',
+  //  imageRef:'',
+  };
   event = {
     title: '',
     desc: '',
@@ -33,27 +52,51 @@ export class CalendarPage implements OnInit{
 
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
-  constructor(public navCtrl: NavController, private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
+  constructor(private route: ActivatedRoute, private loadingController: LoadingController, private todoService: TodoService,
+    public navCtrl: NavController, private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
 
   ngOnInit(){
+    this.todoId = this.route.snapshot.params['id'];
+    if (this.todoId)  {
+      this.loadTodo();
+    }
     this.resetEvent();
   }
 
+  async loadTodo() {
+    const loading = await this.loadingController.create({
+      message: 'Loading..'
+    });
+    await loading.present();
+ 
+    this.todoService.getTodo(this.todoId).subscribe(res => {
+      loading.dismiss();
+      this.todo = res;
+    });
+  }
+
+
   resetEvent(){
-    this.event = {
-      title: '',
-      desc: '',
-      startTime: new Date().toISOString(),
-      endTime: new Date().toISOString(),
-      allDay: false
+    this.todo = {
+      event_name: '',
+      description: '',
+      date: new Date().toISOString(),
+      final_date: new Date().toISOString(),
+      category: '',
+      hour: '',
+      ubication: '',
+      final_hour: '',
+      value: '',
+      urlImage: '',
+      manager_name:'',
     };
   }
 
   addEvent(){
     let eventCopy = {
-      title: this.event.title,
-      startTime: new Date(this.event.startTime),
-      endTime: new Date(this.event.endTime),
+      title: this.todo.event_name,
+      startTime: new Date(this.todo.date),
+      endTime: new Date(this.todo.final_date),
       allDay: this.event.allDay,
       desc: this.event.desc
     }

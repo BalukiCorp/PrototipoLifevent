@@ -14,29 +14,40 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header tappable (click)="collapseCard = !collapseCard">
+      <div *ngIf="todo">
+
+      <ion-input required type="text" [(ngModel)]="todo.event_name"></ion-input>
+</div>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
       <ion-card-title>New Event</ion-card-title>
     </ion-card-header>
     <ion-card-content *ngIf="!collapseCard">
       <ion-item>
-        <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+      <!--  <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input> -->
+     <!--   <ion-input required type="text" [(ngModel)]="todo.event_name"></ion-input>  -->
+        <p>{{todo.event_name}}</p>
+
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Descripcion" [(ngModel)]="event.desc"></ion-input>
+    <!--    <ion-input type="text" placeholder="Descripcion" [(ngModel)]="todo.description"></ion-input>  -->
+        <p>{{todo.description}}</p>
+
       </ion-item>
       <ion-item>
-        <ion-label>Start</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
-      </ion-item>
+        <ion-label>Empieza</ion-label>
+      <!--  <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="todo.date" [min]="minDate"></ion-datetime> --> 
+      <p>{{todo.date}}</p>  
+    </ion-item>
       <ion-item>
         <ion-label>End</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+     <!--   <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="todo.final_date" [min]="minDate"></ion-datetime> -->
+        <p>{{todo.final_date}}</p>
       </ion-item>
       <ion-item>
         <ion-label>All Day</ion-label>
         <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
       </ion-item>
-      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">Add Event</ion-button>
+      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="todo.title == ''">Guardar evento</ion-button>
     
     </ion-card-content>
   </ion-card>

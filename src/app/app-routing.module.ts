@@ -8,14 +8,13 @@ const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [AuthGuard]},
   { path: 'search', loadChildren: './search/search.module#SearchPageModule', canActivate : [AuthGuard]},
-  { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarPageModule' },
+  { path: 'calendar/:id', loadChildren: './calendar/calendar.module#CalendarPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'idea', loadChildren: './cate-food/cate-food.module#CateFoodPageModule' },
   { path: 'cate-business', loadChildren: './cate-business/cate-business.module#CateBusinessPageModule' },
   { path: 'cate-arte/:id', loadChildren: './cate-arte/cate-arte.module#CateArtePageModule' },
   { path: 'login', loadChildren: './user/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
   { path: 'register', loadChildren: './user/register/register.module#RegisterPageModule' },
-
 
   { path: 'cate-cultura', loadChildren: './category/cate-cultura/cate-cultura.module#CateCulturaPageModule' },
   { path: 'cate-technologies', loadChildren: './category/cate-technologies/cate-technologies.module#CateTechnologiesPageModule' },
