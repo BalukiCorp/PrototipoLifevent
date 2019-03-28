@@ -78,7 +78,6 @@ export class CateFoodPage implements OnInit {
     event_name: ['', Validators.required],
   manager_name: ['', Validators.required],
   category: ['', Validators.required],
-  ubication: ['', Validators.required],
   date: ['', Validators.required],
   final_date: ['', Validators.required],
   hour: ['', Validators.required],
@@ -91,8 +90,6 @@ export class CateFoodPage implements OnInit {
 
  async ngOnInit() {
 
-    this.loadMap();
-    await this.loadMap1();
 
     this.todoId = this.route.snapshot.params['id'];
     if (this.todoId)  {

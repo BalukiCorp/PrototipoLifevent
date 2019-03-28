@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo, TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-cate-party',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatePartyPage implements OnInit {
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
+
+ //Refrescar la pagina
+ doRefresh(event) {
+   console.log('Begin async operation');
+
+   setTimeout(() => {
+     console.log('Async operation has ended');
+     event.target.complete();
+   }, 2000);
+ }
 
   ngOnInit() {
   }

@@ -11,55 +11,37 @@
   
   <div *ngFor="let item of todos">
   <ion-card class="cardHome" *ngIf="item.final_date >= f" >
-    <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', 
-    item.id]">
+    <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', item.id]">
     <div>
-        <ion-card-header class="ionCardHeader" >
-          
-          <ion-card-subtitle class="colorsubtitulo">{{item.manager_name}}</ion-card-subtitle>
-          <ion-card-title class="colortitulo">{{item.event_name}}</ion-card-title>
-          <h6>Empieza: {{item.date | date: 'MMMM d'}}</h6>
-          <h6>Termina: {{item.final_date | date: 'MMMM d'}}</h6>
-          <h6>Hora: {{item.final_hour}}</h6>
-          <h6>Costo: ${{item.value}}</h6>
-        </ion-card-header>
-
+    <ion-card-header class="ionCardHeader" >
+      <div class="DivMes"><h6 class="Mes">{{item.date | date: 'MMM'}}.</h6>
+      </div>
+      <div class="DivFecha"><h6 class="Fecha">{{item.date | date: 'd'}}</h6>
+        <ion-card-title class="colortitulo">{{item.event_name}}</ion-card-title>
+        <h6 align="center">{{item.ubication}}</h6>
+        <h6 align="center">Por: {{item.manager_name}}</h6>
+      </div>
+    </ion-card-header>
     </div>
 
-    <ion-fab class="ionFabShare" vertical="bottom" horizontal="center">
-        <ion-fab-button >
-          <ion-icon name="share"></ion-icon>
-        </ion-fab-button>
-          <ion-fab-list side="top">
-            <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
-          </ion-fab-list>
-          <ion-fab-list side="start">
-            <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
-          </ion-fab-list>
-          <ion-fab-list side="bottom">
-            <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-          </ion-fab-list>
-    </ion-fab>
-    
     <ion-fab class="ionFabHeart" vertical="bottom" horizontal="end">
         <ion-fab-button>
           <ion-icon name="heart"></ion-icon>
         </ion-fab-button>
     </ion-fab>
 
-    <ion-button expand="block" fill="outline" color="danger" (click)="removEvent(item)">
-      <ion-icon name="trash" slot="start"></ion-icon>
-      ANULAR EVENTO
-    </ion-button>
+    <div class="DivBotones">
+      <ion-button class="buttonEliminar" size="large"  fill="clear" color="danger" (click)="removEvent(item)">
+          <ion-icon name="trash"></ion-icon>
+      </ion-button>
 
-    <ion-button expand="block" fill="outline" color="danger" [routerLink]="['/', 'cate-festivals', 
-    item.id]">
-    <ion-icon name="brush"></ion-icon>
-          EDITAR EVENTO
-    </ion-button>
+      <ion-button class="buttonEditar" size="large"  fill="clear" color="danger" [routerLink]="['/', 'cate-festivals',item.id]">
+          <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </div>
+
   </ion-card>
 
-  
 </div>
 
 
