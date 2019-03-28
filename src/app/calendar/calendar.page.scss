@@ -1,8 +1,17 @@
 .buttonLeft{
     text-align: left;
+    float: left;
+}
+
+.buttonCenter{
+    text-align: center;
+    font-size: large;
+    font-style: bold;
+    margin-top: 13px;
 }
 
 .buttonRigth{
     text-align: right;
+    float: right;
 }
 
