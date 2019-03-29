@@ -60,7 +60,7 @@ export class CalendarPage implements OnInit{
     if (this.todoId)  {
       this.loadTodo();
     }
-    this.resetEvent();
+   // this.resetEvent();
   }
 
   async loadTodo() {

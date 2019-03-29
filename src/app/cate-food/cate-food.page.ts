@@ -80,6 +80,7 @@ export class CateFoodPage implements OnInit {
   category: ['', Validators.required],
   date: ['', Validators.required],
   final_date: ['', Validators.required],
+  ubication: ['', Validators.required],
   hour: ['', Validators.required],
   final_hour: ['', Validators.required],
   description: ['', Validators.required],

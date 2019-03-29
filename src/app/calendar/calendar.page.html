@@ -14,12 +14,9 @@
 
 <ion-content>
   <ion-card>
-      <div *ngIf="todo">
-
-      <ion-input required type="text" [(ngModel)]="todo.event_name"></ion-input>
-</div>
+      
       <ion-card-header tappable (click)="collapseCard = !collapseCard">
-      <ion-card-title>New Event</ion-card-title>
+    <h5 align="center">  <ion-card-title class="styleTitulo">Evento seleccionado</ion-card-title> </h5>
     </ion-card-header>
     <ion-card-content *ngIf="!collapseCard">
       <ion-item>
@@ -36,12 +33,12 @@
       <ion-item>
         <ion-label>Empieza</ion-label>
       <!--  <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="todo.date" [min]="minDate"></ion-datetime> --> 
-      <p>{{todo.date}}</p>  
+      <p>{{todo.date | date: 'MMMM, d'}}</p>  
     </ion-item>
       <ion-item>
         <ion-label>End</ion-label>
      <!--   <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="todo.final_date" [min]="minDate"></ion-datetime> -->
-        <p>{{todo.final_date}}</p>
+        <p>{{todo.final_date | date: 'MMMM, d'}}</p>
       </ion-item>
       <ion-item>
         <ion-label>All Day</ion-label>

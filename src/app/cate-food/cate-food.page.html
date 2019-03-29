@@ -70,6 +70,10 @@
           <ion-input formControlName="description" required type="text" placeholder="Descripción..." [(ngModel)]="todo.description"></ion-input>
       </ion-item>
   
+      <ion-item>
+        <ion-icon name="book" item-start ></ion-icon>
+        <ion-input formControlName="ubication" required type="text" placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
+    </ion-item>
   
   
       <ion-item >
@@ -93,7 +97,7 @@
     <div id="map_canvas1"></div>
 
     <div class="upload-btn-wrapper">
-      <button class="btn">Upload a file</button>
+      <ion-button type="hidden" color="light" class="btn">Escoger imagen</ion-button> 
       <ion-input accept="image/*" formControlName="urlImage" id="file-input" 
       id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
       type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
