@@ -62,6 +62,7 @@ export class CateFoodPage implements OnInit {
    final_hour: '',
    value: '',
    urlImage: '',
+ //  userUid:'',
  //  imageRef:'',
  };
 
@@ -222,31 +223,7 @@ export class CateFoodPage implements OnInit {
     }
   }
   @ViewChild('fileInp') fileInput: ElementRef;
-/*
-  onUpload(e){
-    const options: CameraOptions = {
-      quality: 70,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum:false
-    }
-  
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
-      this.fileInput.nativeElement.click();
 
-      this.myphoto = this.webView.convertFileSrc(imageData);
-//this.myphoto = 'data:image/jpeg;base64,' + imageData;
-  
-}, (err) => {
-      // Handle error
-    });
-      
-
-
-}
-*/
 //this.urlImage
 submit() {
   //this.formRegister.reset()
@@ -255,36 +232,8 @@ submit() {
   console.log(this.formRegister.value);
   
 }
-/*
-
-getImage(e) {
-  const options: CameraOptions = {
-    quality: 70,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-    saveToPhotoAlbum:false
-  }
-
-  this.camera.getPicture(options).then((imageData) => {
-    // imageData is either a base64 encoded string or a file URI
-    // If it's base64:
-   // this.myphoto = 'data:image/jpeg;base64,' + imageData;
-   this.myphoto = this.webView.convertFileSrc(imageData);
-   const id = Math.random().toString(36).substring(2);
-   const file = e.target.files[0];
-   const filePath = `event_image/event_${id}`;
-   const ref = this.storage.ref(filePath);
-   const task = this.storage.upload(filePath, file);
-this.uploadPercent = task.percentageChanges();
-task.snapshotChanges().pipe(finalize(()=>this.urlImage = ref.getDownloadURL())).subscribe();
-  }, (err) => {
-    // Handle error
-  });
-  this.urlImage = this.myphoto;
-}
 
 
-*/
 // CARGA DE IMAGEN
 getImage(e) {
   

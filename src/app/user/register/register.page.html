@@ -1,56 +1,72 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title text-center>Registo</ion-title>
+    <ion-title text-center>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <form class="form-control" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value.email, validations_form.value.password)">
-    <img class="icon" src="../../../assets/icon/iconoLogin.jpg" alt="">
-    <br>
+
+
+<form class="form-control" [formGroup]="validations_form">
+
+ <!-- <div class="upload-btn-wrapper"> -->
+ <!--   <ion-input formControlName="urlImage"  id="file-input"  id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
+    type="file" (change)="getImage($event)" [(ngModel)]="urlImage"></ion-input>
+ -->
+    <!-- </div>  -->
+
+<ion-list>
+  
     <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" formControlName="name" [(ngModel)]="user.name"></ion-input>
+    <ion-label position="floating">Usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="username" formControlName="username"></ion-input>
     </ion-item>
+  
     <ion-item>
-      <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" formControlName="lastName" [(ngModel)]="user.lastName"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" formControlName="username" [(ngModel)]="user.username"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating"> Correo Electronico</ion-label>
-      <ion-input type="text" formControlName="email" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-    <!-- COLOCAR ESTILO AL DIV -->
-    <div>
-      <ng-container *ngFor="let validation of validation_messages.email">
-        <div class="jasmine-errored" *ngIf="validations_form.get('email').hasError(validation.type)
-        && (validations_form.get('email').dirty || validations_form.get('email').touched)">
-          {{validation.messages}}
-        </div>
-      </ng-container>
-    </div>
-    <ion-item>
-      <ion-label position="floating"> Contraseña</ion-label>
-      <ion-input type="password" formControlName="password" [(ngModel)]="user.password" class="form-control" required></ion-input>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" [(ngModel)]="email" formControlName="email"></ion-input>
     </ion-item>
     <div>
-      <ng-container *ngFor="let validation of validation_messages.password">
-        <div class="jasmine-errored" *ngIf="validations_form.get('password').hasError(validation.type)
-        && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="jasmine-errored" *ngIf="validations_form.get('email').hasError(validation.type)
+          && (validations_form.get('email').dirty || validations_form.get('email').touched)">
           {{validation.messages}}
-        </div>
-      </ng-container>
+          </div>
+        </ng-container>
     </div>
-    <br>
-    <ion-button (click)="saveTodo()" class="submit-btn" type="submit" [disabled]="!validations_form.valid"expand="block">Registrarse</ion-button>
-    <label class="jasmine-errored"> {{errorMessage}}</label>
-    <label>{{successMessage}}</label>
-  </form>
-  <p text-center>Ya tienes cuenta? <a (click)="goLoginPage()">Inicia Sesion</a></p>
+
+
+    <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="jasmine-errored" *ngIf="validations_form.get('password').hasError(validation.type)
+              && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+            {{validation.messages}}
+          </div>
+        </ng-container>
+      </div>
+
+    <ion-item>
+    <ion-label position="floating">Confirmar contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="cpassword" formControlName="cpassword"></ion-input>
+    </ion-item>
+    <div>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="jasmine-errored" *ngIf="validations_form.get('password').hasError(validation.type)
+              && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+            {{validation.messages}}
+          </div>
+        </ng-container>
+      </div>
+  
+  </ion-list>
+
+  <ion-button type="submit" [disabled]="!validations_form.valid" fill="solid" expand="block" (click)="useRegister()">Registrarse</ion-button>
+</form>
+  <p>Ya tienes una cuenta? <a (click)="goLoginPage()">Acceder al login</a></p>
 
 </ion-content>
 

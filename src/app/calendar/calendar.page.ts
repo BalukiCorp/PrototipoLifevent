@@ -29,6 +29,7 @@ export class CalendarPage implements OnInit{
     final_hour: '',
     value: '',
     urlImage: '',
+    //userUid:'',
   //  imageRef:'',
   };
   event = {

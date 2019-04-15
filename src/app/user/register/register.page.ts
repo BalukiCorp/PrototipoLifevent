@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService, userList} from '../../services/user.service';
+import {UserService} from '../../services/user.service';
 import {NavController, LoadingController} from '@ionic/angular';
-import {Router} from '@angular/router';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import {finalize} from 'rxjs/operators';
 //import {userList, TodoService} from './../services/todo.service';
 import {ActivatedRoute} from 'node_modules/@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import {Observable} from 'rxjs';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-register',
@@ -12,15 +20,29 @@ import {ActivatedRoute} from 'node_modules/@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  user: userList = {
+  urlImage: Observable<string>;
+  uploadPercent: Observable<number>;
+  myphoto:any;
+
+ /* user: userList = {
    name: '',
    lastName: '',
    username: '',
    email: '',
    password: '',
-  };
+  };*/
   userId = null;
-  constructor(private route: ActivatedRoute, private userService: UserService, private loadingController: LoadingController, private authServices: UserService, public navCrl: NavController, private formBuilder: FormBuilder) {}
+  //uid: string="";
+  email: string = "";
+  roles: string = "";
+  username: string = ""
+	password: string = ""
+	cpassword: string = ""
+  constructor(public afAuth: AngularFireAuth,
+		public afstore: AngularFirestore, private storage: AngularFireStorage, 
+		public user: UserService, public alertController: AlertController, private camera: Camera,
+		public router: Router,    private webView: WebView,
+    private route: ActivatedRoute, private userService: UserService, private loadingController: LoadingController, private authServices: UserService, public navCrl: NavController, private formBuilder: FormBuilder) {}
   errorMessage: string;
   successMessage: string;
   validations_form: FormGroup;
@@ -29,13 +51,11 @@ export class RegisterPage implements OnInit {
       { type: 'pattern', messages: 'Por favor ingrese un email valido'}],
     'password': [{type: 'required', messages: 'Contrasena es necesaria'},
       {type: 'minLength', messages: 'Contrasena debe tener almenos 5 caracteres'}]
+      
   };
 
   ngOnInit() {
-    this.userId = this.route.snapshot.params['id'];
-    if (this.userId)  {
-     // this.loadTodo();
-    }
+   
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
@@ -44,68 +64,94 @@ export class RegisterPage implements OnInit {
         Validators.minLength(5),
         Validators.required,
       ])),
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
       username: ['', Validators.required],
+      cpassword: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required,
+      ])),
+ //    urlImage: ['', Validators.required],
+
+
+      
     });
   }
 /// ****************carga de registro */
-  async loadTodo() {
-    const loading = await this.loadingController.create({
-      message: 'Loading Todo..'
-    });
-    await loading.present();
 
-    this.userService.getUserOnly(this.userId).subscribe(res => {
-      loading.dismiss();
-      this.user = res;
-    });
+
+
+/******MIO********************** */
+  async useRegister() {
+		const {email, username, password, cpassword, urlImage } = this
+		if(password !== cpassword) {
+			return console.error("Las contraseñas no coinciden")
+		}
+
+		try {
+			const res = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+
+			this.afstore.doc(`users/${res.user.uid}`).set({
+        username, email
+			})
+
+			this.user.setUser({
+				username,
+        uid: res.user.uid,
+        email: res.user.email,
+    //    urlImage: res.user.photoURL,
+			})
+
+			this.presentAlert('EXCELENTE', 'USUARIO CREADO');
+		} catch(error) {
+			console.dir(error)
+		}
   }
-
-// *****************GUARDAR REGISTRO */
-  async saveTodo() {
- console.log();
-    const loading = await this.loadingController.create({
-      message: 'Añadiendo usuario..'
-    });
-    await loading.present();
-
-    if (this.userId) {
-      this.userService.updateUser(this.user, this.userId).then(() => {
-        let textInput = document.querySelector('#imageUser');
-
-        loading.dismiss();
-      //  this.nav.goBack('home');
-      });
-    } else {
-      this.userService.addTodo(this.user).then(() => {
-        console.log(this.validations_form);
-        console.log(this.formBuilder);
-        loading.dismiss();
-       // console.log(this.formRegister.value);
-
-       // this.navCtrl.navigateForward(['/tabs/home']);
-
-       // this.nav.goBack('home');
-      });
+  
+  getImage(e) {
+  
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+     // mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum:true     
     }
+    this.camera.getPicture(options).then((imageData) => {
+        this.myphoto = this.webView.convertFileSrc(imageData);
+    }, (err) => {
+    });
+    
+    const id = Math.random().toString(36).substring(2);
+    const file = e.target.files[0];
+    const filePath = `event_image/event_${id}`;
+    const ref = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+  this.uploadPercent = task.percentageChanges();
+  task.snapshotChanges().pipe(finalize(()=>this.urlImage = ref.getDownloadURL())).subscribe();
+ 
   }
+ 
+
+  async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
 
 
-  tryRegister(email: string, password: string) {
-    this.authServices.registerUser(email, password).then(
-        res => {
-          console.log(res);
-          this.errorMessage = '';
-          this.successMessage = 'Tu cuenta ha sido creada exitosamente';
-        }, err => {
-          console.log(err);
-          this.errorMessage = err.message;
-          this.successMessage = '';
-        });
-  }
+  goToRegisterPage() {
+		this.router.navigate(['/login']);
+} 
+
   goLoginPage() {
     this.navCrl.navigateBack('');
   }
 
+
+
+  
 }

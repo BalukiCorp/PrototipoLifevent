@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {TodoService} from "../services/todo.service";
+import {UserService} from "../services/user.service";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import {AngularFireAuth} from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+
 
 interface image {
   id: string;
   img : string;
 }
+
 
 @Component({
   selector: 'app-profile',
@@ -16,13 +21,43 @@ interface image {
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  mainuser: AngularFirestoreDocument
+	userPosts
+	sub
+	posts
+	username: string
+	profilePic: string
   public imageProfile :any = [];
-  myphoto:any;
+  myphoto:any; 
+  public userUid: string = null;
+  constructor(private authservice: UserService, private afs: AngularFirestore, private user: UserService,
+    private webView: WebView,private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { 
+      this.mainuser = afs.doc(`users/${user.getUID()}`)
+      this.sub = this.mainuser.valueChanges().subscribe(event => {
+        this.posts = event.posts
+        this.username = event.username
+        this.profilePic = event.profilePic
+      })
 
-  constructor(private webView: WebView,private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { }
+    }
 
   ngOnInit() {
+      
+   /* this.authservice.isAuth().subscribe(user=>{
+      if(user){
+        this.user2.name = user.displayName;
+        this.user2.email = user.email;
+        this.user2.userId = user.uid;
+        console.log('USER', user);
+        console.log(this.user2.email);
+        console.log(this.user2.userId);
+        this.providerId = user.providerData[0].providerId;
+        console.log(this.providerId);
+        
+      }
+   });
+
+*/
     this.chatservice.getImageProfile().subscribe( images => {
       images.map( image => {
         
@@ -38,6 +73,10 @@ export class ProfilePage implements OnInit {
   emailUser(){
     
   }
+
+  ngOnDestroy() {
+		this.sub.unsubscribe()
+	}
 
   onUpload(e){
     const id = Math.random().toString(36).substring(2);

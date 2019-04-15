@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
 import {NavController, NavParams, LoadingController, AlertController} from '@ionic/angular';
+import {UserService} from '../services/user.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-home',
@@ -10,9 +13,11 @@ import {NavController, NavParams, LoadingController, AlertController} from '@ion
 export class HomePage {
   todos: Todo[];
  
-  constructor(public alertController: AlertController,
+  constructor(public alertController: AlertController, public authservice: UserService,
      public navCtrl: NavController, private todoService: TodoService) { }
-
+     Onlogout() {
+      this.authservice.logout();
+    }
   //Refrescar la pagina
   doRefresh(event) {
     console.log('Begin async operation');

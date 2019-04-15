@@ -45,6 +45,7 @@ export class AddEventPage implements OnInit {
     final_hour: '',
     value: '',
     urlImage:'',
+  //  userUid:'',
   };
   public orderForm:any;
   formRegister: FormGroup;
