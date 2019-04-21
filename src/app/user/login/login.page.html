@@ -79,7 +79,10 @@
       
       </ion-list>
   
-      <ion-button type="submit" [disabled]="!validations_form.valid" expand="block" (click)="login()">Ingresar</ion-button>
+      <ion-button type="submit" [disabled]="!validations_form.valid" expand="block" (click)="presentLoading()"
+      (click)="login()">Ingresar</ion-button>
+
+
       <label class="jasmine-errored">{{errorMessage}}</label>
     </form>
       <p>No tienes cuenta? <a (click)="goToRegisterPage()">Crea una cuenta</a></p>

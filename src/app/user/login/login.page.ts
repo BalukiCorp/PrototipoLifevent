@@ -3,6 +3,7 @@ import {UserService} from '../../services/user.service';
 import { Router} from "@angular/router";
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,35 @@ export class LoginPage implements OnInit {
   username: string = ""
 	password: string = ""
   email: string = ""
-	constructor(public afAuth: AngularFireAuth, public user: UserService, public router: Router, private formBuilder: FormBuilder) { }
+	constructor(public afAuth: AngularFireAuth, public user: UserService, public router: Router, private formBuilder: FormBuilder
+	,public loadingController: LoadingController) { }
+
+///lOADING
+	async presentLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2000
+    });
+  
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+
+  }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: null,
+      duration: 5000,
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
+///LOADING
+
 	errorMessage: string;
   validations_form: FormGroup;
   validation_messages = {
