@@ -1,11 +1,21 @@
 <ion-header>
   <ion-toolbar color="primary">
-    
-    <ion-searchbar color="light"></ion-searchbar>
+   <ion-title>
+     Categorias
+   </ion-title>
   </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-searchbar type="text"
+                   animated
+                   placeholder="Buscar evento"
+    ></ion-searchbar>
+  </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding class="card-background-page" color="dark">
+
 
     <ion-segment (ionChange)="segmentChanged($event)">
     <ion-segment-button value="today" class="segmentStyle">
