@@ -1,18 +1,20 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { NavController, LoadingController } from '@ionic/angular';
+import { TodoService, Todo } from "../services/todo.service";
+import { Usuario } from '../models/evento.model';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage  {
-  myphoto:any;
+export class SearchPage implements OnInit {
 
+ 
 
   categorias = [
     {
@@ -67,12 +69,32 @@ export class SearchPage  {
     },
   ]
 
- 
-  constructor( 
+  public usuarios : any = [];
+  textoBuscar = '';
+
+  constructor(public buscareventos: TodoService,
     private router:Router, public navCtrl: NavController, private camera: Camera, private transfer: FileTransfer, private file: File, private loadingCtrl:LoadingController)
   {}
 
-  
+  ngOnInit(){
+    this.buscareventos.geteventos().subscribe(chats => {
+      chats.map(chat => {
+        
+        const data : Usuario = chat.payload.doc.data() as Usuario
+        data.id = chat.payload.doc.id;
+
+        this.usuarios.push(data);
+
+      })
+    })
+  }
+
+
+  buscarEvento( event){
+
+    const texto = event.target.value;
+    this.textoBuscar = texto;
+  }
 
 
   /*pushCateSegunda(){

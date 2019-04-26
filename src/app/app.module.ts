@@ -27,12 +27,13 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 
 
 
+
 //import {FirebaseService} from '../app/services/firebase.service';
 //import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [  ],
   imports: [AgmDirectionModule, AgmCoreModule.forRoot({apiKey: "AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I",
   libraries: ["places"]}), HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule,

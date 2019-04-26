@@ -6,16 +6,37 @@
   </ion-toolbar>
 
   <ion-toolbar color="primary">
-    <ion-searchbar type="text"
-                   animated
-                   placeholder="Buscar evento"
-    ></ion-searchbar>
+    <ion-searchbar  placeholder="Buscar evento"
+                    animated       
+                    (ionChange)="buscarEvento( $event)">
+    </ion-searchbar>
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content padding class="card-background-page" color="dark">
 
+    <ion-list *ngIf="usuarios.length === 0">
+        <ion-item *ngFor="let i of [1,1,1,1,1,1]">
+          <ion-label>
+              <ion-skeleton-text width="40%"></ion-skeleton-text>
+              <ion-skeleton-text width="80%"></ion-skeleton-text>
+          </ion-label>
+        </ion-item>
+
+    </ion-list>
+
+
+    <ion-list>
+
+      <ion-item *ngFor="let usuario of usuarios | filtro: textoBuscar">
+        <ion-label>
+          <h4>{{usuario.event_name}}</h4>
+          <h3>{{usuario.category}}</h3>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
 
     <ion-segment (ionChange)="segmentChanged($event)">
     <ion-segment-button value="today" class="segmentStyle">
