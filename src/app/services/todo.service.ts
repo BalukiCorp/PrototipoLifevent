@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable, from } from 'rxjs';
+import { Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Time } from '@angular/common';
 import { IonDatetime } from '@ionic/angular';
@@ -12,6 +12,8 @@ import {AngularFireAuth} from "@angular/fire/auth"
 import { promise } from 'protractor';
 import {Router} from "@angular/router"
 import { auth } from 'firebase';
+import { Usuario } from '../models/evento.model';
+import { delay } from "rxjs/operators";
 
 
 export interface Todo {
@@ -48,6 +50,13 @@ export class TodoService {
         });
       })
     );
+  }
+
+  geteventos(){
+    return this.db.collection('event_register').snapshotChanges()
+              .pipe(
+                delay(2500)
+              )
   }
 
   getImageProfile() {
