@@ -9,4 +9,40 @@
 
 <ion-content padding>
 
+
+    <div *ngFor="let usuario of usuarios">
+        <ion-card class="cardHome" *ngIf="usuario.category === 'SPORTS' " >
+          <img  src="{{usuario.urlImage}}" *ngIf="usuario.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', usuario.id]">
+          <div> 
+          <ion-card-header class="ionCardHeader" >
+            <div class="DivMes"><h6 class="Mes">{{usuario.date | date: 'MMM'}}.</h6>
+            </div>
+            <div class="DivFecha"><h6 class="Fecha">{{usuario.date | date: 'd'}}</h6>
+              <ion-card-title class="colortitulo">{{usuario.event_name}}</ion-card-title>
+              <h6 align="center">{{usuario.ubication}}</h6>
+              <h6 align="center">Por: {{usuario.manager_name}}</h6>
+            </div>
+          </ion-card-header>
+          </div>
+      
+          <ion-fab class="ionFabHeart" vertical="bottom" horizontal="end">
+              <ion-fab-button>
+                <ion-icon name="heart"></ion-icon>
+              </ion-fab-button>
+          </ion-fab>
+      
+          <div class="DivBotones">
+            <ion-button class="buttonEliminar" size="large"  fill="clear" color="danger" (click)="removEvent(item)">
+                <ion-icon name="trash"></ion-icon>
+            </ion-button>
+      
+            <ion-button class="buttonEditar" size="large"  fill="clear" color="danger" [routerLink]="['/', 'cate-festivals',usuario.id]">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </div>
+      
+        </ion-card>
+      
+      </div>
+
 </ion-content>

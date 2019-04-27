@@ -72,13 +72,26 @@ export class SearchPage implements OnInit {
   public usuarios : any = [];
   textoBuscar = '';
 
-  constructor(public buscareventos: TodoService,
+  constructor(public buscareventos: TodoService,public loadingController: LoadingController,
     private router:Router, public navCtrl: NavController, private camera: Camera, private transfer: FileTransfer, private file: File, private loadingCtrl:LoadingController)
   {}
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      duration: 2000
+    });
+  
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+
+  }
+
   ngOnInit(){
-    this.buscareventos.geteventos().subscribe(chats => {
-      chats.map(chat => {
+        this.buscareventos.geteventos().subscribe(chats => {
+        chats.map(chat => {
         
         const data : Usuario = chat.payload.doc.data() as Usuario
         data.id = chat.payload.doc.id;
