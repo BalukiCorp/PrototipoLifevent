@@ -19,19 +19,20 @@ import { auth } from 'firebase';
 import { extendsDirectlyFromObject } from '@angular/core/src/render3/jit/directive';
 
 
+interface Roles {
+  admin: boolean,
+  editor: boolean,
+}
+
 interface user {
 	username: string,
   uid: string,
   email: string,
  // urlImage: string,
- // roles: Roles,
-//  a: string,
+ 
 }
 
-export interface Roles{
-  editor: boolean;
-  admin: boolean;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,11 @@ export class UserService {
 
     
   }
+
+
+
+
+
   login(email: string, password: string) {
     return new Promise((resolve, rejected) => {
       this.AFauth.auth.signInWithEmailAndPassword(email, password).then(user => {
@@ -84,8 +90,8 @@ export class UserService {
 	async isAuthenticated() {
 		if(this.user) return true
 
-		const user = await this.afAuth.authState.pipe(first()).toPromise()
-   //   this.updateUserData(user);
+    const user = await this.afAuth.authState.pipe(first()).toPromise();
+    
   
 
 		if(user) {
@@ -93,7 +99,6 @@ export class UserService {
 				username: user.email.split('@')[0],
         uid: user.uid,
         email: user.email.split('@')[0],
-     //    roles:,
     //    urlImage: user.photoURL,
 			})
 
@@ -110,21 +115,8 @@ export class UserService {
     return this.afAuth.authState.pipe(map(auth=> auth));
   }
 
-/*
-private updateUserData(user){
-  const userRef: AngularFirestoreDocument<any> = this.db.doc(`users/${user.uid}`);
-  const data: user={
-    //id: user.id,
-    email: user.email, 
-    username: user.username,
-    uid: user.uid,
-    roles: {
-      editor: true
-    }
-  }
-  return userRef.set(data, {merge: true});
-}
-*/
+
+
 
 
 

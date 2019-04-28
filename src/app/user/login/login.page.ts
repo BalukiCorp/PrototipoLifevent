@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
   };
 
 	ngOnInit() {
-		this.validations_form = this.formBuilder.group({
+		this.validations_form = this.formBuilder.group({      
       email: new FormControl('', Validators.compose([
           Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
       ])),
@@ -61,7 +61,6 @@ export class LoginPage implements OnInit {
           Validators.minLength(5),
           Validators.required,
 			])),
-			username: ['', Validators.required],
     });
 	}
 
@@ -73,23 +72,21 @@ export class LoginPage implements OnInit {
   async login() {
 		const {email, username, password } = this
 		try {
-			// kind of a hack. 
-			const res = await this.afAuth.auth.signInWithEmailAndPassword(email, password)
-			
+			const res = await this.afAuth.auth.signInWithEmailAndPassword(email, password)			
 			if(res.user) {
 				this.user.setUser({
 					username,
 					uid: res.user.uid,
-					email: res.user.email,
-		//			urlImage: res.user.photoURL,
+          email: res.user.email,
 				})
 				this.router.navigate(['/tabs/home'])
 			}
 		
-		} catch(err) {
+		}catch(err) {
 			console.dir(err)
 			if(err.code === "auth/user-not-found") {
-				console.log("User not found")
+        console.log("eeror")
+        alert('Los datos son incorrectos o no existe el usuario')
 			}
 		}
 	}

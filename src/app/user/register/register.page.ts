@@ -7,40 +7,39 @@ import {finalize} from 'rxjs/operators';
 //import {userList, TodoService} from './../services/todo.service';
 import {ActivatedRoute} from 'node_modules/@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {Observable} from 'rxjs';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { User, Roles } from 'firebase';
+import { reject } from 'q';
+//import { reject } from 'q';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
+
 export class RegisterPage implements OnInit {
   urlImage: Observable<string>;
   uploadPercent: Observable<number>;
   myphoto:any;
-
- /* user: userList = {
-   name: '',
-   lastName: '',
-   username: '',
-   email: '',
-   password: '',
-  };*/
+  
+ 
   userId = null;
-  //uid: string="";
+  uid: string = "";
   email: string = "";
   roles: string = "";
   username: string = ""
 	password: string = ""
 	cpassword: string = ""
-  constructor(public afAuth: AngularFireAuth,
+  constructor(public afAuth: AngularFireAuth, private db: AngularFirestore,
 		public afstore: AngularFirestore, private storage: AngularFireStorage, 
-		public user: UserService, public alertController: AlertController, private camera: Camera,
+    public user: UserService,
+     public alertController: AlertController, private camera: Camera,
 		public router: Router,    private webView: WebView,
     private route: ActivatedRoute, private userService: UserService, private loadingController: LoadingController, private authServices: UserService, public navCrl: NavController, private formBuilder: FormBuilder) {}
   errorMessage: string;
@@ -68,70 +67,36 @@ export class RegisterPage implements OnInit {
       cpassword: new FormControl('', Validators.compose([
         Validators.minLength(5),
         Validators.required,
-      ])),
- //    urlImage: ['', Validators.required],
-
-
-      
+      ])),      
     });
   }
-/// ****************carga de registro */
 
-
-
-/******MIO********************** */
+/**************************************REGISTRO DE USUARIO********************** */
   async useRegister() {
-		const {email, username, password, cpassword, urlImage } = this
+		const {email, username, password, cpassword } = this
 		if(password !== cpassword) {
 			return console.error("Las contraseñas no coinciden")
 		}
 
 		try {
-			const res = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
 			this.afstore.doc(`users/${res.user.uid}`).set({
-        username, email
+        username, email, 
 			})
 
 			this.user.setUser({
 				username,
         uid: res.user.uid,
         email: res.user.email,
-    //    urlImage: res.user.photoURL,
 			})
 
-			this.presentAlert('EXCELENTE', 'USUARIO CREADO');
+			this.presentAlert('Excelente', 'Usuario creado');
 		} catch(error) {
 			console.dir(error)
 		}
   }
   
-  getImage(e) {
-  
-    const options: CameraOptions = {
-      quality: 70,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-     // mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      saveToPhotoAlbum:true     
-    }
-    this.camera.getPicture(options).then((imageData) => {
-        this.myphoto = this.webView.convertFileSrc(imageData);
-    }, (err) => {
-    });
-    
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    const filePath = `event_image/event_${id}`;
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-  this.uploadPercent = task.percentageChanges();
-  task.snapshotChanges().pipe(finalize(()=>this.urlImage = ref.getDownloadURL())).subscribe();
- 
-  }
- 
-
+ //**********************ALERTA********************* */ 
   async presentAlert(title: string, content: string) {
 		const alert = await this.alertController.create({
 			header: title,
@@ -151,7 +116,4 @@ export class RegisterPage implements OnInit {
     this.navCrl.navigateBack('');
   }
 
-
-
-  
 }
