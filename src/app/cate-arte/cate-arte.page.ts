@@ -41,6 +41,10 @@ todos: Todo[];
 @ViewChild('search_address') search_address: ElementRef;
 map1: GoogleMap;
 contentId = null;
+numeroRating = null;
+estrellas = null;
+
+
 constructor(private activatedRoute: ActivatedRoute,
   public navCtrl: NavController, private todoService: TodoService) { }
  
@@ -51,6 +55,12 @@ ngOnInit() {
     this.content = res;
     // = res;
   });
+}
+
+onModelChange( event)
+{
+  const rating = event;
+  this.numeroRating = rating;
 }
 
 add_event(){

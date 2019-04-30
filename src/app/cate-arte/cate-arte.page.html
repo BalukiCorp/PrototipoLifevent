@@ -17,9 +17,17 @@
         <img src="{{content.urlImage}}" class="styleimg">
         <br>
         <br>
-        <ion-button [routerLink]="['/', 'calendar', contentId]" expand="block">Me gusta</ion-button></div>
+        <ion-button [routerLink]="['/', 'calendar', contentId]" expand="block">Agregar</ion-button></div>
         <div><h5 align="center" class="styleTitulo"><b>{{content.event_name}}</b></h5>
-      </div>
+          <div>
+            <rating [(ngModel)]="estrellas"
+                    readonly="false" 
+                    size="default" 
+                    (ngModelChange)="onModelChange($event)">
+            </rating>
+          </div>
+          <h4 align="center">{{estrellas}}</h4>
+        </div>
     </div>
   </div>
 

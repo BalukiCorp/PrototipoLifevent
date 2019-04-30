@@ -8,6 +8,16 @@
 }
 
 
+rating {
+    ion-icon {
+      color: gray;
+  
+      &.filled {
+        color: #ffb400;
+      }
+    }
+  }
+
 //Estilo del Titulo
 .styleTitulo{
     float: center;
