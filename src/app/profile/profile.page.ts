@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {TodoService} from "../services/todo.service";
-import {UserService} from "../services/user.service";
+import {UserService, User} from "../services/user.service";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+//import { User } from 'firebase';
 
 
 interface image {
@@ -21,28 +22,43 @@ interface image {
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  user2: User = {
+  username: '',
+  uid: '',
+  email: '',
+    
+  };
   mainuser: AngularFirestoreDocument
 	userPosts
 	sub
-	posts
+  posts
+  email: string;
 	username: string
 	profilePic: string
   public imageProfile :any = [];
   myphoto:any; 
   public userUid: string = null;
-  constructor(private authservice: UserService, private afs: AngularFirestore, private user: UserService,
+  constructor(private authService: UserService, private afs: AngularFirestore, private user: UserService,
     private webView: WebView,private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { 
-      this.mainuser = afs.doc(`users/${user.getUID()}`)
+     /* this.mainuser = afs.doc(`users/${user.getUID()}`)
       this.sub = this.mainuser.valueChanges().subscribe(event => {
         this.posts = event.posts
         this.username = event.username
         this.profilePic = event.profilePic
       })
-
+*/
     }
+    public providerId: string = 'null';
 
   ngOnInit() {
-      
+    this.authService.isAuth().subscribe(user => {
+      if (user) {
+        this.user2.username = user.displayName;
+        this.user2.email = user.email;
+        //this.user2.photoUrl = user.photoURL;
+        this.providerId = user.providerData[0].providerId;
+      }
+    })
    /* this.authservice.isAuth().subscribe(user=>{
       if(user){
         this.user2.name = user.displayName;

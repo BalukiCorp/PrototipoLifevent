@@ -24,7 +24,7 @@ interface Roles {
   editor: boolean,
 }
 
-interface user {
+export interface User {
 	username: string,
   uid: string,
   email: string,
@@ -32,43 +32,18 @@ interface user {
  
 }
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user: user;
-  constructor( private db: AngularFirestore, private afAuth: AngularFireAuth,
-    private AFauth: AngularFireAuth, 
-    private router: Router) { 
+  private user: User
 
-    
-  }
+	constructor(private afAuth: AngularFireAuth, public router: Router,) {
 
+	}
 
-
-
-
-  login(email: string, password: string) {
-    return new Promise((resolve, rejected) => {
-      this.AFauth.auth.signInWithEmailAndPassword(email, password).then(user => {
-        resolve(user);
-      }).catch(err => rejected(err));
-    });
-  }
-  logout() {
-    this.AFauth.auth.signOut().then(() => {
-      this.router.navigate(['/login']);
-    });
-  }
-  userDetails() {
-    return firebase.auth().currentUser;
-  }
- 
-  //------------CRUD---------
-  setUser(user: user) {
-    this.user = user;    
+	setUser(user: User) {
+		this.user = user
 	}
 
 	getUsername(): string {
@@ -76,7 +51,7 @@ export class UserService {
 	}
 
 	reAuth(username: string, password: string) {
-		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username , password))
+		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username + '@codedamn.com', password))
 	}
 
 	updatePassword(newpassword: string) {
@@ -84,22 +59,19 @@ export class UserService {
 	}
 
 	updateEmail(newemail: string) {
-		return this.afAuth.auth.currentUser.updateEmail(newemail)
+		return this.afAuth.auth.currentUser.updateEmail(newemail + '@codedamn.com')
 	}
 
 	async isAuthenticated() {
 		if(this.user) return true
 
-    const user = await this.afAuth.authState.pipe(first()).toPromise();
-    
-  
+		const user = await this.afAuth.authState.pipe(first()).toPromise()
 
 		if(user) {
 			this.setUser({
 				username: user.email.split('@')[0],
-        uid: user.uid,
-        email: user.email.split('@')[0],
-    //    urlImage: user.photoURL,
+				uid: user.uid,
+				email: user.email.split('@')[0],
 			})
 
 			return true
@@ -111,18 +83,14 @@ export class UserService {
 		return this.user.uid
 	}
 
-  isAuth(){
-    return this.afAuth.authState.pipe(map(auth=> auth));
-  }
-
-
-
-
-
-
-
-
-
     
-
+  logout() {
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    });
+	}
+	
+	isAuth() {
+    return this.afAuth.authState.pipe(map(auth => auth));
+  }
 }
