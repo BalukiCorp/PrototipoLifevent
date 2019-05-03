@@ -4,7 +4,7 @@ import {AuthGuard} from "./guards/auth.guard";
 import {NologinGuard} from "./guards/nologin.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/slide', pathMatch: 'full'},
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [AuthGuard]},
   { path: 'search', loadChildren: './search/search.module#SearchPageModule', canActivate : [AuthGuard]},
@@ -25,6 +25,13 @@ const routes: Routes = [
   { path: 'cate-concert', loadChildren: './category/cate-concert/cate-concert.module#CateConcertPageModule' },
   { path: 'cate-education', loadChildren: './category/cate-education/cate-education.module#CateEducationPageModule' },
   { path: 'cate-foods', loadChildren: './category/cate-foods/cate-foods.module#CateFoodsPageModule' },
+  { path: 'slide', loadChildren: './slide/slide.module#SlidePageModule' },
+
+
+
+ 
+
+
 
 
 ];
