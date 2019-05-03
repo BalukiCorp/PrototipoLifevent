@@ -24,8 +24,10 @@ import { LIBRARIES } from 'google-maps';
 import { AgmDirectionModule } from 'agm-direction'; 
 import {AgmCoreModule} from '@agm/core';
 import {AngularFireAuthModule} from "@angular/fire/auth";
-
-
+import { AutoCompleteModule } from 'ionic4-auto-complete';
+import { IonicRatingModule } from 'ionic4-rating';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 
 //import {FirebaseService} from '../app/services/firebase.service';
@@ -34,7 +36,7 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [  ],
-  imports: [AgmDirectionModule, AgmCoreModule.forRoot({apiKey: "AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I",
+  imports: [ IonicRatingModule ,AutoCompleteModule,AgmDirectionModule, AgmCoreModule.forRoot({apiKey: "AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I",
   libraries: ["places"]}), HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule,
   AngularFirestoreModule, AngularFireStorageModule, HttpClientModule, AngularFireAuthModule],
@@ -42,6 +44,8 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
     Camera,
     WebView,
     File,
+    UserService,
+    AuthService,
     //FirebaseService,
     ImagePicker,
     FileTransfer,
