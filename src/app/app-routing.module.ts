@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
-import {AuthGuard} from "./guards/auth.guard";
-import {NologinGuard} from "./guards/nologin.guard";
+import { AuthGuard} from "./guards/auth.guard";
+import { NologinGuard} from "./guards/nologin.guard";
+import { AuthService } from '../app/services/auth.service'
 
 const routes: Routes = [
-  {path: '', redirectTo: '/slide', pathMatch: 'full'},
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  {path: '', redirectTo: 'tabs', pathMatch: 'full'},
+  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule',canActivate: [AuthService] },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [AuthGuard]},
   { path: 'search', loadChildren: './search/search.module#SearchPageModule', canActivate : [AuthGuard]},
   { path: 'calendar/:id', loadChildren: './calendar/calendar.module#CalendarPageModule' },
