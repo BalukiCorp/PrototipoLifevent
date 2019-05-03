@@ -53,7 +53,7 @@
   --ion-color-danger-tint: #f25454;
 
   /** dark **/
-  --ion-color-dark: #ffffff; //Background Color
+  --ion-color-dark: #000000; //Background Color
   --ion-color-dark-rgb: 34, 34, 34;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
@@ -69,12 +69,12 @@
   --ion-color-medium-tint: #a2a4ab;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #ffffff;
   --ion-color-light-rgb: 244, 244, 244;
-  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast: #ffffff;
   --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d8da;
-  --ion-color-light-tint: #f5f6f9;
+  --ion-color-light-shade: #ffffff;
+  --ion-color-light-tint: #ffffff;
 
   /* Dark Theme */
   --ion-status-bar-dark-theme: #000000;

@@ -8,7 +8,7 @@ import {AuthGuard} from "../guards/auth.guard";
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -38,7 +38,9 @@ const routes: Routes = [
       {
         path: 'settings',
         loadChildren: '../settings/settings.module#SettingsPageModule'
-      }
+      },
+      { path: 'post/:id', 
+      loadChildren: '../post/post.module#PostPageModule' },
     ]
   },
   {
@@ -55,6 +57,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
+  exports: [RouterModule],
   declarations: [TabsPage]
 })
 export class TabsPageModule {}

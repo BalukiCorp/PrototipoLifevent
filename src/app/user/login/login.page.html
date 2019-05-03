@@ -46,24 +46,25 @@
 
   <ion-list>
     <img class="icon" src="../../../assets/icon/iconoLogin.jpg" alt="">
-  <!--
+  
     <ion-item>
         <ion-label position="floating">Usuario</ion-label>
         <ion-input type="text" [(ngModel)]="username" formControlName="username"></ion-input>
-      </ion-item>
--->
-      <ion-item>
+    </ion-item>
+
+      <!--<ion-item>
         <ion-label position="floating">Correo electrónico</ion-label>
         <ion-input type="email" [(ngModel)]="email" formControlName="email"></ion-input>
         </ion-item>
-        <div>
+
+       <div>
           <ng-container *ngFor="let validation of validation_messages.email">
             <div class="jasmine-errored" *ngIf="validations_form.get('email').hasError(validation.type)
             && (validations_form.get('email').dirty || validations_form.get('email').touched)">
             {{validation.messages}}
             </div>
           </ng-container>
-        </div>
+        </div>-->
   
       <ion-item>
         <ion-label position="floating">Password</ion-label>
@@ -83,6 +84,12 @@
       <ion-button type="submit" [disabled]="!validations_form.valid" expand="block" (click)="presentLoading()"
       (click)="login()">Ingresar</ion-button>
 
+  
+      <ion-button expand="block" (click)="logInGoogle()">
+        <ion-icon name="logo-googleplus" slot="start"></ion-icon>
+        Login by Google</ion-button>
+
+      
 
       <label class="jasmine-errored">{{errorMessage}}</label>
     </form>

@@ -4,6 +4,8 @@ import { Router} from "@angular/router";
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoadingController } from '@ionic/angular';
+import * as firebase from 'firebase/app';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +15,11 @@ import { LoadingController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   username: string = ""
 	password: string = ""
-  email: string = ""
-	constructor(public afAuth: AngularFireAuth, public user: UserService, public router: Router, private formBuilder: FormBuilder
-	,public loadingController: LoadingController) { }
+
+	constructor(
+    public afAuth: AngularFireAuth, public user: UserService,
+    public router: Router, private formBuilder: FormBuilder,
+    public loadingController: LoadingController) { }
 
 ///lOADING
 	async presentLoading() {
@@ -46,17 +50,18 @@ export class LoginPage implements OnInit {
 	errorMessage: string;
   validations_form: FormGroup;
   validation_messages = {
+    /*
     'email': [{type: 'required', messages: 'Email es necesario'},
-              { type: 'pattern', messages: 'Por favor ingrese un email valido'}],
+              { type: 'pattern', messages: 'Por favor ingrese un email valido'}],*/
     'password': [{type: 'required', messages: 'Contrasena es necesaria'},
                  {type: 'minLength', messages: 'Contrasena debe tener almenos 5 caracteres'}]
   };
 
 	ngOnInit() {
 		this.validations_form = this.formBuilder.group({      
-      email: new FormControl('', Validators.compose([
-          Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'),
-      ])),
+      username: ['', Validators.required],
+      cpassword: new FormControl('', Validators.compose([
+      ])), 
       password: new FormControl('', Validators.compose([
           Validators.minLength(5),
           Validators.required,
@@ -70,22 +75,28 @@ export class LoginPage implements OnInit {
 
 
   async login() {
-		const {email, username, password } = this
+    const { username, password } = this
 		try {
-			const res = await this.afAuth.auth.signInWithEmailAndPassword(email, password)			
+      // kind of a hack.
+      const res = await this.afAuth.auth.signInWithEmailAndPassword(username + '@hotmail.com', password)
+
+      
 			if(res.user) {
 				this.user.setUser({
-					username,
-					uid: res.user.uid,
-          email: res.user.email,
-				})
+            username,
+            uid: res.user.uid
+        })
+
+        console.log("Username :", username)
+        console.log("UID :", res.user.uid)
 				this.router.navigate(['/tabs/home'])
 			}
 		
-		}catch(err) {
+		} catch(err) {
+      console.log("Username :", username)
 			console.dir(err)
 			if(err.code === "auth/user-not-found") {
-        console.log("eeror")
+        console.log("User not found")
         alert('Los datos son incorrectos o no existe el usuario')
 			}
 		}

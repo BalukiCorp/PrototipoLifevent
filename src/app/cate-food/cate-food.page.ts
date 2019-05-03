@@ -6,7 +6,6 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActionSheetController, NavController, NavParams, LoadingController,  ToastController} from '@ionic/angular';
 //import {normalizeURL } from '@ionic/angular';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {ActivatedRoute} from 'node_modules/@angular/router';
 import { getLocaleDateTimeFormat } from '@angular/common';
 import {Observable} from 'rxjs';
@@ -17,6 +16,11 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { load } from '@angular/core/src/render3';
+import { UserService } from "../services/user.service";
+import { AngularFirestore } from '@angular/fire/firestore';
+import { firestore } from 'firebase/app';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import {
   GoogleMaps,
   GoogleMap,
@@ -27,6 +31,7 @@ import {
 } from '@ionic-native/google-maps';
 //import {} from 'googlemaps';
 import { Platform } from '@ionic/angular';
+import { Http } from '@angular/http'
 
 declare var google;
 
@@ -40,7 +45,15 @@ export class CateFoodPage implements OnInit {
   map1: GoogleMap;
   map2: GoogleMap;
   loading: any;
+//Guardar la imegen subida
+  imageURL: string
+  noFace: boolean = false
+  busy: boolean = false
+
+
+
   @ViewChild('search_address') search_address: ElementRef;
+  @ViewChild('fileButton') fileButton
   mapRef = null;
 
   public textInput = document.querySelector("#imageUser");
@@ -69,12 +82,22 @@ export class CateFoodPage implements OnInit {
  public orderForm:any;
  formRegister: FormGroup;
  todoId = null;
+
+
+
+
   constructor(
-    private actionSheetController: ActionSheetController, public navCtrl: NavController, public toastCtrl: ToastController, public imagePicker: ImagePicker,    
-    private webView: WebView, private route: ActivatedRoute,  private camera: Camera, private transfer: FileTransfer, private file: File, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController,
+    private alertController: AlertController,private router: Router,
+    public http: Http,public user: UserService,public afstore: AngularFirestore,
+    private actionSheetController: ActionSheetController, public navCtrl: NavController, 
+    public toastCtrl: ToastController, public imagePicker: ImagePicker,    
+    private webView: WebView, private route: ActivatedRoute,  private camera: Camera, 
+    private transfer: FileTransfer, private file: File, private nav: NavController, 
+    private todoService: TodoService, private loadingController: LoadingController,
     public formBuilder: FormBuilder, private storage: AngularFireStorage, 
     private geolocation: Geolocation,
     private loadingCtrl: LoadingController) {
+
   this.formRegister = this.formBuilder.group({
     event_name: ['', Validators.required],
   manager_name: ['', Validators.required],
@@ -197,31 +220,88 @@ export class CateFoodPage implements OnInit {
   }
  
   // GUARDAR DATOS EN CLOUD FIRESTORE
-  async saveTodo() {
- 
+  /*async saveTodo() { 
     const loading = await this.loadingController.create({
-      message: 'Añadiendo evento..'
-    });
-    await loading.present();
- 
-    if (this.todoId) {
-      this.todoService.updateTodo(this.todo, this.todoId).then(() => {
-        let textInput = document.querySelector("#imageUser");
-        
-        loading.dismiss();
-      //  this.nav.goBack('home');
+        message: 'Añadiendo evento..'
       });
-    } else {
-      this.todoService.addTodo(this.todo).then(() => {
-        loading.dismiss();
-        console.log(this.formRegister.value);
+      await loading.present();
+  
+      if (this.todoId) {
+        this.todoService.updateTodo(this.todo, this.todoId).then(() => {
+          let textInput = document.querySelector("#imageUser");
+          
+          loading.dismiss();
+        //  this.nav.goBack('home');
+        });
+      } else {
+        this.todoService.addTodo(this.todo).then(() => {
+          loading.dismiss();
+          console.log(this.formRegister.value);
 
-        this.navCtrl.navigateForward(['/tabs/home']);
+          this.navCtrl.navigateForward(['/tabs/home']);
 
-       // this.nav.goBack('home');
-      });
-    }
+        // this.nav.goBack('home');
+        });
+      }
+  }*/
+
+  //Crear Post Evento
+
+  async createPost(){
+
+
+    const event_name = this.todo.event_name
+    const manager_name = this.todo.manager_name
+    const category = this.todo.category
+    const hour_start = this.todo.hour
+    const hour_end = this.todo.final_hour
+    const ubication = this.todo.ubication
+    const date_start = this.todo.date
+    const date_end = this.todo.final_date
+    const desc = this.todo.description
+    const value = this.todo.value
+    const image = this.todo.urlImage
+    
+
+    this.afstore.doc(`users/${this.user.getUID()}`).update({
+			posts: firestore.FieldValue.arrayUnion(`${image}`)
+    })
+
+    this.afstore.doc(`posts/${image}`).set({
+      event_name,
+      manager_name,
+      category,
+      hour_start,
+      hour_end,
+      ubication,
+      date_start,
+      date_end,
+      desc,
+      value,
+      likes: [],
+      image,
+			author: this.user.getUsername(),
+      
+      
+      
+		})
+    
+    this.busy = false
+		this.imageURL = ""
+    this.todo.description = ""
+
+    const alert = await this.alertController.create({
+			header: 'Done',
+			message: 'Your post was created!',
+			buttons: ['Cool!']
+    })
+    
+    await alert.present()
+
+    this.navCtrl.navigateForward(['/tabs/home']);
+
   }
+
   @ViewChild('fileInp') fileInput: ElementRef;
 
 //this.urlImage
@@ -235,7 +315,7 @@ submit() {
 
 
 // CARGA DE IMAGEN
-getImage(e) {
+/*getImage(e) {
   
   const options: CameraOptions = {
     quality: 70,
@@ -273,6 +353,36 @@ task.snapshotChanges().pipe(finalize(()=>this.urlImage = ref.getDownloadURL())).
   // if(this.todoService)
 //this.todoService.addTodo(e.urlImage);
  
+}*/
+
+//Upload File
+uploadFile(){
+  this.fileButton.nativeElement.click()
+}
+
+
+//Conseguir la imagen
+fileChanged(event) {
+		
+  this.busy = true
+
+  const files = event.target.files
+  
+  const data = new FormData()
+  data.append('file', files[0])
+  data.append('UPLOADCARE_STORE', '1')
+  data.append('UPLOADCARE_PUB_KEY', 'ada5e3cb2da06dee6d82')
+  
+  this.http.post('https://upload.uploadcare.com/base/', data)
+  .subscribe(event => {
+    console.log(event)
+    this.imageURL = event.json().file
+    this.busy = false
+    this.http.get(`https://ucarecdn.com/${this.imageURL}/detect_faces/`)
+    .subscribe(event => {
+      this.noFace = event.json().faces == 0
+    })
+  })
 }
 
 

@@ -1,12 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import {NavController} from '@ionic/angular';
-import {TodoService} from "../services/todo.service";
-import {UserService, User} from "../services/user.service";
+import { TodoService} from "../services/todo.service";
+import { UserService, User} from "../services/user.service";
 import { AngularFireStorage} from "@angular/fire/storage";
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import {AngularFireAuth} from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { firestore } from 'firebase/app'
+import { ActivatedRoute } from '@angular/router';
+
+
 //import { User } from 'firebase';
 
 
@@ -21,12 +27,30 @@ interface image {
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage  {
+
+  //Variables de GetPost//
+  postID: string
+	effect: string = ''
+  post
+  sub2
+	postReference: AngularFirestoreDocument
+	
+
+  heartType: string = "heart-empty"
+  //-------------------//
+
+  userInfos={
+    name:"",
+    photo:"",
+    email:"",
+    loggedIn:false
+  }
+  
   user2: User = {
   username: '',
   uid: '',
-  email: '',
-    
+  
   };
   mainuser: AngularFirestoreDocument
 	userPosts
@@ -38,63 +62,43 @@ export class ProfilePage implements OnInit {
   public imageProfile :any = [];
   myphoto:any; 
   public userUid: string = null;
-  constructor(private authService: UserService, private afs: AngularFirestore, private user: UserService,
+
+
+  @ViewChild('fileBtn') fileBtn: {
+		nativeElement: HTMLInputElement
+  }
+  
+  constructor(
+    private route: ActivatedRoute, 
+    private http: Http, private router: Router, 
+    private authService: UserService, public afs: AngularFirestore, 
+    private user: UserService,
     private webView: WebView,private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { 
-     /* this.mainuser = afs.doc(`users/${user.getUID()}`)
+
+      this.mainuser = this.afs.doc(`users/${this.user.getUID()}`)
       this.sub = this.mainuser.valueChanges().subscribe(event => {
-        this.posts = event.posts
-        this.username = event.username
-        this.profilePic = event.profilePic
-      })
-*/
+      this.posts = event.posts
+      this.username = event.username
+      this.profilePic = event.profilePic
+      this.email = event.email
+
+    })
+      
     }
+
     public providerId: string = 'null';
 
+  
+
   ngOnInit() {
-    this.authService.isAuth().subscribe(user => {
-      if (user) {
-        this.user2.username = user.displayName;
-        this.user2.email = user.email;
-        //this.user2.photoUrl = user.photoURL;
-        this.providerId = user.providerData[0].providerId;
-      }
-    })
-   /* this.authservice.isAuth().subscribe(user=>{
-      if(user){
-        this.user2.name = user.displayName;
-        this.user2.email = user.email;
-        this.user2.userId = user.uid;
-        console.log('USER', user);
-        console.log(this.user2.email);
-        console.log(this.user2.userId);
-        this.providerId = user.providerData[0].providerId;
-        console.log(this.providerId);
-        
-      }
-   });
 
-*/
-    this.chatservice.getImageProfile().subscribe( images => {
-      images.map( image => {
-        
-        const data : image = image.payload.doc.data() as image;
-        data.id = image.payload.doc.id;
-        
-        this.imageProfile.push(data);
-
-      })
-    })  
-  }
-
-  emailUser(){
-    
   }
 
   ngOnDestroy() {
-		this.sub.unsubscribe()
-	}
+    this.sub.unsubscribe()
+  }
 
-  onUpload(e){
+  /*onUpload(e){
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePath = 'upload/imagen';
@@ -115,13 +119,41 @@ export class ProfilePage implements OnInit {
         this.myphoto = this.webView.convertFileSrc(imageData);
     }, (err) => {
     });
+  }*/
+
+  updateProfilePic() {
+		this.fileBtn.nativeElement.click()
+	}
+
+  uploadPic(event) {
+		const files = event.target.files
+
+		const data = new FormData()
+		data.append('file', files[0])
+		data.append('UPLOADCARE_STORE', '1')
+		data.append('UPLOADCARE_PUB_KEY', 'ada5e3cb2da06dee6d82')
+		
+		this.http.post('https://upload.uploadcare.com/base/', data)
+		.subscribe(event => {
+			const uuid = event.json().file
+			this.mainuser.update({
+				profilePic: uuid
+			})
+		})
   }
 
+  goTo(postID: string) {
+
+		this.navCtrl.navigateForward(['/tabs/post/' + postID.split('/')[0]])
+	}
+  
+  
   calendarButtonClicked() {
     this.navCtrl.navigateForward('/calendar');
   }
   settingsButtonClicked() {
     this.navCtrl.navigateForward('/settings');
   }
+
 }
 

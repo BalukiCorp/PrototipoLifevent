@@ -1,160 +1,170 @@
 <ion-header>
-  <ion-toolbar color= "primary">
-    <ion-title  color="light" text-center >Perfil</ion-title>
-    <ion-buttons slot="start" >
+
+  <ion-toolbar color="primary">
+    <ion-title color="light" text-center>Perfil</ion-title>
+    <ion-buttons slot="start">
       <ion-button (click)="calendarButtonClicked()">
         <ion-icon slot="icon-only" name="calendar" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="settingsButtonClicked()">
-        <ion-icon  slot="icon-only" name="settings" color="light"></ion-icon>
+        <ion-icon slot="icon-only" name="settings" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
   <!--<h1 class="nombreUsuario">Josue Vargas</h1>-->
 </ion-header>
 
-<ion-content padding class="card-background-page" color="dark">
+<ion-content padding class="card-background-page" color=" ">
 
-  
+
   <!--Pagina-->
- 
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button class="boton_personalizado" routerLink="/idea" >
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
+    <ion-fab-button class="boton_personalizado" routerLink="/idea">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
   </ion-fab>
-  
+
   <ion-row>
-      <div class="container">
-          <div class="row login_box">
-              <div class="col-md-12 col-xs-12" align="center" >
-                    <div class="line"><h3>12 : 30 AM</h3></div>
-                    <ion-avatar *ngFor="let image of imageProfile" class="outter"><img src="{{image.img}}" class="image-circle"/></ion-avatar>
-                    <div class="upload-btn-wrapper">
-                      <button class="btn">Upload a file</button>
-                      <ion-input type="file" accept="img/*" (change)="onUpload($event)" name="myfile"></ion-input>
-                    </div>
-                   
-                    <br>
-                    <br> 
-                    <h2>{{user2.email}}</h2> 
-                    <h1>{{user2.username}}</h1>
-                    <h3>{{user2.uid}}</h3>
-                    <span>ECUADOR</span>
-              </div>
-              <div class="col-md-6 col-xs-6 follow line" align="center">
-                  <h3>
-                        4506 <br/> <span>PUNTACION</span>
-                  </h3>
-              </div>
-              <div class="col-md-6 col-xs-6 follow line" align="center">
-                  <h3>
-                      75 <br/> <span>EVENTOS</span>
-                  </h3>
-              </div>
-    
+    <div class="container">
+      <div class="row login_box">
+        <div class="col-md-12 col-xs-12" align="center">
+
+          <h2>{{email}}</h2>
+
+          <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" />
+
+          <div>
+            <ion-img class="profile-pic" (click)="updateProfilePic()"
+              src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/150x150/center/"></ion-img>
           </div>
+
+          <h2>{{ username}}</h2>
+          <span>ECUADOR</span>
+        </div>
+        <div class="col-md-6 col-xs-6 follow line" align="center">
+          <h3>
+            4506 <br /> <span>PUNTACION</span>
+          </h3>
+        </div>
+        <div class="col-md-6 col-xs-6 follow line" align="center">
+          <h3>
+            75 <br /> <span>EVENTOS</span>
+          </h3>
+        </div>
+
       </div>
-    
+    </div>
+
 
     <!---->
 
     <div class="divNivelCategoria">
-        <h2 class="h2NivelCategoria">Nivel en Categorias</h2>
+      <h2 class="h2NivelCategoria">Nivel en Categorias</h2>
     </div>
-    
-    
+
+
 
     <!--Niveles en cada Categoria-->
-   
-    
-    
+
+
+
     <div id="outer_wrapper">
       <div id="inner_wrapper">
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Festivales</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_beer.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Festivales</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_beer.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Educacion</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_libro.jpg" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Educacion</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_libro.jpg" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Conciertos</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_ticket.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Conciertos</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_ticket.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Gastronomia</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_gastronomia.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Gastronomia</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_gastronomia.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Negocios</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_emprendimiento.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Negocios</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_emprendimiento.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Arte</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_arte.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Arte</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_arte.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Cultura</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_cultura.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Cultura</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_cultura.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Fiesta</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_fiesta.png" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Fiesta</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_fiesta.png" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Deporte</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_deporte.jpg" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Deporte</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_deporte.jpg" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
-          <div class="box">
-            <ion-card class="cardNiveles">
-              <h6 class="colortitulo">Tecnologia</h6>
-              <a href="" ><img class="img_icono" src="../../assets/img/icono_tecnologia.jpg" /></a>
-              <div class="progress">
-              </div><h6 class="colortitulo">Nivel 1</h6>
+        </div>
+        <div class="box">
+          <ion-card class="cardNiveles">
+            <h6 class="colortitulo">Tecnologia</h6>
+            <a href=""><img class="img_icono" src="../../assets/img/icono_tecnologia.jpg" /></a>
+            <div class="progress">
+            </div>
+            <h6 class="colortitulo">Nivel 1</h6>
           </ion-card>
-          </div>
+        </div>
       </div>
-  </div>
+    </div>
 
 
   </ion-row>
@@ -165,36 +175,11 @@
 
   
 <!--Card de Historial de Eventos Asistidos-->
-  <ion-slides pager="true" class="slidecard">
-    <ion-slide class="step-one">
-      <ion-card class="welcome-card">
-        <img  src="../../assets/img/foto_prueba.jpg"/>
-        <ion-card-header>
-          <ion-card-subtitle class="colortituloHistorial">Josue Vargas</ion-card-subtitle>
-          <ion-card-title class="colortituloHistorial">Proyecto X</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p class="colortituloHistorial">Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-        </ion-card-content>
-    </ion-card>
-    </ion-slide>
 
-    <ion-slide class="step-one">
-        <ion-card class="welcome-card">
-          <img  src="../../assets/img/foto_prueba.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle class="colortituloHistorial">Josue Vargas</ion-card-subtitle>
-            <ion-card-title class="colortituloHistorial">Proyecto X</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p class="colortituloHistorial">Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-          </ion-card-content>
-      </ion-card>
-      </ion-slide>
-  </ion-slides>
-
-
-
- 
-
+<div id="images">
+		<div class="image" *ngFor="let post of posts">
+			<img (click)="goTo(post)" class="main-image" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" />
+		</div>
+</div>
+  
 </ion-content>

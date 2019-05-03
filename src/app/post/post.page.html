@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-button slot="start" (click)="regresarHome()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      <ion-title>post</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <ion-card *ngIf="post as postData">
+      <ion-img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}"></ion-img>
+      <ion-card-content>
+        <p>{{ postData.desc }}</p>
+      </ion-card-content>
+      <ion-item (click)="toggleHeart()">
+        <ion-icon [name]="heartType"></ion-icon>
+      </ion-item>
+    </ion-card>
+    
+  </ion-content>

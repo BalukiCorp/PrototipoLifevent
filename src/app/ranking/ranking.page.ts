@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { TodoService, Todo } from "../services/todo.service";
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { NavController, LoadingController } from '@ionic/angular';
+import { Usuario } from '../models/evento.model';
+import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-accessors/value-accessor';
+import { AngularFirestoreDocument, AngularFirestore } from "angularfire2/firestore";
+import { firestore } from 'firebase/app'
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-ranking',
@@ -10,13 +21,62 @@ import { Component, OnInit } from '@angular/core';
 export class RankingPage implements OnInit {
   
 
-  constructor() { }
+  postID: string
+	effect: string = ''
+	post
+	postReference: AngularFirestoreDocument
+	sub
 
-  ngOnInit() {
-    
-  }
+	heartType: string = "heart-empty"
+
+
+  constructor(
+    private route: ActivatedRoute, private user: UserService,private afs: AngularFirestore,
+    public buscareventos: TodoService,public loadingController: LoadingController,
+    private router:Router, public navCtrl: NavController, 
+    private camera: Camera, private transfer: FileTransfer, 
+    private file: File, private loadingCtrl:LoadingController,) { }
 
   
+  public usuarios : any = [];
+
+
+  ngOnInit() {
+      this.buscareventos.getPost().subscribe(chats => {
+        chats.map(chat => {
+        
+        const data : Usuario = chat.payload.doc.data() as Usuario
+        data.id = chat.payload.doc.id;
+
+        this.usuarios.push(data);
+        console.log(data);
+      })
+    })
+
+    this.postID = this.route.snapshot.paramMap.get('id')
+		this.postReference = this.afs.doc(`posts/${this.postID}`)
+		this.sub = this.postReference.valueChanges().subscribe(val => {
+			this.post = val
+			this.heartType = val.likes.includes(this.user.getUID()) ? 'heart' : 'heart-empty'
+		})
+  }
+
+  ngOnDestroy() {
+		this.sub.unsubscribe()
+	}
+
+	toggleHeart() {
+		if(this.heartType == 'heart-empty') {
+			this.postReference.update({
+				likes: firestore.FieldValue.arrayUnion(this.user.getUID())
+			})
+		} else {
+			this.postReference.update({
+				likes: firestore.FieldValue.arrayRemove(this.user.getUID())
+			})
+		}
+	}
+
 
 }
 

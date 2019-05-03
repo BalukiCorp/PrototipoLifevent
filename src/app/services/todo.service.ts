@@ -38,8 +38,15 @@ export class TodoService {
   uploadPercent: Observable<number>;
   private todosCollection: AngularFirestoreCollection<Todo>;
   private event_register: Observable<Todo[]>;
-  constructor(private router: Router , private AFauth: AngularFireAuth , private db: AngularFirestore,
-              private storage: AngularFireStorage) {
+
+
+  
+  constructor(
+    private router: Router , private AFauth: AngularFireAuth,
+    private db: AngularFirestore,
+    private storage: AngularFireStorage) {
+
+
     this.todosCollection = db.collection<Todo>('event_register');
     this.event_register = this.todosCollection.snapshotChanges().pipe(
       map(actions => {
@@ -57,6 +64,10 @@ export class TodoService {
               .pipe(
                 delay(2500)
               )
+  }
+
+  getPost(){
+    return this.db.collection('posts').snapshotChanges()
   }
 
   getImageProfile() {

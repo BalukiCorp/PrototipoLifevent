@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
@@ -6,15 +6,15 @@ import { File } from '@ionic-native/file/ngx';
 import { NavController, LoadingController } from '@ionic/angular';
 import { TodoService, Todo } from "../services/todo.service";
 import { Usuario } from '../models/evento.model';
+import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-accessors/value-accessor';
+
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements OnInit {
-
- 
+export class SearchPage {
 
   categorias = [
     {
@@ -70,11 +70,17 @@ export class SearchPage implements OnInit {
   ]
 
   public usuarios : any = [];
+  
   textoBuscar = '';
 
+
   constructor(public buscareventos: TodoService,public loadingController: LoadingController,
-    private router:Router, public navCtrl: NavController, private camera: Camera, private transfer: FileTransfer, private file: File, private loadingCtrl:LoadingController)
-  {}
+    private router:Router, public navCtrl: NavController, 
+    private camera: Camera, private transfer: FileTransfer, 
+    private file: File, private loadingCtrl:LoadingController,){
+   
+  }
+
 
   async presentLoading() {
     const loading = await this.loadingController.create({
@@ -108,6 +114,7 @@ export class SearchPage implements OnInit {
     const texto = event.target.value;
     this.textoBuscar = texto;
   }
+
 
 
   /*pushCateSegunda(){

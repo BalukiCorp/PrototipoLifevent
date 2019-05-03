@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="card-background-page" color="dark">
+<ion-content padding class="card-background-page" color="light">
 
   
     <ion-card class="cardRankingUser">
@@ -61,5 +61,19 @@
       <div class="numRankingPuntos"><p>140</p></div>
     </ion-card>
 
+      <div *ngFor="let usuario of usuarios">
+      <ion-card>
+          <img  [src]="usuario.image">
+          <ion-card-content>
+              <h4>{{usuario.event_name}}</h4>
+              <h3>{{usuario.category}}</h3>
+              <h3>{{usuario.manager_name}}</h3>
+              <h3>{{usuario.date_start}}</h3>
+          </ion-card-content>
+          <ion-item>
+            <ion-icon [name]="heartType"></ion-icon>
+          </ion-item>
+    </ion-card>
+    </div>
   
 </ion-content>

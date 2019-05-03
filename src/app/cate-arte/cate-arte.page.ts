@@ -42,6 +42,7 @@ todos: Todo[];
 map1: GoogleMap;
 contentId = null;
 numeroRating = null;
+
 estrellas = null;
 
 
@@ -61,6 +62,11 @@ onModelChange( event)
 {
   const rating = event;
   this.numeroRating = rating;
+}
+
+promedioEstrellas()
+{
+  this.estrellas;
 }
 
 add_event(){

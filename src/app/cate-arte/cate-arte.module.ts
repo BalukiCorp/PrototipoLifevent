@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CateArtePage } from './cate-arte.page';
+import { IonicRatingModule } from "ionic4-rating";
 
 const routes: Routes = [
   {
@@ -16,11 +17,15 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    IonicRatingModule,
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CateArtePage]
+  declarations: [CateArtePage],
+  exports: [
+    CateArtePage
+  ]
 })
 export class CateArtePageModule {}

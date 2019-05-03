@@ -1,26 +1,19 @@
 <ion-header>
   <ion-toolbar color="primary">
-   <ion-title>
-     Categorias
-   </ion-title>
+    <ion-title>
+      Categorias
+    </ion-title>
   </ion-toolbar>
 
   <ion-toolbar color="primary">
-  <ion-searchbar 
-                    placeholder="Buscar evento"
-                    type= "text"
-                    spellcheck=true
-                    animated     
-                    debounce = "250"  
-                    (ionChange)="buscarEvento( $event)"
-                    showCancelButton 
-                    cancelButtonText="Cancel">
+    <ion-searchbar placeholder="Buscar evento" type="text" spellcheck=true animated debounce="250"
+      (ionChange)="buscarEvento( $event)" showCancelButton cancelButtonText="Cancel">
     </ion-searchbar>
   </ion-toolbar>
 
 </ion-header>
 
-<ion-content padding class="card-background-page" color="dark">
+<ion-content padding class="card-background-page" color="light">
 
 
   <!--<ion-list *ngIf="usuarios.length === 0">
@@ -34,7 +27,7 @@
     </ion-list>
 -->
 
-    <!--<ion-list>
+  <!--<ion-list>
 
       <ion-item *ngFor="let usuario of usuarios | filtro: textoBuscar" [routerLink]="['/', 'cate-arte', usuario.id]">
         <ion-avatar slot="end" >
@@ -47,35 +40,37 @@
       </ion-item>
 
     </ion-list>-->
-    <div *ngIf="textoBuscar?.length > 0">
-      <ion-item *ngFor="let usuario of usuarios | filtro: textoBuscar" [routerLink]="['/', 'cate-arte', usuario.id]">
-        <ion-avatar slot="end" >
-            <ion-img [src]="usuario.urlImage" *ngIf="usuario.urlImage != 'N/A'"></ion-img>
-        </ion-avatar>
-        <ion-label>
-          <h4>{{usuario.event_name}}</h4>
-          <h3>{{usuario.category}}</h3>
-        </ion-label>
-      </ion-item>
-    </div>
 
-    
+  <div *ngIf="textoBuscar?.length > 0">
+    <ion-item *ngFor="let usuario of usuarios | filtro: textoBuscar" [routerLink]="['/', 'cate-arte', usuario.id]">
+      <ion-avatar slot="end">
+        <ion-img [src]="usuario.urlImage" *ngIf="usuario.urlImage != 'N/A'"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h4>{{usuario.event_name}}</h4>
+        <h3>{{usuario.category}}</h3>
+      </ion-label>
+    </ion-item>
+  </div>
 
-    
 
-    <ion-segment (ionChange)="segmentChanged($event)">
+
+
+
+  <ion-segment (ionChange)="segmentChanged($event)">
     <ion-segment-button value="today" class="segmentStyle">
       <ion-label class="labelStyle">Hoy</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="this week" class="segmentStyle">
+    <ion-segment-button value="this_week" class="segmentStyle">
       <ion-label class="labelStyle">Esta semana</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="tomorrow week" class="segmentStyle">
+    <ion-segment-button value="tomorrow" class="segmentStyle">
       <ion-label class="labelStyle">Mañana</ion-label>
     </ion-segment-button>
-    
+
   </ion-segment>
-  
+
+
   <!--
   <div class="divFiltros">
     <ion-card class="cardfiltroHoy">
@@ -91,53 +86,53 @@
 -->
 
 
-<div class="divPopulares">
-  <a>
-    <h3 class="titulo" color="white">Populares</h3>
-  </a>
-</div>
-
-<div id="outer_wrapper">
-  <div id="inner_wrapper">
-      <div class="box">
-        <ion-card class="welcome-card">
-          <img  src="../../assets/img/foto_prueba.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
-            <ion-card-title>Proyecto X</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>Santa Maria</p>
-          </ion-card-content>
-        </ion-card>
-      </div>
-    
-      <div class="box">
-        <ion-card class="welcome-card">
-          <img  src="../../assets/img/foto_prueba.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
-            <ion-card-title>Proyecto X</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>Santa Maria</p>
-          </ion-card-content>
-        </ion-card>
-      </div>
-      <div class="box">
-        <ion-card class="welcome-card">
-          <img  src="../../assets/img/foto_prueba.jpg"/>
-          <ion-card-header>
-            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
-            <ion-card-title>Proyecto X</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>Santa Maria</p>
-          </ion-card-content>
-        </ion-card>
-      </div>
+  <div class="divPopulares">
+    <a>
+      <h3 class="titulo" color="white">Populares</h3>
+    </a>
   </div>
-</div>
+
+  <div id="outer_wrapper">
+    <div id="inner_wrapper">
+      <div class="box">
+        <ion-card class="welcome-card">
+          <img src="../../assets/img/foto_prueba.jpg" />
+          <ion-card-header>
+            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+            <ion-card-title>Proyecto X</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Santa Maria</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div class="box">
+        <ion-card class="welcome-card">
+          <img src="../../assets/img/foto_prueba.jpg" />
+          <ion-card-header>
+            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+            <ion-card-title>Proyecto X</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Santa Maria</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div class="box">
+        <ion-card class="welcome-card">
+          <img src="../../assets/img/foto_prueba.jpg" />
+          <ion-card-header>
+            <ion-card-subtitle>Josue Vargas</ion-card-subtitle>
+            <ion-card-title>Proyecto X</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Santa Maria</p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
 
   <a>
     <h3 class="tituloCategorias" color="white">Categorias</h3>
@@ -145,25 +140,25 @@
 
 
   <ion-grid fixed class="gridCategorias">
-      <ion-row>
-        <ion-col size="6" *ngFor="let categoria of categorias" (click)="presentLoading()">
-            <a [routerLink]="categoria.navegation" >
-              <ion-card class="card_categorias">
-                <ion-img class="styleImages" [src]="categoria.imagen"></ion-img>
-                <div class="card-title">{{categoria.nombre}}</div>
-              </ion-card>
-            </a>
-        </ion-col>
-        
-        <ion-col (click)="presentLoading()">
-            <a routerLink="../category/cate-promotions">
-              <ion-card class="card_promociones">
-                <img src="../../assets/img/promociones.jpg"/>
-                <div class="card-title-promociones">Promociones</div>
-              </ion-card>
-            </a>
-        </ion-col>
-      </ion-row>
+    <ion-row>
+      <ion-col size="6" *ngFor="let categoria of categorias" (click)="presentLoading()">
+        <a [routerLink]="categoria.navegation">
+          <ion-card class="card_categorias">
+            <ion-img class="styleImages" [src]="categoria.imagen"></ion-img>
+            <div class="card-title">{{categoria.nombre}}</div>
+          </ion-card>
+        </a>
+      </ion-col>
+
+      <ion-col (click)="presentLoading()">
+        <a routerLink="../category/cate-promotions">
+          <ion-card class="card_promociones">
+            <img src="../../assets/img/promociones.jpg" />
+            <div class="card-title-promociones">Promociones</div>
+          </ion-card>
+        </a>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
 

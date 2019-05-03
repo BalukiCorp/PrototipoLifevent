@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 import {Observable} from 'rxjs';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import {AngularFireStorage} from '@angular/fire/storage';
-import { User, Roles } from 'firebase';
+import { User} from 'firebase';
 import { reject } from 'q';
 //import { reject } from 'q';
 
@@ -73,22 +73,24 @@ export class RegisterPage implements OnInit {
 
 /**************************************REGISTRO DE USUARIO********************** */
   async useRegister() {
-		const {email, username, password, cpassword } = this
+		const { username, password, cpassword } = this
 		if(password !== cpassword) {
 			return console.error("Las contraseñas no coinciden")
 		}
 
 		try {
-      const res = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(username + '@hotmail.com', password)
 			this.afstore.doc(`users/${res.user.uid}`).set({
-        username, email, 
+        username, 
 			})
 
 			this.user.setUser({
 				username,
         uid: res.user.uid,
-        email: res.user.email,
-			})
+      })
+      
+      console.log("Username :", username)
+			console.log("Res :", res.user.uid)
 
 			this.presentAlert('Excelente', 'Usuario creado');
 		} catch(error) {

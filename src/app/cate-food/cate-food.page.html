@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
         <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title color="light">Comida</ion-title>
+    <ion-title color="light">Crear Evento</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -96,22 +96,33 @@
       
     </ion-item>
  -->     
-    <div id="map_canvas1"></div>
+  
 
-    <div class="upload-btn-wrapper">
+    <!--<div class="upload-btn-wrapper">
       <ion-button type="hidden" color="light" class="btn">Escoger imagen</ion-button> 
       <ion-input accept="image/*" formControlName="urlImage" id="file-input" 
       id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
-      type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
+      type="file" (change)="fileChanged($event)" [(ngModel)]="todo.urlImage"></ion-input>
     </div>
 
-    <ion-input id="imageUser" type="hidden" [value]="urlImage | async"></ion-input>
+    <ion-input id="imageUser" type="hidden" [value]="urlImage | async"></ion-input>-->
+
+
+
+    <!--Boton subir evento-->
+    <input type="file" id="imageUser" id="file-input" (change)="fileChanged($event)" class="filebtn" #fileButton 
+    formControlName="urlImage" [(ngModel)]="todo.urlImage" [value]="urlImage | async"/>
+
+    <ion-button expand="block" color="primary" (click)="uploadFile()" 
+    fill="outline" >Upload File</ion-button>
+
+
     
     </ion-list>
-    <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
+    <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="createPost()" >
         <ion-icon name="send"></ion-icon>
         Subir evento
-      </ion-button>
+    </ion-button>
     </form>
  
     

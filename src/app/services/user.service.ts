@@ -27,9 +27,6 @@ interface Roles {
 export interface User {
 	username: string,
   uid: string,
-  email: string,
- // urlImage: string,
- 
 }
 
 @Injectable({
@@ -51,7 +48,7 @@ export class UserService {
 	}
 
 	reAuth(username: string, password: string) {
-		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username + '@codedamn.com', password))
+		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username + '@hotmail.com', password))
 	}
 
 	updatePassword(newpassword: string) {
@@ -59,7 +56,7 @@ export class UserService {
 	}
 
 	updateEmail(newemail: string) {
-		return this.afAuth.auth.currentUser.updateEmail(newemail + '@codedamn.com')
+		return this.afAuth.auth.currentUser.updateEmail(newemail + '@hotmail.com')
 	}
 
 	async isAuthenticated() {
@@ -71,7 +68,6 @@ export class UserService {
 			this.setUser({
 				username: user.email.split('@')[0],
 				uid: user.uid,
-				email: user.email.split('@')[0],
 			})
 
 			return true
