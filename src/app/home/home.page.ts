@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
-import {NavController, NavParams, LoadingController, AlertController} from '@ionic/angular';
+import {NavController, NavParams, LoadingController, AlertController, IonInfiniteScroll} from '@ionic/angular';
 import {UserService} from '../services/user.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -12,7 +12,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class HomePage {
   todos: Todo[];
- 
+  items: any[]=[];
+@ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
   constructor(public alertController: AlertController, public authservice: UserService,
      public navCtrl: NavController, private todoService: TodoService) { }
      Onlogout() {
@@ -20,14 +21,29 @@ export class HomePage {
     }
   //Refrescar la pagina
   doRefresh(event) {
-    console.log('Begin async operation');
-
     setTimeout(() => {
-      console.log('Async operation has ended');
+      this.todoService.getTodos().subscribe(res => {
+        this.todos = res;
+      });
       event.target.complete();
-    }, 2000);
+     }, 1500);
   }
- 
+ data: any[]= this.todos;
+  loadData(event){
+  
+     setTimeout(() => {
+   
+      if (this.todos.length > 5) {  
+        this.todos.push();
+
+        this.infiniteScroll.disabled= true;
+        event.target.complete();     
+
+      }
+     }, 1000);
+     
+  }
+
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
       this.todos = res;
@@ -45,11 +61,7 @@ fecha1 = new Date();
 f = new Date(this.fecha1).toISOString().split('T')[0];
 
 
-/*removEvent(item) {
-  // if(this.todoService)
-   this.todoService.removeTodo(item.id);
- }
-*/
+
  async removEvent(item) {
   const alert = await this.alertController.create({
     header: '¿Deseas eliminar el evento?',

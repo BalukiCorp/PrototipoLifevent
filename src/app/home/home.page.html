@@ -16,7 +16,8 @@
   <ion-button expand="block"  class="labelUbicacion">
     <ion-icon name="pin"></ion-icon>
   </ion-button>
- 
+ <div *ngIf="todos" class="animated fadeIn fast">
+   
   <div *ngFor="let item of todos">
   <ion-card class="cardHome" *ngIf="item.final_date >= f" >
     <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', item.id]">
@@ -53,14 +54,17 @@
 
 </div>
 
+</div>
 
 <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content
-    pullingIcon="arrow-dropdown"
-    pullingText="Pull to refresh"
-    refreshingSpinner="circles"
-    refreshingText="Refreshing...">
-  </ion-refresher-content>
+  <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="Cargando eventos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
