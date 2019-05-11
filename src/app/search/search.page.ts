@@ -48,7 +48,7 @@ export class SearchPage {
       nombre: 'Educacion',
     },
     {
-      navegation: '/cate-business',
+      navegation: '/cate-busines',
       imagen: '../../assets/img/empresarial.jpg',
       nombre: 'Empresarial',
     },
@@ -58,7 +58,7 @@ export class SearchPage {
       nombre: 'Deportes',
     },
     {
-      navegation: '/cate-arte',
+      navegation: '/cate-art',
       imagen: '../../assets/img/arte.jpg',
       nombre: 'Arte',
     },
@@ -95,11 +95,12 @@ export class SearchPage {
 
   }
 
-  ngOnInit(){
+// tslint:disable-next-line: use-life-cycle-interface
+  ngOnInit() {
         this.buscareventos.geteventos().subscribe(chats => {
         chats.map(chat => {
-        
-        const data : Usuario = chat.payload.doc.data() as Usuario
+
+        const data: Usuario = chat.payload.doc.data() as Usuario;
         data.id = chat.payload.doc.id;
 
         this.usuarios.push(data);

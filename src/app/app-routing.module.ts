@@ -6,14 +6,13 @@ import { AuthService } from '../app/services/auth.service'
 
 const routes: Routes = [
   {path: '', redirectTo: 'tabs', pathMatch: 'full'},
-  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule',canActivate: [AuthService] },
+  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule', canActivate: [AuthService] },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [AuthGuard]},
   { path: 'search', loadChildren: './search/search.module#SearchPageModule', canActivate : [AuthGuard]},
   { path: 'calendar/:id', loadChildren: './calendar/calendar.module#CalendarPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'idea', loadChildren: './cate-food/cate-food.module#CateFoodPageModule' },
-  { path: 'cate-business', loadChildren: './cate-business/cate-business.module#CateBusinessPageModule' },
-  { path: 'cate-arte/:id', loadChildren: './cate-arte/cate-arte.module#CateArtePageModule' },
+  { path: 'add-event', loadChildren: './add-event/add-event.module#AddEventPageModule' },
   { path: 'login', loadChildren: './user/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
   { path: 'register', loadChildren: './user/register/register.module#RegisterPageModule' },
 
@@ -26,15 +25,12 @@ const routes: Routes = [
   { path: 'cate-concert', loadChildren: './category/cate-concert/cate-concert.module#CateConcertPageModule' },
   { path: 'cate-education', loadChildren: './category/cate-education/cate-education.module#CateEducationPageModule' },
   { path: 'cate-foods', loadChildren: './category/cate-foods/cate-foods.module#CateFoodsPageModule' },
+  { path: 'cate-business', loadChildren: './cate-business/cate-business.module#CateBusinessPageModule' },
   { path: 'slide', loadChildren: './slide/slide.module#SlidePageModule' },
-
-
-
- 
-
-
-
-
+  { path: 'cate-art', loadChildren: './category/cate-art/cate-art.module#CateArtPageModule' },
+  { path: 'details-events/:id', loadChildren: './details-events/details-events.module#DetailsEventsPageModule' },
+  { path: 'cate-busines', loadChildren: './category/cate-busines/cate-busines.module#CateBusinesPageModule' },
+  { path: '**', loadChildren: './user/login/login.module#LoginPageModule'},
 ];
 
 @NgModule({

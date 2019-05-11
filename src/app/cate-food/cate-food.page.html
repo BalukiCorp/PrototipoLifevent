@@ -36,8 +36,8 @@
           <ion-select-option value="GASTRONOMY">GASTRONOMY</ion-select-option>
           <ion-select-option value="CULTURE">CULTURE</ion-select-option>
           <ion-select-option value="CONCERTS">CONCERTS</ion-select-option>
-          <ion-select-option value="CONCERTS">TECNOLOGY</ion-select-option>
-          <ion-select-option value="CONCERTS">PROMOTION</ion-select-option>
+          <ion-select-option value="TECNOLOGY">TECNOLOGY</ion-select-option>
+          <ion-select-option value="PROMOTION">PROMOTION</ion-select-option>
         </ion-select>
       </ion-item>
   
@@ -110,6 +110,7 @@
 
 
     <!--Boton subir evento-->
+    <!---->
     <input type="file" id="imageUser" id="file-input" (change)="fileChanged($event)" class="filebtn" #fileButton 
     formControlName="urlImage" [(ngModel)]="todo.urlImage" [value]="urlImage | async"/>
 

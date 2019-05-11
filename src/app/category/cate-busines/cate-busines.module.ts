@@ -2,17 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import {ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
+
 import { IonicModule } from '@ionic/angular';
 
-import { CateFoodPage } from './cate-food.page';
+import { CateBusinesPage } from './cate-busines.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CateFoodPage
+    component: CateBusinesPage
   }
 ];
 
@@ -20,10 +18,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CateFoodPage]
+  declarations: [CateBusinesPage]
 })
-export class CateFoodPageModule {}
+export class CateBusinesPageModule {}

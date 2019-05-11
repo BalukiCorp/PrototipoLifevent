@@ -22,7 +22,7 @@
   <!--Pagina-->
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button class="boton_personalizado" routerLink="/idea">
+    <ion-fab-button class="boton_personalizado" routerLink="/add-event">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -176,10 +176,10 @@
   
 <!--Card de Historial de Eventos Asistidos-->
 
-<div id="images">
-		<div class="image" *ngFor="let post of posts">
-			<img (click)="goTo(post)" class="main-image" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" />
-		</div>
-</div>
+  <div id="images">
+      <div class="image" *ngFor="let post of posts">
+        <img (click)="goTo(post)" class="main-image" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" />
+      </div>
+  </div>
   
 </ion-content>

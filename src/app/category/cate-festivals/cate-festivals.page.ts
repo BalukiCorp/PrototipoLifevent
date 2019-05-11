@@ -10,8 +10,6 @@ import {ActivatedRoute} from 'node_modules/@angular/router';
 })
 export class CateFestivalsPage implements OnInit {
   todo: Todo = {
-   
-   
     event_name: '',
     manager_name: '',
     category: '',
@@ -25,16 +23,15 @@ export class CateFestivalsPage implements OnInit {
     urlImage: '',
   //  imageRef:'',
   };
- 
-  public orderForm:any;
- 
+
+  public orderForm: any;
   todoId = null;
 
 
-  constructor(private route: ActivatedRoute, private actionSheetController: ActionSheetController, public navCtrl: NavController, public toastCtrl: ToastController,
+  constructor(
+    private route: ActivatedRoute, private actionSheetController: ActionSheetController,
+    public navCtrl: NavController, public toastCtrl: ToastController,
     private todoService: TodoService, private loadingController: LoadingController,
-   
- 
     private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
@@ -44,7 +41,8 @@ export class CateFestivalsPage implements OnInit {
     }
   }
 
-//***********************CARGA DE DATOS/LOAD*******************/
+/***********************CARGA DE DATOS/LOAD****************** */
+
   async loadTodo() {
     const loading = await this.loadingController.create({
       message: 'Loading..'
@@ -57,21 +55,21 @@ export class CateFestivalsPage implements OnInit {
     });
   }
 
-//*******  GUARDAR DATOS EN CLOUD FIRESTORE ****************
+/*******  GUARDAR DATOS EN CLOUD FIRESTORE ****************/
 async saveTodo() {
- 
+
   const loading = await this.loadingController.create({
     message: 'Actualizando evento..'
   });
   await loading.present();
 
   if (this.todoId) {
-    this.todoService.updateTodo(this.todo, this.todoId).then(() => {        
+    this.todoService.updateTodo(this.todo, this.todoId).then(() => {
       loading.dismiss();
       this.navCtrl.navigateForward(['/tabs/home']);
     });
   } else {
-    console.log("entro aqui");
+    console.log('entro aqui');
   }
 }
 }

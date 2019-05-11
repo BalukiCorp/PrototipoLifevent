@@ -1,4 +1,4 @@
-<ion-header>
+  <ion-header>
     <ion-toolbar color="primary">
         <ion-button slot="start" (click)="regresarHome()">
             <ion-icon name="arrow-back"></ion-icon>
@@ -12,6 +12,9 @@
     <ion-card *ngIf="post as postData">
       <ion-img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}"></ion-img>
       <ion-card-content>
+        <p>{{ postData.author }}</p>
+        <p>{{ postData.category }}</p>
+        <p>{{ postData.manager_name }}</p>
         <p>{{ postData.desc }}</p>
       </ion-card-content>
       <ion-item (click)="toggleHeart()">

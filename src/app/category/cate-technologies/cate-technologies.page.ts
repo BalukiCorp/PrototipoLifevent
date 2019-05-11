@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/evento.model';
 import { TodoService } from 'src/app/services/todo.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cate-technologies',
@@ -11,7 +12,9 @@ export class CateTechnologiesPage implements OnInit {
 
   public usuarios : any = [];
 
-  constructor(public buscareventos: TodoService) { }
+  constructor(
+    public alertController: AlertController,
+    public buscareventos: TodoService) { }
 
   ngOnInit(){
     this.buscareventos.geteventos().subscribe(chats => {
@@ -22,9 +25,33 @@ export class CateTechnologiesPage implements OnInit {
 
     this.usuarios.push(data);
 
-  })
-})
+      });
+    });
+  }
 
-}
+  async removEvent(usuario) {
+    const alert = await this.alertController.create({
+      header: '¿Deseas eliminar el evento?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.buscareventos.removeTodo(usuario.id);
+  
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
 
 }

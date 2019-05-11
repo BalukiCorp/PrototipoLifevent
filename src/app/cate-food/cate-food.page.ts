@@ -45,7 +45,7 @@ export class CateFoodPage implements OnInit {
   map1: GoogleMap;
   map2: GoogleMap;
   loading: any;
-//Guardar la imegen subida
+// Guardar la imegen subida
   imageURL: string
   noFace: boolean = false
   busy: boolean = false
@@ -123,7 +123,7 @@ export class CateFoodPage implements OnInit {
 
     
   }
-//----------------carga de mapa geocoder------------
+// ----------------carga de mapa geocoder------------
   loadMap1() {
     console.log(this.search_address);
     (this.search_address as any).value = '1600 Amphitheatre Parkway, Mountain View, CA 94043, United States';
@@ -244,6 +244,8 @@ export class CateFoodPage implements OnInit {
         });
       }
   }*/
+
+
 
   //Crear Post Evento
 
@@ -376,9 +378,9 @@ fileChanged(event) {
   this.http.post('https://upload.uploadcare.com/base/', data)
   .subscribe(event => {
     console.log(event)
-    this.imageURL = event.json().file
+    this.urlImage = event.json().file
     this.busy = false
-    this.http.get(`https://ucarecdn.com/${this.imageURL}/detect_faces/`)
+    this.http.get(`https://ucarecdn.com/${this.urlImage}/detect_faces/`)
     .subscribe(event => {
       this.noFace = event.json().faces == 0
     })
