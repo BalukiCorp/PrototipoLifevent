@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
-//import {} from 'googlemaps';
-//import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { LoadingController, Platform } from '@ionic/angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -11,23 +10,21 @@ import {
   GeocoderResult,
   Marker
 } from '@ionic-native/google-maps';
-import { LoadingController, Platform } from '@ionic/angular';
+
 
 @Component({
-  selector: 'app-cate-business',
-  templateUrl: './cate-business.page.html',
-  styleUrls: ['./cate-business.page.scss'],
+  selector: 'app-cate-busines',
+  templateUrl: './cate-busines.page.html',
+  styleUrls: ['./cate-busines.page.scss'],
 })
 
-export class CateBusinessPage{
+export class CateBusinesPage {
   map1: GoogleMap;
   map2: GoogleMap;
   loading: any;
   @ViewChild('search_address') search_address: ElementRef;
 
   constructor(public loadingCtrl: LoadingController, private platform: Platform) { }
-
-  /*
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
@@ -131,6 +128,5 @@ export class CateBusinessPage{
 
     });
   }
-  */
 
 }

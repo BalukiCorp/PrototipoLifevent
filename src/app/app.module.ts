@@ -36,7 +36,7 @@ import { UserService } from './services/user.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [  ],
-  imports: [ IonicRatingModule ,AutoCompleteModule,AgmDirectionModule, AgmCoreModule.forRoot({apiKey: "AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I",
+  imports: [ IonicRatingModule ,AutoCompleteModule,AgmDirectionModule, AgmCoreModule.forRoot({apiKey: 'AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I',
   libraries: ["places"]}), HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule,
   AngularFirestoreModule, AngularFireStorageModule, HttpClientModule, AngularFireAuthModule],
@@ -46,7 +46,6 @@ import { UserService } from './services/user.service';
     File,
     UserService,
     AuthService,
-    //FirebaseService,
     ImagePicker,
     FileTransfer,
     StatusBar,

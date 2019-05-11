@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
-  
-    <ion-title color="light" text-center>
-      Details
-    </ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Crear Evento</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,22 +21,27 @@
       <ion-input formControlName="manager_name" required type="text" placeholder="organizador" [(ngModel)]="todo.manager_name"></ion-input>
     </ion-item>
    
-    <ion-item>
+    <!--<ion-item>
         <ion-icon name="locate" item-start ></ion-icon>
         <ion-input formControlName="ubication" required type="text" placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
-    </ion-item>
-
+    </ion-item>-->
+    
     <ion-item >
       <ion-icon name="clipboard" item-start ></ion-icon>
 
       <ion-label>Categoría</ion-label>
       <ion-select formControlName="category" value="brown" okText="Okay" cancelText="Dismiss" [(ngModel)]="todo.category">
         <ion-select-option value="PARTY">PARTY</ion-select-option>
-        <ion-select-option value="FESTIVITIES">FESTIVITIES</ion-select-option>
-        <ion-select-option value="SPORTS">SPORTS</ion-select-option>
-        <ion-select-option value="GASTRONOMY">GASTRONOMY</ion-select-option>
-        <ion-select-option value="CULTURE">CULTURE</ion-select-option>
         <ion-select-option value="CONCERTS">CONCERTS</ion-select-option>
+        <ion-select-option value="GASTRONOMY">GASTRONOMY</ion-select-option>
+        <ion-select-option value="FESTIVITIES">FESTIVITIES</ion-select-option>
+        <ion-select-option value="CULTURE">CULTURE</ion-select-option>
+        <ion-select-option value="EDUCATION">EDUCATION</ion-select-option>
+        <ion-select-option value="BUSINESS">BUSINESS</ion-select-option>
+        <ion-select-option value="SPORTS">SPORTS</ion-select-option>
+        <ion-select-option value="ART">ART</ion-select-option>
+        <ion-select-option value="TECNOLOGY">TECNOLOGY</ion-select-option>
+        <ion-select-option value="PROMOTION">PROMOTION</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -71,19 +76,60 @@
         <ion-input formControlName="description" required type="text" placeholder="Descripción..." [(ngModel)]="todo.description"></ion-input>
     </ion-item>
 
-
+    <ion-item>
+      <ion-icon name="book" item-start ></ion-icon>
+      <ion-input formControlName="ubication" required type="text" placeholder="ubicación" [(ngModel)]="todo.ubication"></ion-input>
+    </ion-item>
 
     <ion-item >
       <ion-icon name="cash" item-start ></ion-icon>
       <ion-input formControlName="value" type="number" placeholder="Costo: $" value="" [(ngModel)]="todo.value"></ion-input>
     </ion-item>
 
-<!---->
-    <ion-item>
-      <ion-input formControlName="photo" id="file-input" id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
+    <!--PRUEBA-->
+<!--
+  <ion-item>
+      
+        <table class="smallPanel">
+          <tr>
+            <td ><ion-input  type="text" id="search_address" #search_address style="ime-mode: disable"></ion-input></td>
+            <td><ion-button (click)="onButton1_click($event)">Search</ion-button></td>
+          </tr>
+        </table>
+      
     </ion-item>
+ -->     
+  
 
-    <input id="imageUser" type="hidden" [value]="urlImage | async">
+    <!--<div class="upload-btn-wrapper">
+      <ion-button type="hidden" color="light" class="btn">Escoger imagen</ion-button> 
+      <ion-input accept="image/*" formControlName="urlImage" id="file-input" 
+      id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
+      type="file" (change)="fileChanged($event)" [(ngModel)]="todo.urlImage"></ion-input>
+    </div>
+
+    <ion-input id="imageUser" type="hidden" [value]="urlImage | async"></ion-input>-->
+
+
+
+    <!--Boton subir evento-->
+
+<!---->
+    <input type="file" (change)="fileChanged($event)" class="filebtn" #fileButton 
+    formControlName="urlImage" [(ngModel)]="todo.urlImage"/>
+
+    <ion-button expand="block" color="primary" (click)="uploadFile()"
+    fill="outline" >Upload File</ion-button>
+    <div *ngIf="urlImage" >
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <ion-img src="https://ucarecdn.com/{{ urlImage }}/-/preview/"></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    
   <!--
 <div  [(ngModel)]="todo.myphoto">
     <ion-button  (click)="openImagePicker()"  color="primary">Primary</ion-button>
@@ -96,9 +142,10 @@
 -->
 
   </ion-list>
-  <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()">
+  <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="createPost()" >
       <ion-icon name="send"></ion-icon>
       Subir evento
-    </ion-button>
+  </ion-button>
   </form>
+
 </ion-content>

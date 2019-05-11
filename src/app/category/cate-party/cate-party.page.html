@@ -12,7 +12,7 @@
 
   <div *ngFor="let usuario of usuarios">
       <ion-card class="cardHome" *ngIf="usuario.category === 'PARTY' " >
-        <img  src="{{usuario.urlImage}}" *ngIf="usuario.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', usuario.id]">
+        <img  src="{{usuario.urlImage}}" *ngIf="usuario.urlImage != 'N/A'" [routerLink]="['/', 'details-events', usuario.id]">
         <div> 
         <ion-card-header class="ionCardHeader" >
           <div class="DivMes"><h6 class="Mes">{{usuario.date | date: 'MMM'}}.</h6>
@@ -32,7 +32,7 @@
         </ion-fab>
     
         <div class="DivBotones">
-          <ion-button class="buttonEliminar" size="large"  fill="clear" color="danger" (click)="removEvent(item)">
+          <ion-button class="buttonEliminar" size="large"  fill="clear" color="danger" (click)="removEvent(usuario)">
               <ion-icon name="trash"></ion-icon>
           </ion-button>
     

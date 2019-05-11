@@ -20,7 +20,7 @@
    
   <div *ngFor="let item of todos">
   <ion-card class="cardHome" *ngIf="item.final_date >= f" >
-    <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'cate-arte', item.id]">
+    <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'details-events', item.id]">
     <div> 
     <ion-card-header class="ionCardHeader" >
       <div class="DivMes"><h6 class="Mes">{{item.date | date: 'MMM'}}.</h6>

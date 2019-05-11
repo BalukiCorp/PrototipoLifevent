@@ -10,6 +10,7 @@ import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-acce
 import { AngularFirestoreDocument, AngularFirestore } from "angularfire2/firestore";
 import { firestore } from 'firebase/app'
 import { UserService } from '../services/user.service'
+import { post } from "selenium-webdriver/http";
 
 @Component({
   selector: 'app-ranking',
@@ -19,51 +20,62 @@ import { UserService } from '../services/user.service'
 
 
 export class RankingPage implements OnInit {
-  
 
-  postID: string
-	effect: string = ''
-	post
-	postReference: AngularFirestoreDocument
-	sub
 
-	heartType: string = "heart-empty"
+postID: string;
+// tslint:disable-next-line: no-inferrable-types
+effect: string = '';
+post;
+postReference: AngularFirestoreDocument;
+sub;
+// tslint:disable-next-line: no-inferrable-types
+heartType: string = 'heart-empty';
 
+mainuser: AngularFirestoreDocument;
+userPosts;
+posts;
+username: string;
+profilePic: string;
+
+public usuarios: any = [];
 
   constructor(
     private route: ActivatedRoute, private user: UserService,private afs: AngularFirestore,
-    public buscareventos: TodoService,public loadingController: LoadingController,
-    private router:Router, public navCtrl: NavController, 
-    private camera: Camera, private transfer: FileTransfer, 
-    private file: File, private loadingCtrl:LoadingController,) { }
+    public buscareventos: TodoService, public loadingController: LoadingController,
+    private router: Router, public navCtrl: NavController,
+    private camera: Camera, private transfer: FileTransfer,
+    private file: File, private loadingCtrl: LoadingController) { 
 
-  
-  public usuarios : any = [];
-
+      this.mainuser = afs.doc(`users/${user.getUID()}`)
+		  this.sub = this.mainuser.valueChanges().subscribe(event => {
+			  this.posts = event.posts;
+			  this.username = event.username;
+        this.profilePic = event.profilePic;
+			})
+    }
+    
 
   ngOnInit() {
-      this.buscareventos.getPost().subscribe(chats => {
-        chats.map(chat => {
-        
-        const data : Usuario = chat.payload.doc.data() as Usuario
-        data.id = chat.payload.doc.id;
+		this.buscareventos.getPost().subscribe(chats => {
+			chats.map(chat => {
 
-        this.usuarios.push(data);
-        console.log(data);
-      })
-    })
+			const data: Usuario = chat.payload.doc.data() as Usuario;
+			data.id = chat.payload.doc.id;
 
-    this.postID = this.route.snapshot.paramMap.get('id')
-		this.postReference = this.afs.doc(`posts/${this.postID}`)
-		this.sub = this.postReference.valueChanges().subscribe(val => {
-			this.post = val
-			this.heartType = val.likes.includes(this.user.getUID()) ? 'heart' : 'heart-empty'
+			this.usuarios.push(data);
 		})
+	})
   }
 
   ngOnDestroy() {
 		this.sub.unsubscribe()
 	}
+
+  goTo(postID: string) {
+
+		this.router.navigate(['/tabs/post/' + postID.split('/')[0]])
+  }
+  
 
 	toggleHeart() {
 		if(this.heartType == 'heart-empty') {

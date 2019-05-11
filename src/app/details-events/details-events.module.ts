@@ -5,13 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CateArtePage } from './cate-arte.page';
+import { DetailsEventsPage } from './details-events.page';
 import { IonicRatingModule } from "ionic4-rating";
 
 const routes: Routes = [
   {
     path: '',
-    component: CateArtePage
+    component: DetailsEventsPage
   }
 ];
 
@@ -23,9 +23,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [CateArtePage],
+  declarations: [DetailsEventsPage],
   exports: [
-    CateArtePage
+    DetailsEventsPage
   ]
 })
-export class CateArtePageModule {}
+export class DetailsEventsPageModule {}

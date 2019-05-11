@@ -73,17 +73,16 @@ export class ProfilePage  {
     private http: Http, private router: Router, 
     private authService: UserService, public afs: AngularFirestore, 
     private user: UserService,
-    private webView: WebView,private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { 
+    private camera: Camera,private storage: AngularFireStorage,public chatservice : TodoService,public navCtrl: NavController) { 
 
-      this.mainuser = this.afs.doc(`users/${this.user.getUID()}`)
+      this.mainuser = this.afs.doc(`users/${user.getUID()}`)
       this.sub = this.mainuser.valueChanges().subscribe(event => {
-      this.posts = event.posts
-      this.username = event.username
-      this.profilePic = event.profilePic
-      this.email = event.email
-
-    })
-      
+        this.posts = event.posts;
+        this.username = event.username;
+        this.profilePic = event.profilePic;
+        this.email = event.email;
+        console.log(this.posts);
+      });
     }
 
     public providerId: string = 'null';

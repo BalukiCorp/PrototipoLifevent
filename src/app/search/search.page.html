@@ -42,7 +42,7 @@
     </ion-list>-->
 
   <div *ngIf="textoBuscar?.length > 0">
-    <ion-item *ngFor="let usuario of usuarios | filtro: textoBuscar" [routerLink]="['/', 'cate-arte', usuario.id]">
+    <ion-item *ngFor="let usuario of usuarios | filtro: textoBuscar" [routerLink]="['/', 'details-events', usuario.id]">
       <ion-avatar slot="end">
         <ion-img [src]="usuario.urlImage" *ngIf="usuario.urlImage != 'N/A'"></ion-img>
       </ion-avatar>
@@ -56,8 +56,8 @@
 
 
 
-
-  <ion-segment (ionChange)="segmentChanged($event)">
+  <!--<ion-segment (ionChange)="segmentChanged($event)">-->
+  <ion-segment>
     <ion-segment-button value="today" class="segmentStyle">
       <ion-label class="labelStyle">Hoy</ion-label>
     </ion-segment-button>
