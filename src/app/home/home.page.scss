@@ -1,17 +1,22 @@
 
-  img{
-    width: 100%;
-    height: 300px;
-  }
+
+.responsive {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+}
+
+
+
 
 //Div de la Fecha
 
   
+
 .Mes{
-  color: black;
+  color:  #e52421;
   position: relative;
   text-align: left;
-  color: rgb(229%, 36%, 33%);
   padding-bottom: 0px;
   margin-bottom: 0px;
   font-size: 20px;
@@ -30,14 +35,12 @@
   padding-left: 1%;
 }
 
-///
 
-
-  .cardHome{
+  /*.cardHome{
     border-radius:20px;
     box-shadow: 1px 8px 11px rgba(131, 131, 131, 0.25), 0 8px 8px rgba(124, 124, 124, 0.22);
 
-  }
+  }*/
 
 
   .colortitulo{
@@ -49,10 +52,19 @@
   }
 
 
+  .titulos_cards {
+    font-size: 100%;
+  } 
 
-  ion-card > ion-fab{
+  /*ion-col {
+    background: blue
+  }*/
+
+
+
+  /*ion-card > ion-fab{
     margin-top: 0px;
-  }
+  }*/
 
   .ionFabShare{
     margin-left: 13%;
@@ -78,5 +90,4 @@
   .buttonEditar{
     float: right;
   }
-
 

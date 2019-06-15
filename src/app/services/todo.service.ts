@@ -14,7 +14,8 @@ import {Router} from "@angular/router"
 import { auth } from 'firebase';
 import { Usuario } from '../models/evento.model';
 import { delay } from "rxjs/operators";
-
+import { HttpClient } from '@angular/common/http';
+import { Componente } from '../Interfaces/menu';
 
 export interface Todo {
   id?: string;
@@ -42,6 +43,7 @@ export class TodoService {
 
   
   constructor(
+    private http: HttpClient,
     private router: Router , private AFauth: AngularFireAuth,
     private db: AngularFirestore,
     private storage: AngularFireStorage) {
@@ -93,4 +95,10 @@ export class TodoService {
   removeTodo(id) {
     return this.todosCollection.doc(id).delete();
   }
+
+  getMenuOpts() {
+    return this.http.get<Componente[]>('/assets/data/menu.json');
+  }
+
+
 }

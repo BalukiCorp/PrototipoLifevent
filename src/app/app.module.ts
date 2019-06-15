@@ -28,18 +28,34 @@ import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { IonicRatingModule } from 'ionic4-rating';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-
+import { ComponentsModule } from './components/components.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //import {FirebaseService} from '../app/services/firebase.service';
 //import {IonicStorageModule} from '@ionic/storage';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [  ],
-  imports: [ IonicRatingModule ,AutoCompleteModule,AgmDirectionModule, AgmCoreModule.forRoot({apiKey: 'AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I',
-  libraries: ["places"]}), HttpModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-  AngularFireModule.initializeApp(environment.firebase), ReactiveFormsModule,
-  AngularFirestoreModule, AngularFireStorageModule, HttpClientModule, AngularFireAuthModule],
+  imports: [
+    ComponentsModule,
+    IonicRatingModule,
+    AutoCompleteModule,
+    AgmDirectionModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyA_uVKWprjIgPURNhl1v9zzTPLQJIBdi6I',
+    libraries: ["places"]}),
+    HttpModule,
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    HttpClientModule,
+     AngularFireAuthModule,
+     NgbModule.forRoot()
+  ],
+
   providers: [
     Camera,
     WebView,

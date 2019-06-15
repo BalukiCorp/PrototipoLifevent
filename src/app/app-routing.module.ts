@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'calendar/:id', loadChildren: './calendar/calendar.module#CalendarPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'idea', loadChildren: './cate-food/cate-food.module#CateFoodPageModule' },
-  { path: 'add-event', loadChildren: './add-event/add-event.module#AddEventPageModule' },
+  { path: 'add-event', loadChildren: './add-event/add-event.module#AddEventPageModule', canActivate: [AuthService] },
   { path: 'login', loadChildren: './user/login/login.module#LoginPageModule', canActivate : [NologinGuard] },
   { path: 'register', loadChildren: './user/register/register.module#RegisterPageModule' },
 

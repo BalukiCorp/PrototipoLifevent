@@ -1,26 +1,115 @@
-<ion-header >
+<ion-header no-border>
   <ion-toolbar color="primary">
+    <ion-title color="light" class="text-center">
+        Lifevent
+      </ion-title>
     <ion-button name="pin" (click)="Onlogout()" slot="end">
         <ion-icon color="light" name="log-out"></ion-icon>
     </ion-button>
-    <ion-title color="light" text-center class="title">
-      Lifevent
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content  color="light">
-  
-  <!---->
+<ion-content color="light">
 
-  <ion-button expand="block"  class="labelUbicacion">
-    <ion-icon name="pin"></ion-icon>
+  <ion-button expand="block" fill="outline" color="primary">
+      <ion-icon name="pin" color="primary"></ion-icon>
   </ion-button>
- <div *ngIf="todos" class="animated fadeIn fast">
-   
-  <div *ngFor="let item of todos">
+
+  <ion-grid fixed *ngIf="todos" class="animated fadeIn fast">
+
+
+      <!--<ion-row>
+        <ion-col *ngFor="let c of [1,1,1,1,1,1,1,1,1,1,1,1]; let i = index">
+          {{ i + 1}}
+        </ion-col>
+  
+      </ion-row>-->
+  
+      <ion-row>
+  
+        <ion-col  size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+                  *ngFor="let item of todos">
+            <ion-card *ngIf="item.final_date >= today" >
+                  <img  [src]="item.urlImage" 
+                        *ngIf="item.urlImage != 'N/A'" 
+                        [routerLink]="['/', 'details-events', item.id]"
+                        class="responsive" 
+                        alt="Imagen de Evento">
+                <div> 
+                <ion-card-header>
+                  <div class="Mes"><h6>{{item.date | date: 'MMM'}}.</h6>
+                  </div>
+                  <div class="Fecha"><h6>{{item.date | date: 'd'}}</h6>
+                  </div>
+                  <ion-card-title class="titulos_cards" align="center">{{item.event_name}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <h6 class="titulos_cards"  align="center">{{item.ubication}}</h6>
+                    <h6 class="titulos_cards"  align="center">Por: {{item.manager_name}}</h6>
+                </ion-card-content>
+                </div>
+            
+                <ion-fab vertical="bottom" horizontal="end">
+                    <ion-fab-button>
+                      <ion-icon name="heart"></ion-icon>
+                    </ion-fab-button>
+                </ion-fab>
+            
+                <div >
+                  <ion-button size="large"  fill="clear" color="danger" (click)="removEvent(item)">
+                      <ion-icon name="trash"></ion-icon>
+                  </ion-button>
+            
+                  <ion-button size="large"  fill="clear" color="danger" [routerLink]="['/', 'cate-festivals',item.id]">
+                      <ion-icon name="create"></ion-icon>
+                  </ion-button>
+                </div>
+
+              </ion-card>
+        </ion-col>
+  
+      </ion-row>
+  
+    </ion-grid>
+  
+
+  <!-- <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="../../assets/img/icono_tecnologia.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+  </div> -->
+
+ <!-- <div *ngIf="todos" class="animated fadeIn fast"> -->
+
+  <!-- <div id="images" *ngFor="let post of posts">
+      <ion-card>
+                <ion-img src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/"></ion-img>
+            <ion-card-content>
+                <h4>{{post.author}}</h4>
+                <h4>{{post.event_name}}</h4>
+                <h3>{{post.category}}</h3>
+                <h3>{{post.manager_name}}</h3>
+                <h3>{{post.date_start}}</h3>
+            </ion-card-content>
+            <ion-item>
+              <ion-icon></ion-icon>
+            </ion-item>
+      </ion-card>
+  </div>
+    -->
+
+  <!-- <div *ngFor="let item of todos" class="card" >
   <ion-card class="cardHome" *ngIf="item.final_date >= f" >
-    <img  src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'details-events', item.id]">
+    <img class="card-img-top" src="{{item.urlImage}}" *ngIf="item.urlImage != 'N/A'" [routerLink]="['/', 'details-events', item.id]">
     <div> 
     <ion-card-header class="ionCardHeader" >
       <div class="DivMes"><h6 class="Mes">{{item.date | date: 'MMM'}}.</h6>
@@ -28,13 +117,13 @@
       <div class="DivFecha"><h6 class="Fecha">{{item.date | date: 'd'}}</h6>
         <ion-card-title class="colortitulo">{{item.event_name}}</ion-card-title>
         <h6 align="center">{{item.ubication}}</h6>
-        <h6 align="center">Por: {{item.manager_name}}</h6>
+        <h6 align="center">Por: {{item.manager_name}}</h6> -->
         <!--<h6 align="center">Fecha: {{fechaManana}}</h6>-->
-      </div>
+      <!-- </div>
     </ion-card-header>
-    </div>
+    </div> -->
 
-    <ion-fab class="ionFabHeart" vertical="bottom" horizontal="end">
+    <!-- <ion-fab class="ionFabHeart" vertical="bottom" horizontal="end">
         <ion-fab-button>
           <ion-icon name="heart"></ion-icon>
         </ion-fab-button>
@@ -54,13 +143,13 @@
 
 </div>
 
-</div>
+</div> -->
 
-<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
-</ion-refresher>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="crescent"
       loadingText="Cargando eventos...">

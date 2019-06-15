@@ -7,7 +7,7 @@
 <ion-content padding>
 
 
-<form class="form-control" [formGroup]="validations_form">
+<form  [formGroup]="validations_form">
 
  <!-- <div class="upload-btn-wrapper"> -->
  <!--   <ion-input formControlName="urlImage"  id="file-input"  id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
@@ -65,8 +65,9 @@
   </ion-list>
 
   <ion-button type="submit" [disabled]="!validations_form.valid" fill="solid" expand="block" (click)="useRegister()">Registrarse</ion-button>
-</form>
   <p>Ya tienes una cuenta? <a (click)="goLoginPage()">Acceder al login</a></p>
+</form>
+  
 
 </ion-content>
 

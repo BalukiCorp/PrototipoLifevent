@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
-import {NavController} from '@ionic/angular';
+import {NavController, MenuController} from '@ionic/angular';
 import { TodoService} from "../services/todo.service";
 import { UserService, User} from "../services/user.service";
 import { AngularFireStorage} from "@angular/fire/storage";
@@ -11,6 +11,7 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { firestore } from 'firebase/app'
 import { ActivatedRoute } from '@angular/router';
+import { Componente } from '../Interfaces/menu';
 
 
 //import { User } from 'firebase';
@@ -28,6 +29,9 @@ interface image {
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage  {
+
+
+  componentes: Componente[] = [];
 
   //Variables de GetPost//
   postID: string
@@ -69,6 +73,7 @@ export class ProfilePage  {
   }
   
   constructor(
+    private menuCtrl: MenuController,
     private route: ActivatedRoute, 
     private http: Http, private router: Router, 
     private authService: UserService, public afs: AngularFirestore, 
@@ -89,12 +94,20 @@ export class ProfilePage  {
 
   
 
-  ngOnInit() {
+  ngOnInit(event) {
+    console.log(event);
+  }
+
+  segmentChanged() {
 
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe()
+  }
+
+  toggleMenu(){
+    this.menuCtrl.toggle();
   }
 
   /*onUpload(e){

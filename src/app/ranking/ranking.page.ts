@@ -40,7 +40,7 @@ profilePic: string;
 public usuarios: any = [];
 
   constructor(
-    private route: ActivatedRoute, private user: UserService,private afs: AngularFirestore,
+    private route: ActivatedRoute, private user: UserService, private afs: AngularFirestore,
     public buscareventos: TodoService, public loadingController: LoadingController,
     private router: Router, public navCtrl: NavController,
     private camera: Camera, private transfer: FileTransfer,
@@ -50,9 +50,9 @@ public usuarios: any = [];
 		  this.sub = this.mainuser.valueChanges().subscribe(event => {
 			  this.posts = event.posts;
 			  this.username = event.username;
-        this.profilePic = event.profilePic;
+        	  this.profilePic = event.profilePic;
 			})
-    }
+}
     
 
   ngOnInit() {
@@ -63,7 +63,7 @@ public usuarios: any = [];
 			data.id = chat.payload.doc.id;
 
 			this.usuarios.push(data);
-		})
+		}) 
 	})
   }
 

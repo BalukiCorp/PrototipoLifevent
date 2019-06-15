@@ -8,7 +8,7 @@ export class FiltroPipe implements PipeTransform {
 
   transform(usuarios: Usuario[], texto: string): Usuario[] {
 
-    if( texto.length === 0 ) {return usuarios;}
+    if ( texto.length === 0 ) {return usuarios;}
 
     texto = texto.toLocaleLowerCase();
 

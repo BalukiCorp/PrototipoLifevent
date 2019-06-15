@@ -42,7 +42,7 @@
   </form>
   <p>No tienes cuenta? <a (click)="goToRegisterPage()">Crea una cuenta</a></p>
   -->
-  <form class="form-control" [formGroup]="validations_form">
+  <form [formGroup]="validations_form">
 
   <ion-list>
     <img class="icon" src="../../../assets/icon/iconoLogin.jpg" alt="">
@@ -85,14 +85,15 @@
       (click)="login()">Ingresar</ion-button>
 
   
-      <ion-button expand="block" (click)="logInGoogle()">
+      <ion-button expand="block">
         <ion-icon name="logo-googleplus" slot="start"></ion-icon>
         Login by Google</ion-button>
+      <p>No tienes cuenta? <a (click)="goToRegisterPage()">Crea una cuenta</a></p>
 
       
 
       <label class="jasmine-errored">{{errorMessage}}</label>
     </form>
-      <p>No tienes cuenta? <a (click)="goToRegisterPage()">Crea una cuenta</a></p>
+     
 
 </ion-content>

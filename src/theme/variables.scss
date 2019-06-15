@@ -82,6 +82,27 @@
   --ion-background-dark-theme: #303030;
   --ion-card-dark-theme: #424242;
 
-  /* Red Theme */
-  --ion-status-bar-red-theme: rgb(229%, 36%, 33%);
+  /* Lifevent Theme */
+  --ion-color-lifevent: #e52421;
+  --ion-color-lifevent-rgb: 229,36,33;
+  --ion-color-lifevent-contrast: #ffffff;
+  --ion-color-lifevent-contrast-rgb: 255,255,255;
+  --ion-color-lifevent-shade: #ca201d;
+  --ion-color-lifevent-tint: #e83a37;
+}
+
+.ion-color-lifevent {
+  
+  --ion-color-base: var(--ion-color-lifevent) !important;
+    
+  --ion-color-base-rgb: var(--ion-color-lifevent-rgb) !important;
+    
+  --ion-color-contrast: var(--ion-color-lifevent-contrast) !important;
+    
+  --ion-color-contrast-rgb: var(--ion-color-lifevent-contrast-rgb) !important;
+    
+  --ion-color-shade: var(--ion-color-lifevent-shade) !important;
+    
+  --ion-color-tint: var(--ion-color-lifevent-tint) !important;
+  
 }

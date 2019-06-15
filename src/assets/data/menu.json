@@ -1,0 +1,26 @@
+[
+    {
+        "icon": "home",
+        "name": "Home",
+        "redirectTo": "/tabs/home",
+        "click": ""
+    },
+    {
+        "icon": "search",
+        "name": "Search",
+        "redirectTo": "/tabs/search",
+        "click": ""
+    },
+    {
+        "icon": "star-outline",
+        "name": "Ranking",
+        "redirectTo": "/tabs/ranking",
+        "click": ""
+    },
+    {
+        "icon": "log-out",
+        "name": "Cerrar Sesion",
+        "redirectTo": "",
+        "click": "Onlogout()"
+    }
+]

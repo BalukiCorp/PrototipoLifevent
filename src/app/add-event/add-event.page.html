@@ -101,30 +101,51 @@
  -->     
   
 
-    <!--<div class="upload-btn-wrapper">
-      <ion-button type="hidden" color="light" class="btn">Escoger imagen</ion-button> 
-      <ion-input accept="image/*" formControlName="urlImage" id="file-input" 
-      id="imageUser" [value]="urlImage | async" background  class="custom-file-input"  
-      type="file" (change)="fileChanged($event)" [(ngModel)]="todo.urlImage"></ion-input>
+    <!-- <div class="upload-btn-wrapper">
+      <ion-button type="hidden" color="primary" 
+                  class="btn" expand="block" fill="outline">Escoger imagen</ion-button> 
+
+      <ion-input  accept="image/*" formControlName="urlImage" id="file-input" 
+                  id="imageUser" [value]="urlImage | async" background  class="filebtn"  
+                  type="file" (change)="getImage($event)" [(ngModel)]="todo.urlImage"></ion-input>
     </div>
 
-    <ion-input id="imageUser" type="hidden" [value]="urlImage | async"></ion-input>-->
+    <ion-input id="imageUser" type="hidden" [value]="urlImage | async"></ion-input> -->
+
+
 
 
 
     <!--Boton subir evento-->
 
+    <!-- Nuevo Boton subir imagen -->
+      <hr>
+      <input  type="file" accept="image/*" id="imageUser"
+              class="filebtn" #fileButton [(ngModel)]="todo.urlImage"
+              formControlName="urlImage" (change)="getImage($event)">
+
+      <ion-button expand="block" color="primary" (click)="uploadFile()"
+      fill="outline" >Upload File</ion-button>
+      <div class="progress">
+        <div  class="progress-bar progress-bar-striped bg-success" role="progressbar"
+              [style.width]="(uploadPercent | async) + '%'">
+
+        </div>
+      </div>
+      <input #imageUser type="hidden" [value]="urlImage | async">
+
 <!---->
-    <input type="file" (change)="fileChanged($event)" class="filebtn" #fileButton 
+    <!-- <input type="file" (change)="fileChanged($event)" class="filebtn" #fileButton 
     formControlName="urlImage" [(ngModel)]="todo.urlImage"/>
 
     <ion-button expand="block" color="primary" (click)="uploadFile()"
-    fill="outline" >Upload File</ion-button>
+    fill="outline" >Upload File</ion-button> -->  
+    
     <div *ngIf="urlImage" >
       <ion-grid>
         <ion-row>
           <ion-col>
-              <ion-img src="https://ucarecdn.com/{{ urlImage }}/-/preview/"></ion-img>
+              <ion-img src="{{ urlImage }}"></ion-img>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -137,12 +158,12 @@
   -->
 <!--
   <ion-segment (click)="openImagePicker()">
-    <ion-segment-button   value="SUBIR IMAGEN"> SUBIR IMAGEN </ion-segment-button> 
+    <ion-segment-button   value="SUBIR IMAGEN"> SUBIR IMAGEN </ion-segment-button>
   </ion-segment> 
 -->
 
   </ion-list>
-  <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="createPost()" >
+  <ion-button type="submit" [disabled]="!formRegister.valid"  shape="round" expand="full" (click)="saveTodo()" >
       <ion-icon name="send"></ion-icon>
       Subir evento
   </ion-button>
